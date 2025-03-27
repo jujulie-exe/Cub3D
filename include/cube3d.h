@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/27 16:42:22 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/03/27 18:29:05 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -17,6 +17,11 @@
 #define SO 1
 #define WE 2
 #define NE 3
+#define MSG_ERROR "Error\n"
+#define MSG_ERROR_TX "Error\n: One or more textures are invalid. Please ensure that all texture files are in the correct format (.xpm) and accessible. Check that the texture paths are correct and the files are properly loaded."
+#define MSG_ERROR_CUB "Error\n: Invalid file extension. The file must have a .cub extension.\n"
+#define MSG_ERROR_EXT "Error\n: Missing file extension. Please provide a file with a .cub extension.\n"
+#define MSG_ERROR_FILE "Error\n: The provided map cannot be opened. Please check that the file exists and is readable\n"
 #define MSG_ERROR "Error\n"
 #define WIDTH_XMP 300
 #define HEIGHT_XMP 300

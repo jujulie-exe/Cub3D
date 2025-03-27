@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:34 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/27 17:01:18 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/03/27 18:25:38 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	check_valid_name(char *name)
 		if (!ft_strncmp(ptr + 1, "cub", 4))
 			return (0);
 		else
-		return (ft_fprintf(2,"%s", "Error\n is not .cub extession\n"), -1);
+		return (ft_fprintf(2, "%s", MSG_ERROR_CUB), -1);
 	}
 	else
-		return (ft_fprintf(2,"%s", "Error\n Add type valid type exetssion\n Valid estession is .cub\n"), -1);
+		return (ft_fprintf(2, "%s", MSG_ERROR_EXT), -1);
 }
 
 int	ptr_color(t_data_maps *maps)
@@ -185,7 +185,7 @@ int	proccesing_file_cub(t_data_maps *maps)
 		exit(-1);
 	fd = open(maps->name_maps, O_RDONLY);
 	if (fd < 0)
-		ft_free_all_and_exit(NULL, "FILE DON'EXTIST");
+		ft_free_all_and_exit(NULL, MSG_ERROR_FILE);
 	//tmp = ft_calloc(sizeof(char *), 1);
 	line = ft_calloc(1, sizeof(char));
 	while(line != NULL)
