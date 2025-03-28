@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:34 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/27 18:25:38 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/03/28 16:40:42 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,66 +119,14 @@ int	serch_map_and_validate(char *str)
 		i++;
 	}
 	if (valid == true)
-		return (str[i] = '#', 1);
+		return (str[i] = DIV, 1);
 	return (0);
 }
 
-void	cleaning_arg(t_data_maps *ptr)
-{
-	size_t	i;
-	size_t	y;
-	size_t	count;
 
-	i = 0;
-	y = 0;
-	count = 0;
-	if (ptr->argv)
-	{
-		while (ptr->argv[i])
-		{
-			if(ft_strlen(ptr->argv[i]) > 0)
-				count++;
-			i++;
-		}
-
-	}
-	char **new_argv = malloc(sizeof(char **) * count + 1);
-	i = 0;
-	while (ptr->argv[i])
-	{
-		if(ft_strlen(ptr->argv[i]) > 0)
-		{
-			new_argv[y] = ft_strdup(ptr->argv[i]);
-			y++;
-		}
-		i++;
-
-	}
-	new_argv[y] = NULL;
-	ft_clean_argv(ptr);
-	ptr->argv = new_argv;
-}
-
-void	trim(t_data_maps *ptr)
-{
-	size_t	i = 0;
-	if (ptr->argv)
-	{
-		while (ptr->argv[i])
-		{
-			char *trim = ft_strtrim(ptr->argv[i], " 	");
-			free(ptr->argv[i]);
-			ptr->argv[i] = NULL;
-			ptr->argv[i] = trim;
-			i++;
-		}
-	}
-	cleaning_arg(ptr);
-}
 int	proccesing_file_cub(t_data_maps *maps)
 {
 	char	*line = NULL;
-	char	*tmp = NULL;
 	int	fd;
 	
 	if (check_valid_name(maps->name_maps))
@@ -186,33 +134,12 @@ int	proccesing_file_cub(t_data_maps *maps)
 	fd = open(maps->name_maps, O_RDONLY);
 	if (fd < 0)
 		ft_free_all_and_exit(NULL, MSG_ERROR_FILE);
-	//tmp = ft_calloc(sizeof(char *), 1);
-	line = ft_calloc(1, sizeof(char));
-	while(line != NULL)
-	{
-		tmp = get_next_line(fd);
-		if (!tmp)
-			break;
-		char *ptr = line;
-		line = ft_strjoin(line, tmp);
-		free(ptr);
-		free(tmp);
-	}
-	// cerco la mapp
+	line = proccess_gnl(fd);
 	if (serch_map_and_validate(line) == 0)
-		exit(1);
-	maps->argv = ft_split(line, '#');
-	maps->map = ft_strdup(maps->argv[1]);
-	free(maps->argv[1]);
-	maps->argv[1] = NULL;
-	char **tmp_argv = ft_split(maps->argv[0], '\n');
-	free(maps->argv[0]);
-	free(maps->argv);
-	maps->argv = tmp_argv;
-	free(line);
-//qui dovrei trimmare piccolo ciclo while e via
+		ft_free_all_and_exit(NULL, "NO VALID MAP");
+	swap_and_split(maps, line);
 	if (maps->argv == NULL)
-		return (-1);
+		ft_free_all_and_exit(NULL, "NO VALID ARG");
 	trim(maps);
 	ptr_texture(maps);
 	ptr_color(maps);

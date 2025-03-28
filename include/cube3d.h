@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/27 18:29:05 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/03/28 17:14:21 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -22,7 +22,10 @@
 #define MSG_ERROR_CUB "Error\n: Invalid file extension. The file must have a .cub extension.\n"
 #define MSG_ERROR_EXT "Error\n: Missing file extension. Please provide a file with a .cub extension.\n"
 #define MSG_ERROR_FILE "Error\n: The provided map cannot be opened. Please check that the file exists and is readable\n"
-#define MSG_ERROR "Error\n"
+#define MSG_ERROR_MAP "Error\n"
+#define MSG_ERROR_MAP "Error\n"
+#define MSG_ERROR_COLOR "Error\n"
+#define DIV '#'
 #define WIDTH_XMP 300
 #define HEIGHT_XMP 300
 #define BUFFER_SIZE 1
@@ -70,7 +73,11 @@ typedef struct s_mlx
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
 int	proccesing_file_cub(t_data_maps *maps);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
+void	trim(t_data_maps *ptr);
 void	validazione(t_data_maps *data);
+void	swap_and_split(t_data_maps *maps, char *line);
+char	*proccess_gnl(int fd);
+void	check_and_charge_color(t_data_maps *ptr_maps);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
 void	ft_free_all_and_exit(t_data_maps *ptr_maps, char *str);
 void	ft_clean_argv(t_data_maps *ptr_maps);

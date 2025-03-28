@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:56:25 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/26 15:59:05 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/03/28 15:57:45 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -61,7 +61,7 @@ void	ft_clean_mlx(t_mlx *ptr)
 		mlx_destroy_window(ptr->mlx, ptr->win);
 		ptr->win = NULL;
 	}
-	if (ptr->texture)
+	if (ptr->texture[0])
 		ft_clean_texture(ptr);
 	if (ptr->mlx)
 		mlx_destroy_display(ptr->mlx);
@@ -79,6 +79,8 @@ void	ft_free_all_and_exit(t_data_maps *ptr_maps, char *str)
 	if (ptr_maps)
 	{
 		ft_clean_argv(ptr_maps);
+		if (ptr_maps->map)
+			free(ptr_maps->map);
 		if (ptr_maps->ptr_mlx)
 			ft_clean_mlx(ptr_maps->ptr_mlx);
 	}
