@@ -76,7 +76,6 @@ void	clear_and_open_path(char *str, t_mlx *mlx_ptr, int flags)
 	ptr = str + 2;
 	while (*ptr == ' ' || *ptr == '	')
 		ptr++;
-	//ptr = strchr(str, ".");
 	while (ptr != NULL &&  i < PATH_MAX && (*ptr != ' ' && *ptr != '	' && *ptr != '\0'))
 	{
 		new_string[i] = *ptr;
@@ -90,13 +89,14 @@ void	clear_and_open_path(char *str, t_mlx *mlx_ptr, int flags)
 
 void	validazione(t_data_maps *maps)
 {
-	if ((maps->path_no &&  maps->path_ne && maps->path_we && maps->path_so && maps->up_color && maps->down_color))
+	if ((maps->path_no &&  maps->path_ea && maps->path_we && maps->path_so && maps->up_color && maps->down_color))
 	{
 		clear_and_open_path(maps->path_no, maps->ptr_mlx, NO);
 		clear_and_open_path(maps->path_so, maps->ptr_mlx, SO);
 		clear_and_open_path(maps->path_we, maps->ptr_mlx, WE);
-		clear_and_open_path(maps->path_ne, maps->ptr_mlx, NE);
-		check_and_charge_color(maps);
+		clear_and_open_path(maps->path_ea, maps->ptr_mlx, NE);
+		check_and_charge_color(maps, maps->down_color, 'C');
+		check_and_charge_color(maps, maps->up_color, 'F');
 	}
 	else
 		ft_free_all_and_exit(maps, "SEND VALID ARGV");

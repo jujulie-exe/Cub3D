@@ -10,38 +10,73 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// aggiungere include
-//
-//
-//
-
 #include "../../include/cube3d.h"
-void	check_and_charge_color(t_data_maps *ptr_maps)
+
+int	char_validity(char *str)
+{
+	size_t	i;
+	size_t	vir;
+	size_t	other;
+	size_t	digit;
+
+	i = 0;
+	vir = 0;
+	digit = 0;
+	other = 0;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]))
+			digit++;
+		else if (str[i] == ',')
+			vir++;
+		else
+			other++;	
+		i++;
+	}
+	if (digit <= 9 && vir == 2 && other == 0)
+		return (1);
+	return (0);
+}
+
+void	create_rgb(int	*rgb, t_data_maps *ptr, char c)
+{
+	static unsigned int c_color = 0;
+	static unsigned int f_color = 0;
+	if (c == 'C')
+	{
+		c_color = ((rgb[R] & 0xFF) << 16) | ((rgb[G] & 0xFF) << 8) | (rgb[B] & 0xFF);
+		ptr->ptr_mlx->c_hex = c_color;
+	}
+	else if (c == 'F')
+	{
+		 f_color = ((rgb[R] & 0xFF) << 16) | ((rgb[G] & 0xFF) << 8) | (rgb[B] & 0xFF);
+		ptr->ptr_mlx->f_hex = f_color;
+	}
+}
+
+void	check_and_charge_color(t_data_maps *ptr_maps, char *str, char c)
 {
 	size_t	i;
 	char *tmp;
 	size_t	len;
+	int	rgb[3];
 
 	i = 0;
-	tmp = ptr_maps->up_color + 1;
+	tmp = str + 1;
 	while (*tmp == ' ' || *tmp == '	')
 		tmp++;
 	len = ft_strlen(tmp);
-	int deb;
-	/* aggiungere una funzione per verficare che ci siano solo
-	 * carrateri validi con la giustat quantita massimo 9 digit 3 ,*/
-	if (len > 12 || char_validy(tmp))
-		return ;
-	else
-	{
-		while (*tmp)
-		{	
-			if (*tmp == ',')
-				tmp++;
-			if ((deb = ft_atol(tmp)) >= 255)
-				ft_free_all_and_exit(ptr_maps, MSG_ERROR);
-			while (*tmp && ft_isdigit(*tmp) )
-				tmp++;
-		}
+	if (len > 10 || char_validity(tmp) == 0)
+		ft_free_all_and_exit(ptr_maps, MSG_ERROR);
+	while (*tmp)
+	{	
+		if (*tmp == ',')
+			tmp++;
+		if ((rgb[i] = ft_atol(tmp)) >= 255)
+			ft_free_all_and_exit(ptr_maps, MSG_ERROR);
+		while (*tmp && ft_isdigit(*tmp) )
+			tmp++;
+		i++;
 	}
+	create_rgb(rgb, ptr_maps, c);
 }
