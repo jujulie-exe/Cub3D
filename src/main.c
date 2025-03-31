@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:32 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/26 14:33:15 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/03/31 15:51:50 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	.img = NULL,
 	.addr = NULL,
 	.ptr_maps = NULL,
+	.valid_map = NULL,
 	};
 	if (argc != 2)
 		return (ft_fprintf(2, "%s", MSG_ERROR), -1);

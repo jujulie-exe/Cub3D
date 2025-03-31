@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:34 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/28 16:40:42 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/03/31 16:20:29 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	proccesing_file_cub(t_data_maps *maps)
 	swap_and_split(maps, line);
 	if (maps->argv == NULL)
 		ft_free_all_and_exit(NULL, "NO VALID ARG");
-	fill_flood(maps);
+	fill_flod(maps);
 	trim(maps);
 	ptr_texture(maps);
 	ptr_color(maps);

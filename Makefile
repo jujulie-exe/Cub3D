@@ -18,8 +18,10 @@ OBJ_DIR = obj
 SRCS =  $(SRCDIR)/GNL/get_next_line.c \
         $(SRCDIR)/parsing/proccess_parsing.c \
         $(SRCDIR)/parsing/parsing_utilis.c \
+	$(SRCDIR)/parsing/flood_fill_algo.c \
         $(SRCDIR)/parsing/intern_process.c \
         $(SRCDIR)/parsing/add_color.c \
+	$(SRCDIR)/parsing/parsing_control_map.c \
         $(SRCDIR)/clean_up_and_error/clean_err.c \
         $(SRCDIR)/main.c
 

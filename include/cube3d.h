@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/28 17:14:21 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/03/31 15:30:55 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -25,8 +25,7 @@
 #define MSG_ERROR_CUB "Error\n: Invalid file extension. The file must have a .cub extension.\n"
 #define MSG_ERROR_EXT "Error\n: Missing file extension. Please provide a file with a .cub extension.\n"
 #define MSG_ERROR_FILE "Error\n: The provided map cannot be opened. Please check that the file exists and is readable\n"
-#define MSG_ERROR_MAP "Error\n"
-#define MSG_ERROR_MAP "Error\n"
+#define MSG_ERROR_MAP "Error\n: close maps pls ( ˘ ³˘)♥\n"
 #define MSG_ERROR_COLOR "Error\n"
 #define DIV '#'
 #define WIDTH_XMP 300
@@ -57,7 +56,6 @@ typedef struct	s_data_maps
 	char	*up_color;
 	char	*down_color;
 	char	*map;
-	char	**coord_map;
 	char	**argv;
 	struct s_mlx	*ptr_mlx;
 
@@ -70,8 +68,9 @@ typedef struct s_mlx
 	void	*win;
 	void	*img;
 	void	*addr;
-	int	*f_hex
-	int	*c_hex
+	unsigned int	f_hex;
+	unsigned int	c_hex;
+	char	**valid_map;
 	t_data_maps	*ptr_maps;
 
 }	t_mlx;
@@ -83,11 +82,17 @@ void	trim(t_data_maps *ptr);
 void	validazione(t_data_maps *data);
 void	swap_and_split(t_data_maps *maps, char *line);
 char	*proccess_gnl(int fd);
+// ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/parsing_control_map.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
+int	valid_position(char c);
+int	serch_map_and_validate(char *str);
+// ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/flood_fill_algo.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
+void	fill_flod(t_data_maps *ptr);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/add_color.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
 void	check_and_charge_color(t_data_maps *ptr_maps, char *str, char c);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
 void	ft_free_all_and_exit(t_data_maps *ptr_maps, char *str);
 void	ft_clean_argv(t_data_maps *ptr_maps);
+void	free_double_array(char ***ar);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/GNL/get_next_line.cc(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
 char	*get_next_line(int fd);
 
