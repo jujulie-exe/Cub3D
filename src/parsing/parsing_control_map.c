@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 13:47:13 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/31 15:43:15 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/03/31 16:54:55 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -27,19 +27,13 @@ int is_valid_map_char(char c)
 
 bool	control_map_proccess(char *str, size_t index)
 {
-	size_t	flags = 0;
-
 	while (str[index])
 	{
-		if(!is_valid_map_char(str[index]) || flags > 1)
+		if(!is_valid_map_char(str[index]))
 			return (false);
-		if (valid_position(str[index]))
-			flags++;
 	index++;
 	}
-	if (flags == 1)
-		return (true);
-	return (false);
+	return (true);
 		
 }
 

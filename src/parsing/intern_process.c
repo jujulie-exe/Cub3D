@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:56:45 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/31 16:05:48 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/03/31 17:00:19 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,25 @@ void	cleaning_maps(t_data_maps *ptr)
 	ptr->map = clean_map;
 }
 
+bool	check_flags_maps(char *str)
+{
+	size_t	index;
+	size_t	flags;
+
+	index = 0;
+	flags = 0;
+	while (str[index])
+	{
+		if(valid_position(str[index]))
+			flags++;
+	index++;
+	}
+	if (flags == 1)
+		return (true);
+	return (false);
+		
+}
+
 void	swap_and_split(t_data_maps *maps, char *line)
 {
 	char	**tmp_argv;
@@ -80,4 +99,7 @@ void	swap_and_split(t_data_maps *maps, char *line)
 	free(maps->argv);
 	maps->argv = tmp_argv;
 	free(line);
+	if (check_flags_maps(maps->map) == false)
+		ft_free_all_and_exit(maps, "Error\n to much flags");
+
 }
