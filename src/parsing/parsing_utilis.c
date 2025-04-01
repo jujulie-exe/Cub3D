@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:15:22 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/31 16:19:13 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/01 13:11:37 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ void	validazione(t_data_maps *maps)
 		check_and_charge_color(maps, maps->up_color, 'F');
 	}
 	else
-		ft_free_all_and_exit(maps, "NO");
+		ft_free_all_and_exit(maps, MSG_ERROR_ARG);
 }
 	

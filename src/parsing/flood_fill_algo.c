@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 13:47:10 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/31 16:50:08 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/01 13:32:04 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -55,6 +55,22 @@ void	flood_fill_algo(t_fill *data, ssize_t y, ssize_t x)
 	flood_fill_algo(data, y, x + 1);
 
 }
+int	ft_confront(t_fill *data, size_t index)
+{
+	size_t len1 = ft_strlen(data->copy_maps[index]);
+	size_t len2 = ft_strlen(data->copy_maps[index - 1]);
+	if (len1 > len2)
+		while (len1 != len2)
+			len1--;
+	else if (len1 < len2)
+	{
+		len1 = (len2 - len1)  + 1;
+		index = index - 1;
+	}
+	if (data->copy_maps[index][len1] == data->color)
+		return (1);
+	return (0);
+}
 bool	control_fill_map(t_fill *data)
 {
 	size_t	y;
@@ -68,11 +84,13 @@ bool	control_fill_map(t_fill *data)
 			return (false);
 		x++;
 	}
-	
 	while (data->copy_maps[y])
 	{
 		if (data->copy_maps[y][0] == data->color || data->copy_maps[y][ft_strlen(data->copy_maps[y])] == data->color)
 			return (false);
+		if (y > 0 && (ft_strlen(data->copy_maps[y]) != ft_strlen(data->copy_maps[y - 1])))
+			if (ft_confront(data, y) == 1)
+				return (false);
 		y++;
 	}
 	x = 0;

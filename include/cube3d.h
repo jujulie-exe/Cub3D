@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/31 15:30:55 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/01 13:15:46 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -24,9 +24,12 @@
 #define MSG_ERROR_TX "Error\n: One or more textures are invalid. Please ensure that all texture files are in the correct format (.xpm) and accessible. Check that the texture paths are correct and the files are properly loaded."
 #define MSG_ERROR_CUB "Error\n: Invalid file extension. The file must have a .cub extension.\n"
 #define MSG_ERROR_EXT "Error\n: Missing file extension. Please provide a file with a .cub extension.\n"
-#define MSG_ERROR_FILE "Error\n: The provided map cannot be opened. Please check that the file exists and is readable\n"
-#define MSG_ERROR_MAP "Error\n: close maps pls ( ˘ ³˘)♥\n"
-#define MSG_ERROR_COLOR "Error\n"
+#define MSG_ERROR_FILE "Error\n: The provided map cannot be opened. Please check that the file exists and is readable( ^..^)ﾉ\n"
+#define MSG_ERROR_MAP "Error\n: Map not properly closed! ( ˘ ³˘)♥\n"
+#define MSG_ERROR_FLAGS "Error\n: There must be exactly one spawn point.\n Please ensure that there are no more and no less༼つ ◕_◕ ༽つ\n"
+#define MSG_ERROR_COLOR "Error\n: Invalid RGB format\n Use exactly three values (0-255), separated by commas(づ｡◕‿‿◕｡)づ\n "
+#define MSG_ERROR_MAX "Error\n:  RGB value out of range\n Each value must be between 0 and 255.(︶︹︶)\n "
+#define MSG_ERROR_ARG "Error\n: equired information is missing.\n Please ensure all necessary data is provided.(｡◕‿‿◕｡)\n"
 #define DIV '#'
 #define WIDTH_XMP 300
 #define HEIGHT_XMP 300
