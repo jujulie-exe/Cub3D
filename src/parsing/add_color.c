@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:42:35 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/01 13:37:28 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/01 14:39:12 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -35,7 +35,7 @@ int	char_validity(char *str)
 			other++;	
 		i++;
 	}
-	if ((digit <= 9 && digit >= 3) && vir == 2 && other == 0 && i > 5 && ft_isdigit(str[i - 1]))
+	if ((digit <= 9 && digit >= 3) && vir == 2 && other == 0 && i >= 5 && ft_isdigit(str[i - 1]) && ft_isdigit(str[0]))
 		return (1);
 	return (0);
 }
@@ -68,7 +68,7 @@ void	check_and_charge_color(t_data_maps *ptr_maps, char *str, char c)
 	while (*tmp == ' ' || *tmp == '	')
 		tmp++;
 	len = ft_strlen(tmp);
-	if (len > 10 || char_validity(tmp) == 0)
+	if (len > 11 || char_validity(tmp) == 0)
 		ft_free_all_and_exit(ptr_maps, MSG_ERROR_COLOR);
 	while (*tmp)
 	{	

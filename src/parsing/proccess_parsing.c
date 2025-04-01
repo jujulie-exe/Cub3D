@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:34 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/31 16:20:29 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/01 17:07:42 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	ptr_color(t_data_maps *maps)
 		{
 			if (!ft_strncmp(maps->argv[i], srr[y], 2))
 			{
-				if (y == 0 || y == 2)
+				if ((y == 0 || y == 2 ) && maps->up_color == NULL)
 					maps->up_color = maps->argv[i];
-				if (y == 1 || y == 3)
+				if ((y == 1 || y == 3) && maps->down_color == NULL)
 					maps->down_color = maps->argv[i];
 			}
 			y++;
@@ -68,13 +68,13 @@ void	ptr_texture(t_data_maps *maps)
 		{
 			if (!ft_strncmp(maps->argv[i], srr[y], 3))
 			{
-				if (y == 0 || y == 4)
+				if ((y == 0 || y == 4) && maps->path_ea == NULL)
 					maps->path_ea = maps->argv[i];
-				else if (y == 1 || y == 5)
+				else if ((y == 1 || y == 5) && maps->path_we == NULL)
 					maps->path_we = maps->argv[i];
-				else if (y == 2 || y == 6)
+				else if ((y == 2 || y == 6) && maps->path_no == NULL)
 					maps->path_no = maps->argv[i];
-				else if (y == 3 || y == 7)
+				else if ((y == 3 || y == 7) && maps->path_so == NULL)
 					maps->path_so = maps->argv[i];
 			}
 			y++;

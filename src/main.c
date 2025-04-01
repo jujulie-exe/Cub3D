@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:32 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/31 15:51:50 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/01 18:06:38 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int	main(int argc, char **argv)
 	ptr_mlx = (struct s_mlx){
 	.mlx = NULL, 
 	.texture[0] = NULL,
+	.texture[1] = NULL,
+	.texture[2] = NULL,
+	.texture[3] = NULL,
 	.win = NULL,
 	.img = NULL,
 	.addr = NULL,

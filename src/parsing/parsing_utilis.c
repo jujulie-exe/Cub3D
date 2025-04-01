@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:15:22 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/01 13:11:37 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/01 18:16:02 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,11 @@ void	clear_and_open_path(char *str, t_mlx *mlx_ptr, int flags)
 		i++;
 		ptr++;
 	}
-//	mlx_ptr->texture[flags] = mlx_xpm_file_to_image(mlx_ptr->mlx, new_string, (int *)WIDTH_XMP, (int *)HEIGHT_XMP);
-//	if (!mlx_ptr->texture[flags])
-//		ft_free_all_and_exit(mlx_ptr->ptr_maps, MSG_ERROR_TX);
+	int y = 80;
+	int x = 80;
+	mlx_ptr->texture[flags] = mlx_xpm_file_to_image(mlx_ptr->mlx, new_string, &x, &y);
+	if (!mlx_ptr->texture[flags])
+		ft_free_all_and_exit(mlx_ptr->ptr_maps, MSG_ERROR_TX);
 }
 
 void	validazione(t_data_maps *maps)

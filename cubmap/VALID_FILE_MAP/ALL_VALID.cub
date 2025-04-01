@@ -1,5 +1,8 @@
 
-S ./textures/pillar.xpm
+EA ./xpm_texture/texture_dunk2_imresizer.xpm
+SO ./xpm_texture/texture_dunk4_imresizer.xpm
+WE ./xpm_texture/texture_dunk4_imresizer.xpm
+NO ./xpm_texture/texture_dunk3_imresizer.xpm
 	R 900 600
 
 H ./textures/health.xpm
@@ -13,7 +16,7 @@ NE 	./textures/east.xpm
 
 
 		F	 220,100,0 		
-   C 			  		,255,255
+   C 			  			225,30,0		
   
 ihaiuhdaiuhdiua akdpokapokda opkakdankjndak 		
 
@@ -29,7 +32,7 @@ questo é solo un test
 101111011
 1000N0001
 1111110111111
-100000011
+1000001
 10011111111111
 1000001
 10111111
