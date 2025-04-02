@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:32 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/01 18:06:38 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/02 17:30:07 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,8 @@ int	main(int argc, char **argv)
 	ptr_mlx.mlx= mlx_init();
 	maps.name_maps = argv[1];
 	proccesing_file_cub(&maps);
+	printf("[all okay open server x11]");
+	init_ptr_mlx(&ptr_mlx);
+	mlx_loop(ptr_mlx.mlx);
+	return (0);
 }

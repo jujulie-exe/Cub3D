@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:15:22 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/01 18:16:02 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/02 17:41:11 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	trim(t_data_maps *ptr)
 	cleaning_arg(ptr);
 }
 
-void	clear_and_open_path(char *str, t_mlx *mlx_ptr, int flags)
+void	clear_and_open_path(char *str, t_mlx **mlx_ptr, int flags)
 {
 	size_t	i;
 	char	*ptr;
@@ -82,21 +82,20 @@ void	clear_and_open_path(char *str, t_mlx *mlx_ptr, int flags)
 		i++;
 		ptr++;
 	}
-	int y = 80;
-	int x = 80;
-	mlx_ptr->texture[flags] = mlx_xpm_file_to_image(mlx_ptr->mlx, new_string, &x, &y);
-	if (!mlx_ptr->texture[flags])
-		ft_free_all_and_exit(mlx_ptr->ptr_maps, MSG_ERROR_TX);
+	new_string[i] = '\0';
+	(*mlx_ptr)->texture[flags] = mlx_xpm_file_to_image((*mlx_ptr)->mlx, new_string, &(*mlx_ptr)->txr_h[flags], &(*mlx_ptr)->txr_w[flags]);
+	if (!(*mlx_ptr)->texture[flags])
+		ft_free_all_and_exit((*mlx_ptr)->ptr_maps, MSG_ERROR_TX);
 }
 
 void	validazione(t_data_maps *maps)
 {
 	if ((maps->path_no &&  maps->path_ea && maps->path_we && maps->path_so && maps->up_color && maps->down_color))
 	{
-		clear_and_open_path(maps->path_no, maps->ptr_mlx, NO);
-		clear_and_open_path(maps->path_so, maps->ptr_mlx, SO);
-		clear_and_open_path(maps->path_we, maps->ptr_mlx, WE);
-		clear_and_open_path(maps->path_ea, maps->ptr_mlx, NE);
+		clear_and_open_path(maps->path_no, &maps->ptr_mlx, NO);
+		clear_and_open_path(maps->path_so, &maps->ptr_mlx, SO);
+		clear_and_open_path(maps->path_we, &maps->ptr_mlx, WE);
+		clear_and_open_path(maps->path_ea, &maps->ptr_mlx, NE);
 		check_and_charge_color(maps, maps->down_color, 'C');
 		check_and_charge_color(maps, maps->up_color, 'F');
 	}

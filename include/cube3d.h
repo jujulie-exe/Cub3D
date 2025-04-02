@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/01 17:53:00 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/02 17:51:20 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -31,8 +31,7 @@
 #define MSG_ERROR_MAX "Error\n:  RGB value out of range\n Each value must be between 0 and 255.(︶︹︶)\n "
 #define MSG_ERROR_ARG "Error\n: equired information is missing.\n Please ensure all necessary data is provided.(｡◕‿‿◕｡)\n"
 #define DIV '#'
-#define WIDTH_XMP 80
-#define HEIGHT_XMP 80
+#define SIZE_WIN 2
 #define BUFFER_SIZE 1
 
 #include <limits.h>
@@ -71,8 +70,15 @@ typedef struct s_mlx
 	void	*win;
 	void	*img;
 	void	*addr;
-	unsigned int	f_hex;
-	unsigned int	c_hex;
+	int	txr_h[4];
+	int	txr_w[4];
+	int	width;
+	int	height;
+	int	bits_pixel;
+	int	line_len;
+	int	endian;
+	unsigned int	*c_hex;
+	unsigned int	*f_hex;
 	char	**valid_map;
 	t_data_maps	*ptr_maps;
 
@@ -98,5 +104,7 @@ void	ft_clean_argv(t_data_maps *ptr_maps);
 void	free_double_array(char ***ar);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/GNL/get_next_line.cc(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
 char	*get_next_line(int fd);
+// ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/init_mlx_and_hook/mlx_init_ptr.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
+void	init_ptr_mlx(t_mlx *data);
 
 #endif
