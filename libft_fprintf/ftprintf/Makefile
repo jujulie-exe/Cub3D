@@ -6,7 +6,7 @@
 #    By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/02 17:27:06 by jfranco           #+#    #+#              #
-#    Updated: 2025/03/24 12:19:24 by jfranco          ###   ########.fr        #
+#    Updated: 2025/04/04 13:18:51 by jfranco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ OBJ = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # Default target
 all: $(NAME)
-	@echo "\033[38;5;213m(っ◔◡◔)っ ♥ Ecole 19 | philo | Julie ♥\033[0m"
 
 # Create the object directory before compiling
 $(OBJ_DIR):

@@ -6,7 +6,7 @@
 #    By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 12:58:20 by jfranco           #+#    #+#              #
-#    Updated: 2025/03/26 15:44:46 by jfranco          ###   ########.fr        #
+#    Updated: 2025/04/04 13:19:20 by jfranco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -26,7 +26,6 @@ OBJ = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # Default target
 all: $(NAME)
-	@echo "\033[38;5;213m(っ◔◡◔)っ ♥ Ecole 19 | philo | Julie ♥\033[0m"
 
 # Create the object directory before compiling
 $(OBJ_DIR):
