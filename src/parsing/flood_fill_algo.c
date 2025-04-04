@@ -6,23 +6,12 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 13:47:10 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/01 13:32:04 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/04 13:08:16 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
 
 #include "../../include/cube3d.h"
-
-
-typedef struct	s_fill
-{
-	char	**copy_maps;
-	size_t	x;
-	size_t	y;
-	char	target;
-	char	color;
-	
-}	t_fill;
 
 void	search_player(t_fill *data)
 {
@@ -64,7 +53,7 @@ int	ft_confront(t_fill *data, size_t index)
 			len1--;
 	else if (len1 < len2)
 	{
-		len1 = (len2 - len1)  + 1;
+		len1 = (len2 - len1) - 1;
 		index = index - 1;
 	}
 	if (data->copy_maps[index][len1] == data->color)
@@ -104,22 +93,21 @@ bool	control_fill_map(t_fill *data)
 	return (true);
 }
 
+void	posiztion_player(size_t *x, size_t *y, t_fill *data)
+{
+	(*x) = data->x;
+	(*y) = data->y;
+}
 void	fill_flod(t_data_maps *ptr)
 {
 	t_fill	data;
 
 	data.copy_maps = ft_split(ptr->map, '\n');
 	search_player(&data);
+	posiztion_player(&ptr->ptr_mlx->p_x, &ptr->ptr_mlx->p_y, &data);
 	data.target = '0';
 	data.color = 'C';
 	flood_fill_algo(&data, data.y, data.x);
-	size_t	i = 0;
-	while (data.copy_maps[i])
-	{
-		printf("%s", data.copy_maps[i]);
-		printf("\n");
-		i++;
-	}
 	if (!control_fill_map(&data))
 	{
 		free_double_array(&data.copy_maps);
@@ -128,6 +116,5 @@ void	fill_flod(t_data_maps *ptr)
 	free_double_array(&data.copy_maps);
 	ptr->ptr_mlx->valid_map = NULL;
 	ptr->ptr_mlx->valid_map = ft_split(ptr->map, '\n');
-
 }
 

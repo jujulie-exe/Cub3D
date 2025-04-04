@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:32 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/02 17:30:07 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/04 11:34:20 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ int	main(int argc, char **argv)
 	ptr_mlx = (struct s_mlx){
 	.mlx = NULL, 
 	.texture[0] = NULL,
-	.texture[1] = NULL,
-	.texture[2] = NULL,
-	.texture[3] = NULL,
 	.win = NULL,
 	.img = NULL,
 	.addr = NULL,
@@ -40,7 +37,9 @@ int	main(int argc, char **argv)
 	maps.name_maps = argv[1];
 	proccesing_file_cub(&maps);
 	printf("[all okay open server x11]");
-	init_ptr_mlx(&ptr_mlx);
+	init_ptr_mlx(&ptr_mlx, &maps);
+	
+//	mlx_hook(ptr_mlx.win, 17, (0), exit_key, &maps);
 	mlx_loop(ptr_mlx.mlx);
 	return (0);
 }

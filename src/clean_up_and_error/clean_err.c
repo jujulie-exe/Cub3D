@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:56:25 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/31 15:10:39 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/04 11:33:00 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -32,21 +32,17 @@ void ft_clean_argv(t_data_maps *ptr_maps)
 	}
 }
 
-void	ft_clean_texture(t_mlx *ptr)
+void	ft_clean_texture(t_mlx **ptr)
 {
 	size_t	i;
 
 	i = 0;
-	while (ptr->texture[i])
+	while ((*ptr)->texture[i] && i < 4)
 	{
-		free(ptr->texture[i]);
-		ptr->texture[i] = NULL;
+		mlx_destroy_image((*ptr)->mlx, (*ptr)->texture[i]);
+		(*ptr)->texture[i] = NULL;
 		i++;
-
 	}
-	//free(ptr->texture);
-	//ptr->texture = NULL;
-
 }
 
 void free_double_array(char ***ar)
@@ -67,29 +63,42 @@ void free_double_array(char ***ar)
 	}
 }
 
-void	ft_clean_mlx(t_mlx *ptr)
+void	ft_clean_mlx(t_mlx **ptr)
 {
-	if (ptr->valid_map)
-		free_double_array(&ptr->valid_map);
-	if (ptr->img)
+	if ((*ptr)->texture[0])
+		ft_clean_texture(&(*ptr));
+	if ((*ptr)->img)
 	{
-		mlx_destroy_image(ptr->mlx, ptr->img);
-		ptr->img = NULL;
+		mlx_destroy_image((*ptr)->mlx, (*ptr)->img);
+		(*ptr)->img = NULL;
 	}
-	if (ptr->win)
+	if ((*ptr)->win)
 	{
-		mlx_destroy_window(ptr->mlx, ptr->win);
-		ptr->win = NULL;
+		mlx_destroy_window((*ptr)->mlx, (*ptr)->win);
+		(*ptr)->win = NULL;
 	}
-	if (ptr->texture[0])
-		ft_clean_texture(ptr);
-	if (ptr->mlx)
-		mlx_destroy_display(ptr->mlx);
-	if (ptr->mlx)
+	if ((*ptr)->mlx)
+		mlx_destroy_display((*ptr)->mlx);
+	if ((*ptr)->mlx)
 	{
-		free(ptr->mlx);
-		ptr->mlx = NULL;
+		free((*ptr)->mlx);
+		(*ptr)->mlx = NULL;
 	}
+	if ((*ptr)->valid_map)
+		free_double_array(&(*ptr)->valid_map);
+}
+
+int	exit_key(t_data_maps *ptr_maps)
+{
+	if (ptr_maps)
+	{
+		ft_clean_argv(ptr_maps);
+		if (ptr_maps->map)
+			free(ptr_maps->map);
+		if (ptr_maps->ptr_mlx)
+			ft_clean_mlx(&ptr_maps->ptr_mlx);
+	}
+	exit(0);
 }
 
 void	ft_free_all_and_exit(t_data_maps *ptr_maps, char *str)
@@ -102,7 +111,7 @@ void	ft_free_all_and_exit(t_data_maps *ptr_maps, char *str)
 		if (ptr_maps->map)
 			free(ptr_maps->map);
 		if (ptr_maps->ptr_mlx)
-			ft_clean_mlx(ptr_maps->ptr_mlx);
+			ft_clean_mlx(&ptr_maps->ptr_mlx);
 	}
 	exit(-1);
 }

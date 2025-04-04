@@ -1,7 +1,7 @@
 
 EA ./xpm_texture/texture_dunk2_imresizer.xpm
 SO ./xpm_texture/texture_dunk4_imresizer.xpm
-WE ./xpm_texture/texture_dunk4_imresizer.xpm
+WE ./xpm_texture/texture_dunk_imresizer.xpm
 NO ./xpm_texture/texture_dunk3_imresizer.xpm
 	R 900 600
 
@@ -31,8 +31,8 @@ questo é solo un test
 100111011
 101111011
 1000N0001
-1111110111111
-1000001
+11111100111111
+10000001
 10011111111111
 1000001
 10111111

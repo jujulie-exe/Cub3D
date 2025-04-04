@@ -1,4 +1,8 @@
 
+EA ./xpm_texture/texture_dunk20_imresizer.xpm
+SO ./xpm_texture/texture_dunk4_imresizer.xpm
+WE ./xpm_texture/texture_dunk_imresizer.xpm
+NO ./xpm_texture/texture_dunk3_imresizer.xpm
 
 S ./textures/pillar.xpm
 	R 900 600
@@ -13,7 +17,7 @@ EA ./textures/west.xpm
 NE 	./textures/east.xpm
 
 
-		F	 220,100,0 		
+		F	 220,100,
    C 			  			2252,200,0
   
 ihaiuhdaiuhdiua akdpokapokda opkakdankjndak 		

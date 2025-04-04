@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/02 17:51:20 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/04 13:07:19 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
@@ -44,9 +44,22 @@
 #include "../minilibx/mlx_int.h"
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <fcntl.h>
+# include <X11/keysym.h>
 
 #include <stdbool.h>
 struct	s_mlx;
+
+
+typedef struct	s_fill
+{
+	char	**copy_maps;
+	size_t	x;
+	size_t	y;
+	char	target;
+	char	color;
+	
+}	t_fill;
 
 typedef struct	s_data_maps
 {
@@ -80,6 +93,9 @@ typedef struct s_mlx
 	unsigned int	*c_hex;
 	unsigned int	*f_hex;
 	char	**valid_map;
+	size_t	p_x;
+	size_t	p_y;
+
 	t_data_maps	*ptr_maps;
 
 }	t_mlx;
@@ -105,6 +121,7 @@ void	free_double_array(char ***ar);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/GNL/get_next_line.cc(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
 char	*get_next_line(int fd);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/init_mlx_and_hook/mlx_init_ptr.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
-void	init_ptr_mlx(t_mlx *data);
+void	init_ptr_mlx(t_mlx *data, t_data_maps *ptr);
+int	exit_key(t_data_maps *ptr);
 
 #endif
