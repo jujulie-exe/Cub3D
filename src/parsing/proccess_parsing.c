@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:34 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/01 17:07:42 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/04 14:07:51 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,12 @@ int	proccesing_file_cub(t_data_maps *maps)
 	int	fd;
 	
 	if (check_valid_name(maps->name_maps))
-		exit(-1);
+		ft_free_all_and_exit(maps, "\n");
 	fd = open(maps->name_maps, O_RDONLY);
 	if (fd < 0)
-		ft_free_all_and_exit(NULL, MSG_ERROR_FILE);
+		ft_free_all_and_exit(maps, MSG_ERROR_FILE);
 	line = proccess_gnl(fd);
+	close(fd);
 	if (serch_map_and_validate(line) == 0)
 		ft_free_all_and_exit(NULL, "NO VALID MAP");
 	swap_and_split(maps, line);
