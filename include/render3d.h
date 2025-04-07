@@ -27,4 +27,15 @@ typedef struct  s_ray
     float   delta_y;
 }   t_ray;
 
+typedef struct  s_player
+{
+    int x;
+    int y;
+    bool    up;
+    bool    down;
+    bool    left;
+    bool    right;
+    float   angle;
+}   t_player
+
 #endif
