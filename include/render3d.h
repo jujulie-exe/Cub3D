@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/08 14:19:09 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/08 14:44:04 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define RENDER3D_H
 
 #include "cube3d.h"
+// ajouter les keyhooks ici ou dans cub3d.h ?
 
 typedef struct	s_ray
 {

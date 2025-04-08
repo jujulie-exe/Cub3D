@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/08 14:25:34 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/08 14:39:20 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 #define DIV '#'
 #define SIZE_WIN 2
 #define BUFFER_SIZE 1
+#define PI 3.141592
 
 #include <limits.h>
 #include <unistd.h>
