@@ -21,12 +21,10 @@ int	out_str(const int fd, char *s)
 
 	len = 0;
 	if (s == NULL)
-	{
 		return (write(fd, "(null)", 6));
-	}
 	while (s[len] != '\0')
 	{
-		out_char(fd,(int)s[len]);
+		out_char(fd, (int)s[len]);
 		len++;
 	}
 	return (len);
