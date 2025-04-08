@@ -22,6 +22,9 @@ void	init_player(t_player *player)
 	player->down = false;
 	player->left = false;
 	player->right = false;
+
+	player->rot_left = false;
+	player->rot_right = false;
 }
 
 int	key_press(int keycode, t_player *player)
@@ -34,5 +37,9 @@ int	key_press(int keycode, t_player *player)
 		player->left = true;
 	if (keycode == D)
 		player->right = true;
+	if (keycode == L)
+		player->rot_left = true;
+	if (keycode == R)
+		player->rot_right = true;
 	return (0);
 }
