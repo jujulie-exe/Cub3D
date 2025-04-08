@@ -33,7 +33,6 @@
 #define DIV '#'
 #define SIZE_WIN 2
 #define BUFFER_SIZE 1
-#define PI 3.141592
 
 #include <limits.h>
 #include <unistd.h>

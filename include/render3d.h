@@ -15,6 +15,14 @@
 
 #include "cube3d.h"
 // ajouter les keyhooks ici ou dans cub3d.h ?
+#define W 119
+#define S 115
+#define A 97
+#define D 100
+#define L 65361
+#define R 65363
+
+#define PI 3.141592
 
 typedef struct	s_ray
 {
