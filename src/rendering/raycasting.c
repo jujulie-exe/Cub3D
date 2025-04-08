@@ -6,13 +6,13 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:33:05 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/04 15:06:00 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/08 14:22:18 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 
-t_ray init_ray(t_mlx our_mlx, )
+t_ray	init_ray(t_mlx our_mlx, )
 {
-    
+
 }
