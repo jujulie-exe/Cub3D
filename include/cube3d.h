@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
+/*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/04 13:07:19 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/08 14:25:34 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
+
 #ifndef CUBE3D_H
 #define CUBE3D_H
 
@@ -97,7 +97,7 @@ typedef struct s_mlx
 	size_t	p_y;
 
 	t_data_maps	*ptr_maps;
-
+	//t_player	*player; ou on cree une struct t_game qui contient mlx, maps et player ?
 }	t_mlx;
 
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
