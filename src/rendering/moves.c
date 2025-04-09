@@ -35,13 +35,17 @@ void	move_player(t_player *player)
 		player->angle += angle_speed;
 	angle_protect(player->angle);
 	if (player->up)
-		player->y += speed;
+		player->x += cos_a * speed;
+		player->y += sin_a * speed;
 	if (player->down)
-		player->y -= speed;
+		player->x -= cos_a * speed;
+		player->y -= sin_a * speed;
 	if (player->left)
-		player->x -= speed;
+		player->x += cos_a * speed;
+		player->y -= sin_a * speed;
 	if (player->right)
-		player->x += speed;
+		player->x -= cos_a * speed;
+		player->y += sin_a * speed;
 }
 
 void	angle_protect(float *a)
