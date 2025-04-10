@@ -21,12 +21,10 @@ int	out_str(const int fd, char *s)
 
 	len = 0;
 	if (s == NULL)
-	{
 		return (write(fd, "(null)", 6));
-	}
 	while (s[len] != '\0')
 	{
-		out_char(fd,(int)s[len]);
+		out_char(fd, (int)s[len]);
 		len++;
 	}
 	return (len);
@@ -66,26 +64,20 @@ int	ft_fprintf(const int fd, const char *frmt, ...)
 
 	va_start(ap, frmt);
 	len = 0;
-	if (fd < 0 || write(fd, "", 0) < 0)
-		return (-1);
-	if (frmt == NULL)
+	if (frmt == NULL || fd < 0)
 		return (-1);
 	while (*frmt != '\0')
 	{
 		if (*frmt == '%')
-		{
 			result = check_format(fd, *(++frmt), ap);
-			if (result < 0)
-				return (-1);
-			len += result;
-		}
 		else
-		{
 			result = write(1, frmt, 1);
-			if (result == -1)
-				return (-1);
-			len += result;
+		if (result < 0)
+		{
+			len = -1;
+			break ;
 		}
+		len += result;
 		frmt++;
 	}
 	va_end(ap);

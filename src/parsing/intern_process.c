@@ -16,22 +16,24 @@ char	*proccess_gnl(int fd)
 {
 	char	*tmp;
 	char	*line;
-	line = ft_calloc(1, sizeof(char));
+	char	*ptr;
 
+	line = ft_calloc(1, sizeof(char));
 	tmp = NULL;
-	while(line != NULL)
+	while (line != NULL)
 	{
 		tmp = get_next_line(fd);
 		if (!tmp)
-			break;
-		char *ptr = line;
+			break ;
+		ptr = line;
 		line = ft_strjoin(line, tmp);
 		free(ptr);
 		free(tmp);
 	}
+	close(fd);
 	return (line);
 }
-// #
+
 void	cleaning_maps(t_data_maps *ptr)
 {
 	size_t	len;
@@ -41,8 +43,8 @@ void	cleaning_maps(t_data_maps *ptr)
 
 	len = ft_strlen(ptr->map);
 	start_ptr = ptr->map;
-	clean_map =(char *)malloc(sizeof(char *) * (len + 1));
-	if (!clean_map )
+	clean_map = (char *)malloc(sizeof(char *) * (len + 1));
+	if (!clean_map)
 		return ;
 	i = 0;
 	while (*start_ptr)
@@ -54,7 +56,7 @@ void	cleaning_maps(t_data_maps *ptr)
 		start_ptr++;
 		i++;
 	}
- 	clean_map[i] = '\0';
+	clean_map[i] = '\0';
 	printf("[cleaning maps] %s", clean_map);
 	free(ptr->map);
 	ptr->map = clean_map;
@@ -69,14 +71,13 @@ bool	check_flags_maps(char *str)
 	flags = 0;
 	while (str[index])
 	{
-		if(valid_position(str[index]))
+		if (valid_position(str[index]))
 			flags++;
-	index++;
+		index++;
 	}
 	if (flags == 1)
 		return (true);
 	return (false);
-		
 }
 
 void	swap_and_split(t_data_maps *maps, char *line)
@@ -101,5 +102,4 @@ void	swap_and_split(t_data_maps *maps, char *line)
 	free(line);
 	if (check_flags_maps(maps->map) == false)
 		ft_free_all_and_exit(maps, MSG_ERROR_FLAGS);
-
 }

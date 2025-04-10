@@ -9,8 +9,7 @@
 /*   Updated: 2025/04/02 17:17:02 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
-
+/*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ (  */
 
 #include "../../include/cube3d.h"
 
@@ -32,27 +31,31 @@ int	char_validity(char *str)
 		else if (str[i] == ',')
 			vir++;
 		else
-			other++;	
+			other++;
 		i++;
 	}
-	if ((digit <= 9 && digit >= 3) && vir == 2 && other == 0 && i >= 5 && ft_isdigit(str[i - 1]) && ft_isdigit(str[0]))
+	if ((digit <= 9 && digit >= 3) && vir == 2
+		&& other == 0 && i >= 5 && ft_isdigit(str[i - 1]) && ft_isdigit(str[0]))
 		return (1);
 	return (0);
 }
 
 int	create_rgb(int	*rgb, char c)
 {
-	static unsigned int c_color = 0;
-	static unsigned int f_color = 0;
+	static unsigned int	c_color = 0;
+	static unsigned int	f_color = 0;
+
 	if (c == 'C' && rgb != NULL)
 	{
-		c_color = ((rgb[R] & 0xFF) << 16) | ((rgb[G] & 0xFF) << 8) | (rgb[B] & 0xFF);
+		c_color = ((rgb[R] & 0xFF) << 16)
+			| ((rgb[G] & 0xFF) << 8) | (rgb[B] & 0xFF);
 		return (0);
 	}
 	else if (c == 'F' && rgb != NULL)
 	{
-		 f_color = ((rgb[R] & 0xFF) << 16) | ((rgb[G] & 0xFF) << 8) | (rgb[B] & 0xFF);
-		 return (0);
+		f_color = ((rgb[R] & 0xFF) << 16)
+			| ((rgb[G] & 0xFF) << 8) | (rgb[B] & 0xFF);
+		return (0);
 	}
 	else if (c == 'F' && rgb == NULL)
 		return (f_color);
@@ -64,9 +67,9 @@ int	create_rgb(int	*rgb, char c)
 void	check_and_charge_color(t_data_maps *ptr_maps, char *str, char c)
 {
 	size_t	i;
-	char *tmp;
+	char	*tmp;
 	size_t	len;
-	int	rgb[3];
+	int		rgb[3];
 
 	i = 0;
 	tmp = str + 1;
@@ -76,15 +79,15 @@ void	check_and_charge_color(t_data_maps *ptr_maps, char *str, char c)
 	if (len > 11 || char_validity(tmp) == 0)
 		ft_free_all_and_exit(ptr_maps, MSG_ERROR_COLOR);
 	while (*tmp)
-	{	
+	{
 		if (*tmp == ',')
 			tmp++;
-		if ((rgb[i] = ft_atol(tmp)) > 255)
+		rgb[i] = ft_atol(tmp);
+		if (rgb[i] > 255)
 			ft_free_all_and_exit(ptr_maps, MSG_ERROR_MAX);
-		while (*tmp && ft_isdigit(*tmp) )
+		while (*tmp && ft_isdigit(*tmp))
 			tmp++;
 		i++;
 	}
 	create_rgb(rgb, c);
-	//printf ("%d\n", create_rgb(NULL, c));
 }
