@@ -22,8 +22,10 @@ SRCS =  $(SRCDIR)/GNL/get_next_line.c \
         $(SRCDIR)/parsing/intern_process.c \
         $(SRCDIR)/parsing/add_color.c \
 	$(SRCDIR)/parsing/parsing_control_map.c \
+	$(SRCDIR)/parsing/controll_fill.c \
         $(SRCDIR)/clean_up_and_error/clean_err.c \
-	 $(SRCDIR)/init_mlx_and_hook/mlx_init_ptr.c \
+	$(SRCDIR)/clean_up_and_error/ft_db_array.c \
+	$(SRCDIR)/init_mlx_and_hook/mlx_init_ptr.c \
         $(SRCDIR)/main.c
 
 # Creazione degli oggetti (o) a partire dai sorgenti

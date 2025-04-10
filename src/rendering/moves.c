@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:30 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/08 14:23:55 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:02:37 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	collision(t_ray *ray, t_player *player, char **valid_map)
 
 	x = player->x / BLOCKSIZE;
 	y = player->Y / BLOCKSIZE;
-	if(valid_map[x][y] != 1)
+	if (valid_map[x][y] != 1)
 		return (1);
 	return (0);
 }
 
 void	move_player(t_player *player)
 {
-	int speed;
+	int		speed;
 	float	angle_speed;
 	float	cos_a;
 	float	sin_a;
@@ -35,24 +35,31 @@ void	move_player(t_player *player)
 	angle_speed = 10;
 	cos_a = cos(player->angle);
 	sin_a = sin(player->angle);
-
 	if (player->rot_left)
 		player->angle -= angle_speed;
 	if (player->rot_right)
 		player->angle += angle_speed;
 	angle_protect(player->angle);
 	if (player->up)
+	{
 		player->x += cos_a * speed;
 		player->y += sin_a * speed;
+	}
 	if (player->down)
+	{
 		player->x -= cos_a * speed;
 		player->y -= sin_a * speed;
+	}
 	if (player->left)
+	{
 		player->x += cos_a * speed;
 		player->y -= sin_a * speed;
+	}
 	if (player->right)
+	{
 		player->x -= cos_a * speed;
 		player->y += sin_a * speed;
+	}
 }
 
 void	angle_protect(float *a)

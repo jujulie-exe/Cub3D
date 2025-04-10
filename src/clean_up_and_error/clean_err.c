@@ -9,23 +9,22 @@
 /*   Updated: 2025/04/04 11:33:00 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
+/*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ (*/
 
 #include "../../include/cube3d.h"
 
-void ft_clean_argv(t_data_maps *ptr_maps)
+void	ft_clean_argv(t_data_maps *ptr_maps)
 {
 	size_t	i;
 
 	i = 0;
 	if (ptr_maps->argv != NULL)
 	{
-		while(ptr_maps->argv[i] != NULL)
+		while (ptr_maps->argv[i] != NULL)
 		{
 			free(ptr_maps->argv[i]);
 			ptr_maps->argv[i] = NULL;
 			i++;
-
 		}
 		free(ptr_maps->argv);
 		ptr_maps->argv = NULL;
@@ -42,24 +41,6 @@ void	ft_clean_texture(t_mlx **ptr)
 		mlx_destroy_image((*ptr)->mlx, (*ptr)->texture[i]);
 		(*ptr)->texture[i] = NULL;
 		i++;
-	}
-}
-
-void free_double_array(char ***ar)
-{
-	size_t	i;
-
-	i = 0;
-	if (ar && *ar)
-	{
-		while ((*ar)[i])
-		{
-			free((*ar)[i]);
-	   		(*ar)[i] = NULL;
-			i++;
-		}
-		free(*ar);
-		*ar = NULL;
 	}
 }
 

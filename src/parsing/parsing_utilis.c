@@ -12,57 +12,70 @@
 
 #include "../../include/cube3d.h"
 
+size_t	count_index_empty(char **argv)
+{
+	size_t	count;
+	size_t	i;
+
+	count = 0;
+	i = 0;
+	if (argv)
+	{
+		while (argv[i])
+		{
+			if (ft_strlen(argv[i]) > 0)
+				count++;
+			i++;
+		}
+	}
+	return (count);
+}
+
 void	cleaning_arg(t_data_maps *ptr)
 {
 	size_t	i;
 	size_t	y;
-	size_t	count;
+	char	**new_argv;
 
 	i = 0;
 	y = 0;
-	count = 0;
-	if (ptr->argv)
+	new_argv = malloc(sizeof(char *) * (count_index_empty(ptr->argv) + 1));
+	if (new_argv != NULL)
 	{
 		while (ptr->argv[i])
 		{
-			if(ft_strlen(ptr->argv[i]) > 0)
-				count++;
+			if (ft_strlen(ptr->argv[i]) > 0)
+			{
+				new_argv[y] = ft_strdup(ptr->argv[i]);
+				y++;
+			}
 			i++;
 		}
-
+		ft_clean_argv(ptr);
+		new_argv[y] = NULL;
+		ptr->argv = new_argv;
 	}
-	char **new_argv = malloc(sizeof(char *) * (count + 1));
-	i = 0;
-	while (ptr->argv[i])
-	{
-		if(ft_strlen(ptr->argv[i]) > 0 )
-		{
-			new_argv[y] = ft_strdup(ptr->argv[i]);
-			y++;
-		}
-		i++;
-
-	}
-	ft_clean_argv(ptr);
-	new_argv[y] = NULL;
-	ptr->argv = new_argv;
 }
 
 void	trim(t_data_maps *ptr)
 {
-	size_t	i = 0;
+	size_t	i;
+	char	*trim;
+
+	i = 0;
 	if (ptr->argv)
 	{
 		while (ptr->argv[i])
 		{
-			char *trim = ft_strtrim(ptr->argv[i], " 	");
+			trim = ft_strtrim(ptr->argv[i], " 	");
 			free(ptr->argv[i]);
 			ptr->argv[i] = NULL;
 			ptr->argv[i] = trim;
 			i++;
 		}
 	}
-	cleaning_arg(ptr);
+	if (count_index_empty(ptr->argv) != i)
+		cleaning_arg(ptr);
 }
 
 void	clear_and_open_path(char *str, t_mlx **mlx_ptr, int flags)
@@ -76,21 +89,24 @@ void	clear_and_open_path(char *str, t_mlx **mlx_ptr, int flags)
 	ptr = str + 2;
 	while (*ptr == ' ' || *ptr == '	')
 		ptr++;
-	while (ptr != NULL &&  i < PATH_MAX && (*ptr != ' ' && *ptr != '	' && *ptr != '\0'))
+	while (ptr != NULL && i < PATH_MAX && (*ptr != ' '
+			&& *ptr != '	' && *ptr != '\0'))
 	{
 		new_string[i] = *ptr;
 		i++;
 		ptr++;
 	}
 	new_string[i] = '\0';
-	(*mlx_ptr)->texture[flags] = mlx_xpm_file_to_image((*mlx_ptr)->mlx, new_string, &(*mlx_ptr)->txr_h[flags], &(*mlx_ptr)->txr_w[flags]);
+	(*mlx_ptr)->texture[flags] = mlx_xpm_file_to_image((*mlx_ptr)->mlx,
+			new_string, &(*mlx_ptr)->txr_h[flags], &(*mlx_ptr)->txr_w[flags]);
 	if (!(*mlx_ptr)->texture[flags])
 		ft_free_all_and_exit((*mlx_ptr)->ptr_maps, MSG_ERROR_TX);
 }
 
 void	validazione(t_data_maps *maps)
 {
-	if ((maps->path_no &&  maps->path_ea && maps->path_we && maps->path_so && maps->up_color && maps->down_color))
+	if ((maps->path_no && maps->path_ea && maps->path_we
+			&& maps->path_so && maps->up_color && maps->down_color))
 	{
 		clear_and_open_path(maps->path_no, &maps->ptr_mlx, NO);
 		clear_and_open_path(maps->path_so, &maps->ptr_mlx, SO);
@@ -102,4 +118,3 @@ void	validazione(t_data_maps *maps)
 	else
 		ft_free_all_and_exit(maps, MSG_ERROR_ARG);
 }
-	

@@ -22,7 +22,7 @@ int	check_valid_name(char *name)
 		if (!ft_strncmp(ptr + 1, "cub", 4))
 			return (0);
 		else
-		return (ft_fprintf(2, "%s", MSG_ERROR_CUB), -1);
+			return (ft_fprintf(2, "%s", MSG_ERROR_CUB), -1);
 	}
 	else
 		return (ft_fprintf(2, "%s", MSG_ERROR_EXT), -1);
@@ -30,9 +30,9 @@ int	check_valid_name(char *name)
 
 int	ptr_color(t_data_maps *maps)
 {
-	char *srr[] = { "C ", "F ", "C	", "F	", NULL};
-	size_t	i;
-	size_t	y;
+	const char	*srr[] = {"C ", "F ", "C	", "F	", NULL};
+	size_t		i;
+	size_t		y;
 
 	i = 0;
 	while (maps->argv[i])
@@ -42,7 +42,7 @@ int	ptr_color(t_data_maps *maps)
 		{
 			if (!ft_strncmp(maps->argv[i], srr[y], 2))
 			{
-				if ((y == 0 || y == 2 ) && maps->up_color == NULL)
+				if ((y == 0 || y == 2) && maps->up_color == NULL)
 					maps->up_color = maps->argv[i];
 				if ((y == 1 || y == 3) && maps->down_color == NULL)
 					maps->down_color = maps->argv[i];
@@ -56,15 +56,16 @@ int	ptr_color(t_data_maps *maps)
 
 void	ptr_texture(t_data_maps *maps)
 {
-	char *srr[] = {"EA ", "WE ", "NO ", "SO ", "EA	", "WE	", "NO	", "SO	", NULL};
-	size_t	i;
-	size_t	y;
+	const char	*srr[] = {"EA ", "WE ", "NO ", "SO ", "EA	",
+		"WE	", "NO	", "SO	", NULL};
+	size_t		i;
+	size_t		y;
 
-	i = 0;
-	while (maps->argv[i] != NULL)
+	i = -1;
+	while (maps->argv[++i] != NULL)
 	{
-		y = 0;
-		while (srr[y] != NULL)
+		y = -1;
+		while (srr[++y] != NULL)
 		{
 			if (!ft_strncmp(maps->argv[i], srr[y], 3))
 			{
@@ -77,24 +78,22 @@ void	ptr_texture(t_data_maps *maps)
 				else if ((y == 3 || y == 7) && maps->path_so == NULL)
 					maps->path_so = maps->argv[i];
 			}
-			y++;
 		}
-		i++;
 	}
 }
 
 int	proccesing_file_cub(t_data_maps *maps)
 {
-	char	*line = NULL;
-	int	fd;
-	
+	char	*line;
+	int		fd;
+
+	line = NULL;
 	if (check_valid_name(maps->name_maps))
 		ft_free_all_and_exit(maps, "\n");
 	fd = open(maps->name_maps, O_RDONLY);
 	if (fd < 0)
 		ft_free_all_and_exit(maps, MSG_ERROR_FILE);
 	line = proccess_gnl(fd);
-	close(fd);
 	if (serch_map_and_validate(line) == 0)
 		ft_free_all_and_exit(NULL, "NO VALID MAP");
 	swap_and_split(maps, line);
@@ -105,5 +104,5 @@ int	proccesing_file_cub(t_data_maps *maps)
 	ptr_texture(maps);
 	ptr_color(maps);
 	validazione(maps);
-	return(0);
+	return (0);
 }

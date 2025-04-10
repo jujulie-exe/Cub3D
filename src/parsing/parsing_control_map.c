@@ -9,7 +9,7 @@
 /*   Updated: 2025/03/31 16:54:55 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ */
+/*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ (  */
 
 #include "../../include/cube3d.h"
 
@@ -18,23 +18,22 @@ int	valid_position(char c)
 	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-int is_valid_map_char(char c)
+int	is_valid_map_char(char c)
 {
-    return (c == '0' || c == '1' || c == '2' || 
-            c == 'N' || c == 'S' || c == 'E' || c == 'W' || 
-            c == ' ' || c == '\n' || c == '	');
+	return (c == '0' || c == '1' || c == '2'
+		|| c == 'N' || c == 'S' || c == 'E' || c == 'W'
+		|| c == ' ' || c == '\n' || c == '	');
 }
 
 bool	control_map_proccess(char *str, size_t index)
 {
 	while (str[index])
 	{
-		if(!is_valid_map_char(str[index]))
+		if (!is_valid_map_char(str[index]))
 			return (false);
-	index++;
+		index++;
 	}
 	return (true);
-		
 }
 
 int	serch_map_and_validate(char *str)

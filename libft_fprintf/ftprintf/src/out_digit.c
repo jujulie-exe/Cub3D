@@ -40,7 +40,7 @@ int	out_hex(const int fd, unsigned long long n)
 {
 	int long	count;
 	char		*symb;
-	int	add;
+	int			add;
 
 	symb = "0123456789abcdef";
 	count = 0;
@@ -49,7 +49,7 @@ int	out_hex(const int fd, unsigned long long n)
 		add = write(fd, &symb[n], 1);
 		if (add == -1)
 			return (-1);
-		count +=  add;
+		count += add;
 	}
 	else
 	{
@@ -86,7 +86,7 @@ int	out_digit_unsigned(const int fd, unsigned int n)
 	else
 	{
 		count += out_digit_unsigned(fd, n / 10);
-		count += out_char(fd,n % 10 + '0');
+		count += out_char(fd, n % 10 + '0');
 	}
 	return (count);
 }
