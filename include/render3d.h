@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/08 14:44:04 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:09:57 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 #include "cube3d.h"
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
 #define W 13
 #define S 1
 #define A 0
 #define D 2
-#define L 123
-#define R 124
+#define LE 123
+#define RI 124
 #define ESC 53
 
 #define BLOCKSIZE 5
@@ -52,6 +53,6 @@ typedef struct	s_player
 	float	angle;
 	bool	rot_left;
 	bool	rot_right;
-}	t_player
+}	t_player;
 
 #endif

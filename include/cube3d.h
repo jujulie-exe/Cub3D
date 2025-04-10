@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/10 13:16:01 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:06:53 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 #include <fcntl.h>
 #include <fcntl.h>
 # include <X11/keysym.h>
+#include "render3d.h"
 
 #include <stdbool.h>
 struct	s_mlx;
