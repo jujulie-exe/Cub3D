@@ -12,9 +12,16 @@
 
 #include "../../include/render3d.h"
 
-int	dda_calcul(float *dist_x, float *dist_y)
+int	collision(t_ray *ray, t_player *player, char **valid_map)
 {
+	int	x;
+	int	y;
 
+	x = player->x / BLOCKSIZE;
+	y = player->Y / BLOCKSIZE;
+	if(valid_map[x][y] != 1)
+		return (1);
+	return (0);
 }
 
 void	move_player(t_player *player)
@@ -24,8 +31,8 @@ void	move_player(t_player *player)
 	float	cos_a;
 	float	sin_a;
 
-	speed = ?;
-	angle_speed = ?;
+	speed = 5;
+	angle_speed = 10;
 	cos_a = cos(player->angle);
 	sin_a = sin(player->angle);
 

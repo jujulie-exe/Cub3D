@@ -25,6 +25,7 @@
 #define R 124
 #define ESC 53
 
+#define BLOCKSIZE 5
 #define PI 3.141592
 
 typedef struct	s_ray

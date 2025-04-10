@@ -10,5 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	draw_map()
-{}
+void	draw_map(char **valid_map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while(valid_map[i++])
+	{
+		while(valid_map[i][j++])
+		{
+			if(valid_map[i][j] == 1)
+			//draw wall
+		}
+	}
+}
+
+void	calc_dda(t_ray *ray, t_player *player, char **map)
+{
+	while (!collision(ray, player, map))
+	{
+		ray->delta_x += cos(player->angle);
+		ray->delta_y += sin(player->angle);
+	}
+}
