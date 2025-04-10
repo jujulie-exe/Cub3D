@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/03/28 12:37:18 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:01:14 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	draw_map(char **valid_map)
 
 	i = 0;
 	j = 0;
-	while(valid_map[i++])
+	while (valid_map[i++])
 	{
-		while(valid_map[i][j++])
+		while (valid_map[i][j++])
 		{
-			if(valid_map[i][j] == 1)
-			//draw wall
+			if (valid_map[i][j] == 1)
+				draw_line();//draw wall
 		}
 	}
 }

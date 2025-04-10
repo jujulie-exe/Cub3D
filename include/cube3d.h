@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/08 14:39:20 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/10 13:16:01 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ typedef struct s_mlx
 	size_t	p_y;
 
 	t_data_maps	*ptr_maps;
-	//t_player	*player; ou on cree une struct t_game qui contient mlx, maps et player ?
+	t_player	*player;
+	t_ray		*ray;
 }	t_mlx;
 
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡

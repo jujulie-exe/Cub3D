@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:19:53 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/08 14:42:26 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/10 13:59:08 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 void	init_player(t_player *player)
 {
-	player->x = window_W/2; //mettre les vraies variables par rapport à la fenetre
-	player->y = window_H/2;
-	player->angle = PI/2;
-	
+	player->x = window_W / 2; //mettre les vraies variables par rapport à la fenetre
+	player->y = window_H / 2;
+	player->angle = PI / 2;
 	player->up = false; //voir comment on fait pour les keyhooks
 	player->down = false;
 	player->left = false;
 	player->right = false;
-
 	player->rot_left = false;
 	player->rot_right = false;
 }
