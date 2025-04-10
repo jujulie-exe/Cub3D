@@ -6,9 +6,15 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/10 14:01:14 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:56:37 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	render_game(t_mlx game)
+{
+	init_player(&game->player);
+	init_ray(&game->ray);
+}
 
 void	draw_map(char **valid_map)
 {
