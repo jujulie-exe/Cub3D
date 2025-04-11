@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   calculs.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
+/*   Updated: 2025/04/11 18:35:54 by iwaslet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/render3d.h"
 
 void	calc_dda(t_ray *ray, t_player *player, char **map)
 {
 	while (!collision(ray, player, map))
 	{
-		ray->delta_x += cos(player->angle);
-		ray->delta_y += sin(player->angle);
+		ray->var_x += cos(player->angle);
+		ray->var_y += sin(player->angle);
 	}
 }
 
-float	calc_dist(float X, float y)
+float	calc_dist(float x, float y)
 {
 	float	dst;
 
@@ -17,21 +29,31 @@ float	calc_dist(float X, float y)
 	return (dst);
 }
 
-float	dist_to_wall()
+float	dist_to_wall(t_player *player, t_ray *ray)
 {
 	float	dtw;
+	float	delta_x;
+	float	delta_y;
+	float	a;
 
-
+	delta_x = ray->var_x - player->x;
+	delta_y = ray->var_y - player->y;
+	a = atan2(delts_y, delta_x) - player->angle;
+	dtw = calc_dist(delta_x, delta_y) * cos(a);
+	return (dtw);
 }
 
-// float fixed_dist(float x1, float y1, float x2, float y2, t_game *game)
-// {
-//     float delta_x = x2 - x1;
-//     float delta_y = y2 - y1;
-//     float angle = atan2(delta_y, delta_x) - game->player.angle;
-//     float fix_dist = distance(delta_x, delta_y) * cos(angle);
-//     return fix_dist;
-// }
+int	calc_height(t_ray *ray, t_player *player)
+{
+	ray->dtw = dist_to_wall(player, ray);
+	ray->height = (BLOCKSIZE / dtw) * (largeur_fenetre_dqns_mlx / 2);
+	ray->closest_line = (hauteur_fenetre - ray->height) / 2;
+	ray->last_line = ray->closest_line + ray->height;
+	return (ray->last_line - ray->closest_line);
+}
+
+//while (ray->closest_line < ray->last_line)
+//{put_pixel(dessiner le mur) ; ray->closest_line++}
 
 // if(!DEBUG)
 // {

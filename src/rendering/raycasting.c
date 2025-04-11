@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:33:05 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/10 13:57:07 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/11 14:32:24 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 t_ray	init_ray(t_ray *ray)
 {
-	ray->delta_x = 0;
-	ray->delta_x = 0;
-	ray->dist_x = 0;
-	ray->dist_y = 0;
+	ray->var_x = 0;
+	ray->var_x = 0;
+	ray->dtw = 0;
+	ray->height = 0;
+	ray->closest_wall = 0;
+	ray->last_line = 0;
 }

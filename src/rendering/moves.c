@@ -6,20 +6,20 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:30 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/10 14:02:37 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/11 14:21:36 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 
-int	collision(t_ray *ray, t_player *player, char **valid_map)
+int	collision(t_player *player, char **map)
 {
 	int	x;
 	int	y;
 
 	x = player->x / BLOCKSIZE;
-	y = player->Y / BLOCKSIZE;
-	if (valid_map[x][y] != 1)
+	y = player->y / BLOCKSIZE;
+	if (map[x][y] != 1)
 		return (1);
 	return (0);
 }
