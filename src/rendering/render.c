@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/render3d.h"
+
 int	render_game(t_mlx game)
 {
 	init_player(&game->player);
@@ -30,14 +32,5 @@ void	draw_map(char **valid_map)
 			if (valid_map[i][j] == 1)
 				draw_line();//draw wall
 		}
-	}
-}
-
-void	calc_dda(t_ray *ray, t_player *player, char **map)
-{
-	while (!collision(ray, player, map))
-	{
-		ray->delta_x += cos(player->angle);
-		ray->delta_y += sin(player->angle);
 	}
 }
