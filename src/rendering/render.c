@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/10 14:56:37 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/11 19:39:34 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,5 @@ void	draw_map(char **valid_map)
 		}
 	}
 }
+
+void	my_put_pixel();
