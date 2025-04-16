@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/11 15:20:23 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:45:37 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #define RI 124
 #define ESC 53
 
-#define BLOCKSIZE 5
+#define STEPSIZE 5
 #define PI 3.141592
 
 typedef struct	s_ray

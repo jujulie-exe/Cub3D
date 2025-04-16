@@ -6,23 +6,23 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:19:53 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/10 14:10:10 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:39:05 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 
-void	init_player(t_player *player)
+void	init_player(t_mlx *mlx)
 {
-	player->x = window_W / 2; //mettre les vraies variables par rapport à la fenetre
-	player->y = window_H / 2;
-	player->angle = PI / 2;
-	player->up = false; //voir comment on fait pour les keyhooks
-	player->down = false;
-	player->left = false;
-	player->right = false;
-	player->rot_left = false;
-	player->rot_right = false;
+	mlx->player->x = mlx->width / 2;
+	mlx->player->y = mlx->height / 2;
+	mlx->player->angle = PI / 2;
+	mlx->player->up = false; //voir comment on fait pour les keyhooks
+	mlx->player->down = false;
+	mlx->player->left = false;
+	mlx->player->right = false;
+	mlx->player->rot_left = false;
+	mlx->player->rot_right = false;
 }
 
 int	key_press(int keycode, t_player *player)
