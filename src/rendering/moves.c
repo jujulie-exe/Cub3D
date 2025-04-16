@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:30 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/11 14:21:36 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/16 16:54:04 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	collision(t_player *player, char **map)
 	int	x;
 	int	y;
 
-	x = player->x / BLOCKSIZE;
-	y = player->y / BLOCKSIZE;
+	x = player->x / STEPSIZE;
+	y = player->y / STEPSIZE;
 	if (map[x][y] != 1)
 		return (1);
 	return (0);

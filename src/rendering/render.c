@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/16 14:41:34 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/16 17:03:05 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	render_game(t_mlx game)
 {
 	init_player(&game);
-	init_ray(&game->ray);
+	init_ray(&game);
 	draw_loop(game);
 }
 
@@ -31,7 +31,7 @@ int	draw_loop(t_mlx *mlx)
 	move_player(mlx->player);
 	while (i < mlx->width)
 	{
-		draw_line();
+		draw_line(mlx, start, i);
 		start += corr;
 		i++;
 	}
@@ -39,8 +39,13 @@ int	draw_loop(t_mlx *mlx)
 	retrun (0);
 }
 
-void	draw_line()
-{}
+void	draw_line(t_mlx *mlx, float start_x, int i)
+{
+	mlx->ray->var_x = mlx->player->x;
+	mlx->ray->var_y = mlx->player->y;
+	calc_dda(&mlx->ray, mlx->player, mlx->valid_map);
+	while (calc_height(mlx, mlx->ray, mlx->player))
+}
 
 //while (ray->closest_line < ray->last_line)
 //{put_pixel(dessiner le mur) ; ray->closest_line++}

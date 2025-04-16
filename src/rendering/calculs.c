@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/16 14:45:41 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/16 17:02:37 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ float	dist_to_wall(t_player *player, t_ray *ray)
 	return (dtw);
 }
 
-int	calc_height(t_ray *ray, t_player *player)
+int	calc_height(t_mlx *mlx, t_ray *ray, t_player *player)
 {
 	ray->dtw = dist_to_wall(player, ray);
 	ray->height = (STEPSIZE / dtw) * (largeur_fenetre_dqns_mlx / 2);
