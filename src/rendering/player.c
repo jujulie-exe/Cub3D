@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:19:53 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/16 14:39:05 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/21 17:09:20 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_player(t_mlx *mlx)
 	mlx->player->x = mlx->width / 2;
 	mlx->player->y = mlx->height / 2;
 	mlx->player->angle = PI / 2;
-	mlx->player->up = false; //voir comment on fait pour les keyhooks
+	mlx->player->up = false;
 	mlx->player->down = false;
 	mlx->player->left = false;
 	mlx->player->right = false;

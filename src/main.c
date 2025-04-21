@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
+/*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:32 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/04 11:34:20 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/21 17:23:05 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int argc, char **argv)
 	.addr = NULL,
 	.ptr_maps = NULL,
 	.valid_map = NULL,
+	.player = NULL,
+	.ray = NULL;
 	};
 	if (argc != 2)
 		return (ft_fprintf(2, "%s", MSG_ERROR), -1);
@@ -38,8 +40,11 @@ int	main(int argc, char **argv)
 	proccesing_file_cub(&maps);
 	printf("[all okay open server x11]");
 	init_ptr_mlx(&ptr_mlx, &maps);
-	
+	init_player(&ptr_mlx);
+	init_ray(&ptr_mlx);
+
 //	mlx_hook(ptr_mlx.win, 17, (0), exit_key, &maps);
-	mlx_loop(ptr_mlx.mlx);
+//	mlx_hook(ptr_mlx.win, x, x, key_press, &ptr_mlx.player) init player plus tot ?
+	mlx_loop(ptr_mlx.mlx, drawloop, &ptr_mlx);
 	return (0);
 }

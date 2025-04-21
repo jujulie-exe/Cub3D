@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/16 14:45:37 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/21 16:57:38 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_ray
 	float	var_y;
 	float	dtw;
 	float	height;
-	int		closest_line;
+	int		center_line;
 	int		last_line;
 }	t_ray;
 

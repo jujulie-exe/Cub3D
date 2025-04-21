@@ -6,18 +6,11 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/16 17:03:05 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/21 17:30:54 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
-//fcts dont j'ai besoin pour le render, pas a implementer tel quel
-int	render_game(t_mlx game)
-{
-	init_player(&game);
-	init_ray(&game);
-	draw_loop(game);
-}
 
 int	draw_loop(t_mlx *mlx)
 {
@@ -44,30 +37,13 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 	mlx->ray->var_x = mlx->player->x;
 	mlx->ray->var_y = mlx->player->y;
 	calc_dda(&mlx->ray, mlx->player, mlx->valid_map);
-	while (calc_height(mlx, mlx->ray, mlx->player))
+	calc_height(mlx, mlx->ray, mlx->player);
+	while (ray->center_line < ray->last_line)
+	{
+		my_put_pixel(i, ray->center_line, 0x0000FF, mlx);
+		ray->center_line++;
+	}
 }
-
-//while (ray->closest_line < ray->last_line)
-//{put_pixel(dessiner le mur) ; ray->closest_line++}
-
-// void	draw_map(char **valid_map)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	color;
-
-// 	i = 0;
-// 	j = 0;
-// 	color = 0x00FF00;
-// 	while (valid_map[i++])
-// 	{
-// 		while (valid_map[i][j++])
-// 		{
-// 			if (valid_map[i][j] == 1)
-// 				draw_line();//draw wall
-// 		}
-// 	}
-// }
 
 void	my_put_pixel(int x, int y, int color, t_mlx *mlx);
 {
