@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/21 17:30:54 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/21 18:04:31 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 	}
 }
 
-void	my_put_pixel(int x, int y, int color, t_mlx *mlx);
+void	my_put_pixel(int x, int y, int color, t_mlx *mlx)
 {
 	unsigned int	pixel;
 

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:32 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/21 17:23:05 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/21 18:01:04 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	.ptr_maps = NULL,
 	.valid_map = NULL,
 	.player = NULL,
-	.ray = NULL;
+	.ray = NULL,
 	};
 	if (argc != 2)
 		return (ft_fprintf(2, "%s", MSG_ERROR), -1);
