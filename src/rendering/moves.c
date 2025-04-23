@@ -6,11 +6,12 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:30 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/21 17:17:55 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/23 15:32:26 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
+#include "../../include/cube3d.h"
 
 void	move_player(t_player *player)
 {
@@ -25,7 +26,7 @@ void	move_player(t_player *player)
 		player->angle -= angle_speed;
 	if (player->rot_right)
 		player->angle += angle_speed;
-	angle_protect(player->angle);
+	angle_protect(&player->angle);
 	if (player->up)
 		mov_adjustment(player, cos_a, sin_a);
 	if (player->down)
@@ -47,10 +48,10 @@ void	mov_adjustment(t_player *player, float cos, float sin)
 
 void	angle_protect(float *a)
 {
-	if (a > 2 * PI)
-		a = 0;
-	if (a < 0)
-		a = 2 * PI;
+	if (*a > 2 * (float)PI)
+		*a = 0;
+	if (*a < 0)
+		*a = 2 * (float)PI;
 }
 
 /*void	move_player(t_player *player)

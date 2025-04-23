@@ -6,11 +6,12 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:19:53 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/21 17:09:20 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/21 18:20:56 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
+#include "../../include/cube3d.h"
 
 void	init_player(t_mlx *mlx)
 {

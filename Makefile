@@ -18,14 +18,19 @@ OBJ_DIR = obj
 SRCS =  $(SRCDIR)/GNL/get_next_line.c \
         $(SRCDIR)/parsing/proccess_parsing.c \
         $(SRCDIR)/parsing/parsing_utilis.c \
-	$(SRCDIR)/parsing/flood_fill_algo.c \
+		$(SRCDIR)/parsing/flood_fill_algo.c \
         $(SRCDIR)/parsing/intern_process.c \
         $(SRCDIR)/parsing/add_color.c \
-	$(SRCDIR)/parsing/parsing_control_map.c \
-	$(SRCDIR)/parsing/controll_fill.c \
+		$(SRCDIR)/parsing/parsing_control_map.c \
+		$(SRCDIR)/parsing/controll_fill.c \
         $(SRCDIR)/clean_up_and_error/clean_err.c \
-	$(SRCDIR)/clean_up_and_error/ft_db_array.c \
-	$(SRCDIR)/init_mlx_and_hook/mlx_init_ptr.c \
+		$(SRCDIR)/clean_up_and_error/ft_db_array.c \
+		$(SRCDIR)/init_mlx_and_hook/mlx_init_ptr.c \
+		$(SRCDIR)/rendering/calculs.c \
+		$(SRCDIR)/rendering/moves.c \
+		$(SRCDIR)/rendering/player.c \
+		$(SRCDIR)/rendering/raycasting.c \
+		$(SRCDIR)/rendering/render.c \
         $(SRCDIR)/main.c
 
 # Creazione degli oggetti (o) a partire dai sorgenti

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/21 18:09:17 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/23 15:45:49 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,29 @@
 # define STEPSIZE 5
 # define PI 3.141592
 
-typedef struct s_ray
-{
-	float	var_x; //dist for dda
-	float	var_y;
-	float	dtw;
-	float	height;
-	int		center_line;
-	int		last_line;
-}	t_ray;
+// typedef struct s_ray
+// {
+// 	float	var_x; //dist for dda
+// 	float	var_y;
+// 	float	dtw;
+// 	float	height;
+// 	int		center_line;
+// 	int		last_line;
+// }	t_ray;
 
-typedef struct s_player
-{
-	float	x;
-	float	y;
-	bool	up;
-	bool	down;
-	bool	left;
-	bool	right;
+// typedef struct s_player
+// {
+// 	float	x;
+// 	float	y;
+// 	bool	up;
+// 	bool	down;
+// 	bool	left;
+// 	bool	right;
 
-	float	angle;
-	bool	rot_left;
-	bool	rot_right;
-}	t_player;
+// 	float	angle;
+// 	bool	rot_left;
+// 	bool	rot_right;
+// }	t_player;
 
 int		draw_loop(t_mlx *mlx);
 void	draw_line(t_mlx *mlx, float start_x, int i);
@@ -63,7 +63,7 @@ void	move_player(t_player *player);
 void	mov_adjustment(t_player *player, float cos, float sin);
 void	angle_protect(float *a);
 
-t_ray	init_ray(t_mlx *mlx);
+void	init_ray(t_mlx *mlx);
 int		collision(t_player *player, char **map);
 void	calc_dda(t_ray *ray, t_player *player, char **map);
 float	calc_dist(float x, float y);

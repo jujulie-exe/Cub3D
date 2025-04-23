@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/21 18:12:10 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/22 13:43:22 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@
 # include <fcntl.h>
 # include <fcntl.h>
 # include <X11/keysym.h>
-# include "render3d.h"
 # include <stdbool.h>
 
 struct	s_mlx;
@@ -74,6 +73,30 @@ typedef struct s_data_maps
 	struct s_mlx	*ptr_mlx;
 
 }	t_data_maps;
+
+typedef struct s_ray
+{
+	float	var_x; //dist for dda
+	float	var_y;
+	float	dtw;
+	float	height;
+	int		center_line;
+	int		last_line;
+}	t_ray;
+
+typedef struct s_player
+{
+	float	x;
+	float	y;
+	bool	up;
+	bool	down;
+	bool	left;
+	bool	right;
+
+	float	angle;
+	bool	rot_left;
+	bool	rot_right;
+}	t_player;
 
 typedef struct s_mlx
 {

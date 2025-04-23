@@ -6,13 +6,13 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:32 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/21 18:01:04 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/23 15:54:36 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../include/cube3d.h"
-
+#include "../include/render3d.h"
 
 int	main(int argc, char **argv)
 {
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	.mlx = NULL, 
 	.texture[0] = NULL,
 	.win = NULL,
-	.img = NULL,
+	.img = NULL,unsigned int
 	.addr = NULL,
 	.ptr_maps = NULL,
 	.valid_map = NULL,
@@ -45,6 +45,6 @@ int	main(int argc, char **argv)
 
 //	mlx_hook(ptr_mlx.win, 17, (0), exit_key, &maps);
 //	mlx_hook(ptr_mlx.win, x, x, key_press, &ptr_mlx.player) init player plus tot ?
-	mlx_loop(ptr_mlx.mlx, drawloop, &ptr_mlx);
+	mlx_loop(ptr_mlx.mlx, draw_loop, &ptr_mlx);
 	return (0);
 }

@@ -6,19 +6,20 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:33:05 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/21 16:57:50 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/23 15:45:42 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
+#include "../../include/cube3d.h"
 
-t_ray	init_ray(t_mlx *mlx)
+void	init_ray(t_mlx *mlx)
 {
 	mlx->ray->var_x = 0;
 	mlx->ray->var_x = 0;
 	mlx->ray->dtw = 0;
 	mlx->ray->height = 0;
-	mlx->ray->center_wall = 0;
+	mlx->ray->center_line = 0;
 	mlx->ray->last_line = 0;
 }
 
