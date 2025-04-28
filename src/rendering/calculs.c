@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/28 16:11:42 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/28 17:01:43 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ float	dist_to_wall(t_player *player, t_ray *ray)
 	delta_y = ray->var_y - player->y;
 	a = atan2(delta_y, delta_x) - player->angle;
 	dtw = calc_dist(delta_x, delta_y) * cos(a);
-	return (5);
+	return (dtw);
 }
 
 void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player)
