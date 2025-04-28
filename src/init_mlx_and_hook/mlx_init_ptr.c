@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 13:59:58 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/28 16:08:42 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/28 16:38:15 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void	init_ptr_mlx(t_mlx *data, t_data_maps *ptr)
 			&data->endian);
 	mlx_hook(data->win, 17, (0), exit_key, &(*ptr));
 	mlx_hook(data->win, 2, (1L<<0), handle_key, &(*ptr));
-	mlx_loop_hook(data->mlx, draw_loop, &(*data));
+//	mlx_loop_hook(data->mlx, draw_loop, &(*data));
 	mlx_loop(data->mlx);
 }
