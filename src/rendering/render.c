@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/25 16:44:10 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/28 18:26:11 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	draw_loop(t_mlx *mlx)
 	float	start;
 
 	i = 0;
-	mlx->img = mlx_new_image(mlx->img, mlx->height, mlx->width);
-	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_pixel,
-			&mlx->line_len, &mlx->endian);
+//	mlx->img = mlx_new_image(mlx->img, mlx->height, mlx->width);
+//	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_pixel,
+//			&mlx->line_len, &mlx->endian);
 	corr = (float)PI / 3 / mlx->width;
 	start = mlx->player->angle - ((float)PI / 6);
 	move_player(mlx->player);
@@ -45,7 +45,7 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 	calc_height(mlx, mlx->ray, mlx->player);
 	while (mlx->ray->center_line < mlx->ray->last_line)
 	{
-		my_put_pixel(i, mlx->ray->center_line, 0x0000FF, mlx);
+		my_put_pixel(i, mlx->ray->center_line, 0xFF0000, mlx);
 		mlx->ray->center_line++;
 	}
 }

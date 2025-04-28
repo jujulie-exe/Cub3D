@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:33:05 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/23 15:45:42 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/28 18:26:35 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	init_ray(t_mlx *mlx)
 {
 	mlx->ray->var_x = 0;
-	mlx->ray->var_x = 0;
+	mlx->ray->var_y = 0;
 	mlx->ray->dtw = 0;
 	mlx->ray->height = 0;
 	mlx->ray->center_line = 0;

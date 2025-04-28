@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/23 15:45:49 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/04/28 18:27:19 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@
 // 	bool	rot_right;
 // }	t_player;
 
+void	init_ray(t_mlx *mlx);
+void	init_player(t_mlx *mlx);
 int		draw_loop(t_mlx *mlx);
 void	draw_line(t_mlx *mlx, float start_x, int i);
 void	my_put_pixel(int x, int y, int color, t_mlx *mlx);
 
-void	init_player(t_mlx *mlx);
 int		key_press(int keycode, t_player *player);
 void	move_player(t_player *player);
 void	mov_adjustment(t_player *player, float cos, float sin);
 void	angle_protect(float *a);
 
-void	init_ray(t_mlx *mlx);
 int		collision(t_player *player, char **map);
 void	calc_dda(t_ray *ray, t_player *player, char **map);
 float	calc_dist(float x, float y);
