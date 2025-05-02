@@ -13,14 +13,14 @@
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
 
-void	init_ray(t_mlx *mlx)
+void	init_ray(t_ray *ray)
 {
-	mlx->ray->var_x = 0;
-	mlx->ray->var_y = 0;
-	mlx->ray->dtw = 0;
-	mlx->ray->height = 0;
-	mlx->ray->center_line = 0;
-	mlx->ray->last_line = 0;
+	ray->var_x = 0;
+	ray->var_y = 0;
+	ray->dtw = 0;
+	ray->height = 0;
+	ray->center_line = 0;
+	ray->last_line = 0;
 }
 
 int	collision(t_player *player, char **map)

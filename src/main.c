@@ -42,7 +42,6 @@ int	main(int argc, char **argv) //proteger les mlx
 	maps.name_maps = argv[1];
 	proccesing_file_cub(&maps);
 	init_player(&ptr_mlx);
-	init_ray(&ptr_mlx);
 	init_ptr_mlx(&ptr_mlx, &maps);
 	if (ptr_mlx.win == NULL)
 		//mlx_error(1, &ptr_mlx);

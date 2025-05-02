@@ -53,13 +53,14 @@
 // 	bool	rot_right;
 // }	t_player;
 
-void	init_ray(t_mlx *mlx);
+void	init_ray(t_ray *ray);
 void	init_player(t_mlx *mlx);
 int		draw_loop(t_mlx *mlx);
 void	draw_line(t_mlx *mlx, float start_x, int i);
 void	my_put_pixel(int x, int y, int color, t_mlx *mlx);
 
 int		key_press(int keycode, t_player *player);
+int		key_release(int keycode, t_player *player);
 void	move_player(t_player *player);
 void	mov_adjustment(t_player *player, float cos, float sin);
 void	angle_protect(float *a);

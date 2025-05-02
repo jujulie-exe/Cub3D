@@ -42,3 +42,20 @@ int	key_press(int keycode, t_player *player)
 		player->rot_right = true;
 	return (0);
 }
+
+int	key_release(int keycode, t_player *player)
+{
+	if (keycode == W)
+		player->up = false;
+	if (keycode == S)
+		player->down = false;
+	if (keycode == A)
+		player->left = false;
+	if (keycode == D)
+		player->right = false;
+	if (keycode == LE)
+		player->rot_left = false;
+	if (keycode == RI)
+		player->rot_right = false;
+	return (0);
+}

@@ -20,9 +20,8 @@ int	draw_loop(t_mlx *mlx)
 	float	start;
 
 	i = 0;
-//	mlx->img = mlx_new_image(mlx->img, mlx->height, mlx->width);
-//	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_pixel,
-//			&mlx->line_len, &mlx->endian);
+
+	mlx->ray = init_ray(&mlx->ray);
 	corr = (float)PI / 3 / mlx->width;
 	start = mlx->player->angle - ((float)PI / 6);
 	move_player(mlx->player);
