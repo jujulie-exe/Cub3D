@@ -13,10 +13,31 @@
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
 
+void	find_start_pos(t_mlx *mlx)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (mlx->valid_map[y++])
+	{
+		while (mlx->valid_map[y][x++])
+		{
+			if (valid_map[y][x] == NSWE ?)
+			{
+				mlx->player->start_dir = valid_map[y][x];
+				mlx->player->posx = x + 0.5;
+				mlx->player->posy = y + 0.5;
+			}
+		}
+	}
+}
+
 void	init_player(t_mlx *mlx)
 {
-	mlx->player->x = mlx->width / 2;
-	mlx->player->y = mlx->height / 2;
+	
+	find_start_pos(mlx);
 	mlx->player->angle = PI / 2;
 	mlx->player->up = false;
 	mlx->player->down = false;

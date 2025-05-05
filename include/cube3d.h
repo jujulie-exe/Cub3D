@@ -86,8 +86,9 @@ typedef struct s_ray
 
 typedef struct s_player
 {
-	float	x;
-	float	y;
+	float	posx;
+	float	posy;
+	char	start_dir;
 	bool	up;
 	bool	down;
 	bool	left;
