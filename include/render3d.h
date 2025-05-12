@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/28 18:27:19 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/12 17:50:19 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	move_player(t_player *player);
 void	mov_adjustment(t_player *player, float cos, float sin);
 void	angle_protect(float *a);
 
-int		collision(t_player *player, char **map);
+int		collision(t_ray *ray, t_player *player, char **map);
 void	calc_dda(t_ray *ray, t_player *player, char **map);
 float	calc_dist(float x, float y);
 float	dist_to_wall(t_player *player, t_ray *ray);

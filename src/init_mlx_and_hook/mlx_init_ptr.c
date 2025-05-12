@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
+/*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 13:59:58 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/28 17:00:16 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:05:51 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../include/cube3d.h"
 #include "../../include/render3d.h"
 
-int	handle_key(int	keycode, t_data_maps *ptr)
+int	handle_key(int	keycode, t_data_maps *ptr) //AJOUTER UN KEYRELEASE
 {
 	if (keycode == XK_Escape)
 		exit_key(ptr);
