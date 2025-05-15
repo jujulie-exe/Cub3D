@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/12 17:56:50 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:22:59 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	calc_dda(t_ray *ray, t_player *player, char **map)
 	{
 		ray->var_x += cos(player->angle);
 		ray->var_y += sin(player->angle);
-		// printf("infinite POWWWAAAAA\n");
 	}
 }
 
@@ -28,7 +27,6 @@ float	calc_dist(float x, float y)
 	float	dst;
 
 	dst = sqrtf(x * x + y * y);
-	// printf("x = %f; y = %f; dst = %f\n", x,y,dst);
 	return (dst);
 }
 
@@ -43,9 +41,8 @@ float	dist_to_wall(t_player *player, t_ray *ray)
 	delta_y = ray->var_y - player->posy;
 	a = atan2(delta_y, delta_x) - player->angle;
 	dtw = calc_dist(delta_x, delta_y) * cos(a);
-	// printf("%f\n", ray->var_x);
-	printf("x = %f; y = %f; dst = %f\n", delta_x,delta_y, dtw);
-	return (dtw);
+	//printf("x = %f; y = %f; dst = %f\n", delta_x,delta_y, dtw);
+	return (10);
 }
 
 void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player)

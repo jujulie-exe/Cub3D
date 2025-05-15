@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:19:53 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/12 18:00:55 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/14 14:34:37 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	recup_start_dir(t_player *player)
 	{
 		player->dir_x = 0;
 		player->dir_y = -1;
-		player->angle = 3 * PI / 2;
+		player->angle = PI / 2;
 	}
 	if (player->start_dir == 'S')
 	{
 		player->dir_x = 0;
 		player->dir_y = 1;
-		player->angle = PI / 2;
+		player->angle = 3 * PI / 2;
 	}
 	if (player->start_dir == 'E')
 	{

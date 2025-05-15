@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/12 17:36:54 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:09:42 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ typedef struct s_mlx
 	int				bits_pixel;
 	int				line_len;
 	int				endian;
-	unsigned int	*c_hex;
+	unsigned int	*c_hex; //color ceiling
 	unsigned int	*f_hex;
 	char			**valid_map;
 	size_t			p_x;
@@ -144,6 +144,7 @@ int		serch_map_and_validate(char *str);
 void	fill_flod(t_data_maps *ptr);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/add_color.c(っ´ω`c)(っ´ω`c)♡
 void	check_and_charge_color(t_data_maps *ptr_maps, char *str, char c);
+int		create_rgb(int	*rgb, char c);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡
 void	ft_free_all_and_exit(t_data_maps *ptr_maps, char *str);
 void	ft_clean_argv(t_data_maps *ptr_maps);
