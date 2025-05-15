@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:30 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/12 18:04:28 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/15 14:51:49 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ void	mov_adjustment(t_player *player, float cos, float sin)
 	speed = 0.5;
 	player->posx += cos * speed;
 	player->posy += sin * speed;
+	if (player->up)
+		player->up = false;
+	if (player->down)
+		player->down = false;
+	if (player->left)
+		player->left = false;
+	if (player->right)
+		player->right = false;
 }
 
 void	angle_protect(float *a)

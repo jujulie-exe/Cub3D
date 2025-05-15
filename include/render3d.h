@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/12 17:50:19 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/13 17:28:46 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define ESC 53
 
 # define STEPSIZE 5
-# define PI 3.141592
+# define PI 3.1415926535
 
 // typedef struct s_ray
 // {
@@ -64,6 +64,7 @@ int		key_release(int keycode, t_player *player);
 void	move_player(t_player *player);
 void	mov_adjustment(t_player *player, float cos, float sin);
 void	angle_protect(float *a);
+void	recup_start_dir(t_player *player);
 
 int		collision(t_ray *ray, t_player *player, char **map);
 void	calc_dda(t_ray *ray, t_player *player, char **map);

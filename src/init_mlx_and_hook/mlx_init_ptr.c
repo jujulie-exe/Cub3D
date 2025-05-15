@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 13:59:58 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/12 18:05:51 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/15 14:57:13 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../include/cube3d.h"
 #include "../../include/render3d.h"
 
-int	handle_key(int	keycode, t_data_maps *ptr) //AJOUTER UN KEYRELEASE
+int	handle_key(int	keycode, t_data_maps *ptr)
 {
 	if (keycode == XK_Escape)
 		exit_key(ptr);

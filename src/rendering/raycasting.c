@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:33:05 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/12 17:53:23 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:23:12 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	collision(t_ray *ray, t_player *player, char **map)
 	(void)player;
 	x = (int)(ray->var_x);
 	y = (int)(ray->var_y);
-	printf("%i, %i\n", x, y);
+	//printf("%i, %i\n", x, y);
 	if (map[y][x] != '1')
 		return (0);
 	return (1);
