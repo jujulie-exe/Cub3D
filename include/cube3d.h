@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/22 13:43:22 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/12 17:36:54 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,15 @@ typedef struct s_ray
 
 typedef struct s_player
 {
-	float	x;
-	float	y;
+	float	posx;
+	float	posy;
+	float	start_posx;
+	float	start_posy;
+	char	start_dir;
+	int		dir_x;
+	int		dir_y;
+	int		step_x;
+	int		step_y;
 	bool	up;
 	bool	down;
 	bool	left;

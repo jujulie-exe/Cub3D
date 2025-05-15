@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/04/28 16:54:28 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/05/12 17:32:48 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int	draw_loop(t_mlx *mlx)
 	float	start;
 
 	i = 0;
-//	mlx->img = mlx_new_image(mlx->img, mlx->height, mlx->width);
-//	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_pixel,
-//			&mlx->line_len, &mlx->endian);
+
+	init_ray(mlx->ray);
 	corr = (float)PI / 3 / mlx->width;
 	start = mlx->player->angle - ((float)PI / 6);
 	move_player(mlx->player);
@@ -39,8 +38,9 @@ int	draw_loop(t_mlx *mlx)
 void	draw_line(t_mlx *mlx, float start_x, int i)
 {
 	(void)start_x;
-	mlx->ray->var_x = mlx->player->x;
-	mlx->ray->var_y = mlx->player->y;
+	mlx->ray->var_x = mlx->player->posx;
+	mlx->ray->var_y = mlx->player->posy;
+	printf("before dda\n");
 	calc_dda(mlx->ray, mlx->player, mlx->valid_map);
 	calc_height(mlx, mlx->ray, mlx->player);
 	while (mlx->ray->center_line < mlx->ray->last_line)

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
+/*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:32 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/28 16:39:46 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/04/28 18:24:55 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../include/render3d.h"
 #include "../include/cube3d.h"
+#include "../include/render3d.h"
 
-
-int	main(int argc, char **argv)
+int	main(int argc, char **argv) //proteger les mlx 
 {
 	t_data_maps	maps;
 	t_mlx	ptr_mlx;
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	.mlx = NULL, 
 	.texture[0] = NULL,
 	.win = NULL,
-	.img = NULL,
+	.img = NULL,//unsigned int
 	.addr = NULL,
 	.ptr_maps = NULL,
 	.valid_map = NULL,
@@ -42,7 +42,6 @@ int	main(int argc, char **argv)
 	maps.name_maps = argv[1];
 	proccesing_file_cub(&maps);
 	init_player(&ptr_mlx);
-	init_ray(&ptr_mlx);
 	init_ptr_mlx(&ptr_mlx, &maps);
 	if (ptr_mlx.win == NULL)
 		//mlx_error(1, &ptr_mlx);
