@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/15 17:25:42 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/15 18:01:02 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 		y++;
 	}
 	printf("y is %d\n", y);
-	while (y > mlx->height/2)
+	while (y >= mlx->height/2 && y < mlx->height)
 	{
 		my_put_pixel(i, y, create_rgb(NULL, 'C'), mlx);
 		y++;
