@@ -75,7 +75,7 @@ export HEADER
 # Compilation principale
 all: $(NAME)
 	@echo "$$HEADER"
-	@echo "$(PINK)Cube 3D compilato con successo! $(RESET)"
+	@echo "$(PINK)Cube 3D compiled successfully!$(RESET)"
 
 # Regola per compilare il programma
 $(NAME): $(LIBFT) $(FPRINTF) $(MINILIBX) $(OBJ)
@@ -122,14 +122,14 @@ clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean --silent
 	@$(MAKE) -C $(FPRINTF_DIR) clean --silent
 	@$(MAKE) -C $(MINILIBX_DIR) clean --silent
-	@echo "$(GREEN)Oggetti rimossi.$(RESET)"
+	@echo "$(GREEN)Objects removed.$(RESET)"
 
 # Pulizia totale
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean --silent
 	@$(MAKE) -C $(FPRINTF_DIR) fclean --silent
-	@echo "$(GREEN)Eseguibile e librerie rimosse.$(RESET)"
+	@echo "$(GREEN)Executable and libraries removed.$(RESET)"
 
 # Ricompilazione completa
 re: fclean all

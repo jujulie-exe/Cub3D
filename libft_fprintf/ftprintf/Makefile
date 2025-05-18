@@ -30,7 +30,7 @@ $(OBJ_DIR):
 # Compile the program (only generate the static library)
 $(NAME): $(OBJ_DIR) $(OBJ)
 	ar rcs $(NAME) $(OBJ)
-	@echo "Libreria statica creata: $(NAME)"
+	@echo "Static library created: $(NAME)"
 
 # Rule to compile .c into .o
 $(OBJ_DIR)/%.o: src/%.c
@@ -39,12 +39,12 @@ $(OBJ_DIR)/%.o: src/%.c
 # Clean objects
 clean:
 	rm -rf $(OBJ_DIR)
-	@echo "File oggetto rimossi."
+	@echo "Removed object files."
 
 # Clean everything (objects and executable)
 fclean: clean
 	rm -f $(NAME)
-	@echo "Libreria statica rimosso."
+	@echo "Static library removed."
 
 # Recompile everything
 re: fclean all
