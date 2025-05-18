@@ -20,16 +20,16 @@
 # define R 0
 # define G 1
 # define B 2
+# define MSG_ERROR_TX "Error\n: Invalid texture or path.\n"
+# define MSG_ERROR_CUB "Error\n: File must end with .cub.\n"
+# define MSG_ERROR_EXT "Error\n: Missing .cub file extension.\n"
+# define MSG_ERROR_FILE "Error\n: Cannot open map file.\n"
+# define MSG_ERROR_MAP "Error\n: Map not properly closed.\n"
+# define MSG_ERROR_FLAGS "Error\n: One spawn point required.\n"
+# define MSG_ERROR_COLOR "Error\n: Use RGB: 3 values(0–255), comma-separated.\n"
+# define MSG_ERROR_MAX "Error\n: RGB values must be 0–255.\n"
+# define MSG_ERROR_ARG "Error\n: Missing required information.\n"
 # define MSG_ERROR "Error\n"
-# define MSG_ERROR_TX "Error\n: One or more textures are invalid. Please ensure that all texture files are in the correct format (.xpm) and accessible. Check that the texture paths are correct and the files are properly loaded."
-# define MSG_ERROR_CUB "Error\n: Invalid file extension. The file must have a .cub extension.\n"
-# define MSG_ERROR_EXT "Error\n: Missing file extension. Please provide a file with a .cub extension.\n"
-# define MSG_ERROR_FILE "Error\n: The provided map cannot be opened. Please check that the file exists and is readable( ^..^)ﾉ\n"
-# define MSG_ERROR_MAP "Error\n: Map not properly closed! ( ˘ ³˘)♥\n"
-# define MSG_ERROR_FLAGS "Error\n: There must be exactly one spawn point.\n Please ensure that there are no more and no less༼つ ◕_◕ ༽つ\n"
-# define MSG_ERROR_COLOR "Error\n: Invalid RGB format\n Use exactly three values (0-255), separated by commas(づ｡◕‿‿◕｡)づ\n "
-# define MSG_ERROR_MAX "Error\n:  RGB value out of range\n Each value must be between 0 and 255.(︶︹︶)\n "
-# define MSG_ERROR_ARG "Error\n: equired information is missing.\n Please ensure all necessary data is provided.(｡◕‿‿◕｡)\n"
 # define DIV '#'
 # define SIZE_WIN 2
 # define BUFFER_SIZE 1
