@@ -3,7 +3,7 @@ NAME = cube3D
 
 # Compiler e flag
 CC = cc
-CFLAGS = -g3 -Wall -Wextra #-Werror -Iminilibx -Isrc
+CFLAGS = -g3 -Wall -Wextra  -Iminilibx -Isrc #-Werror
 
 # Colori
 GREEN = \033[38;5;82m
@@ -13,6 +13,20 @@ RESET = \033[0m
 # Directory sorgenti e oggetti
 SRCDIR = src
 OBJ_DIR = obj
+
+# File render alternativi per i test
+RENDER_TEST_SRC = 	$(SRCDIR)/debug_and_test/render1.c \
+			$(SRCDIR)/debug_and_test/render2.c
+
+# Escludi i render originali per il test
+SRC_NO_RENDER = $(filter-out src/render%.c, $(SRC))
+
+
+SRC_NO_RENDER = 	$(SRCDIR)/rendering/calculs.c \
+                	$(SRCDIR)/rendering/moves.c \
+			$(SRCDIR)/rendering/render.c 
+# File usati nel test: tutti tranne i render originali, più i nuovi render
+TEST_SRC = $(SRC_NO_RENDER) $(RENDER_TEST_SRC)$(SRCS)
 
 # File sorgente
 SRCS =  $(SRCDIR)/GNL/get_next_line.c \
