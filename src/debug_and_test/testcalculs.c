@@ -1,5 +1,5 @@
 #include "../../include/cube3d.h"
-#include "../../include/render3d.h"
+#include "../../include/test_render.h"
 
 
 #include <math.h>

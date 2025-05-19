@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/render3d.h"
+#include "../../include/test_render.h"
 #include "../../include/cube3d.h"
 
 int	draw_loop(t_mlx *mlx)
@@ -23,8 +23,8 @@ int	draw_loop(t_mlx *mlx)
 
 	init_ray(mlx->ray);
 	corr = (float)PI / 3 / mlx->width;
-	start = mlx->player->angle - ((float)PI / 6);
-	move_player(mlx->player);
+	start = mlx->player->angle - ((float)PI / 2);
+	move_player(mlx->player, mlx);
 	while (i < mlx->width)
 	{
 		draw_line(mlx, start, i);

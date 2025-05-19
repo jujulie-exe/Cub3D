@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/render3d.h"
 #include "../../include/cube3d.h"
+#include "../../include/test_render.h"
 
 void	move_player(t_player *player, t_mlx *mlx)
 {
@@ -32,9 +32,9 @@ void	move_player(t_player *player, t_mlx *mlx)
 	if (player->down)
 		mov_adjustment(player, -cos_a, -sin_a, mlx);
 	if (player->left)
-		mov_adjustment(player, cos_a, -sin_a, mlx);
+		mov_adjustment(player, sin_a, -cos_a, mlx);
 	if (player->right)
-		mov_adjustment(player, -cos_a, sin_a, mlx);
+		mov_adjustment(player, -sin_a, cos_a, mlx);
 }
 
 void	mov_adjustment(t_player *player, float cos, float sin, t_mlx *mlx)
@@ -49,6 +49,25 @@ void	mov_adjustment(t_player *player, float cos, float sin, t_mlx *mlx)
 		player->posx -= cos * speed;
 		player->posy -= sin * speed;
 	}
+	int y = 0;
+	int i = 0;
+	int index = 0;
+	while (mlx->valid_map[y] != NULL)
+    {
+        i = 0;
+        while(mlx->valid_map[y][i] != '\0')
+        {
+            if (i == (int)player->posx && y == (int)player->posy)
+                printf("[%c]", mlx->valid_map[y][i]);
+            else
+                printf("%c", mlx->valid_map[y][i]);
+            index++;
+            i++;
+        }
+        printf("\n");
+        y++;
+    }
+    printf("index->y %d index->x %d\n", (int)player->posx, (int)player->posy);
 	if (player->up)
 		player->up = false;
 	if (player->down)

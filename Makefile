@@ -14,19 +14,6 @@ RESET = \033[0m
 SRCDIR = src
 OBJ_DIR = obj
 
-# File render alternativi per i test
-RENDER_TEST_SRC = 	$(SRCDIR)/debug_and_test/render1.c \
-			$(SRCDIR)/debug_and_test/render2.c
-
-# Escludi i render originali per il test
-SRC_NO_RENDER = $(filter-out src/render%.c, $(SRC))
-
-
-SRC_NO_RENDER = 	$(SRCDIR)/rendering/calculs.c \
-                	$(SRCDIR)/rendering/moves.c \
-			$(SRCDIR)/rendering/render.c 
-# File usati nel test: tutti tranne i render originali, più i nuovi render
-TEST_SRC = $(SRC_NO_RENDER) $(RENDER_TEST_SRC)$(SRCS)
 
 # File sorgente
 SRCS =  $(SRCDIR)/GNL/get_next_line.c \
@@ -40,11 +27,11 @@ SRCS =  $(SRCDIR)/GNL/get_next_line.c \
         $(SRCDIR)/clean_up_and_error/clean_err.c \
 		$(SRCDIR)/clean_up_and_error/ft_db_array.c \
 		$(SRCDIR)/init_mlx_and_hook/mlx_init_ptr.c \
-		$(SRCDIR)/rendering/calculs.c \
-		$(SRCDIR)/rendering/moves.c \
+		$(SRCDIR)/debug_and_test/testmoves.c \
+		$(SRCDIR)/debug_and_test/testcalculs.c \
 		$(SRCDIR)/rendering/player.c \
 		$(SRCDIR)/rendering/raycasting.c \
-		$(SRCDIR)/rendering/render.c \
+		$(SRCDIR)/debug_and_test/testrender.c \
         $(SRCDIR)/main.c
 
 # Creazione degli oggetti (o) a partire dai sorgenti
@@ -68,6 +55,22 @@ FPRINTF = $(FPRINTF_DIR)/libftfprintf.a
 LIBS = $(MINILIBX_LIB) -lmlx_Linux \
        $(LIBFT) $(FPRINTF) \
        -L/usr/lib -lXext -lX11 -lm -lz
+
+# File render alternativi per i test
+RENDER_TEST_SRC = 	$(SRCDIR)/debug_and_test/testrender.c \
+					$(SRCDIR)/debug_and_test/testrender.c \
+					$(SRCDIR)/debug_and_test/testmoves.c
+
+# Escludi i render originali per il test
+SRC_NO_RENDER = $(filter-out $(EXCLUDE), $(SRC))
+
+
+EXCLUDE = 	$(SRCDIR)/rendering/calculs.c \
+            $(SRCDIR)/rendering/moves.c \
+			$(SRCDIR)/rendering/render.c 
+
+# File usati nel test: tutti tranne i render originali, più i nuovi render
+TEST_SRC = $(SRC_NO_RENDER) $(RENDER_TEST_SRC)
 
 # Header ASCII art (opzionale)
 define HEADER
@@ -94,6 +97,8 @@ all: $(NAME)
 # Regola per compilare il programma
 $(NAME): $(LIBFT) $(FPRINTF) $(MINILIBX) $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME)
+
+# Regola per compilare il programma test
 
 # Creazione della directory obj e compilazione degli oggetti
 $(OBJ_DIR)/%.o: $(SRCDIR)/%.c
@@ -150,6 +155,14 @@ re: fclean all
 
 # Esecuzione del programma
 run: re
-	./$(NAME) ciao.cub
+	./$(NAME) cubmap/VALID_FILE_MAP/ALL_VALID.cub
+
+test: re
+	@echo "Compilazione in modalità test con TEST_SRC:"
+	@echo "$(TEST_SRC)"
+	$(MAKE) all SRC="$(TEST_SRC)" OBJ="$(TEST_SRC:.c=.o)" OUTNAME="test_program"
+
+
+	
 
 .PHONY: all clean fclean re run
