@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/15 18:01:02 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/19 15:00:12 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,24 @@ int	draw_loop(t_mlx *mlx)
 
 void	draw_line(t_mlx *mlx, float start_x, int i)
 {
-	(void)start_x;
 	int	y;
 	
 	y = 0;
 	mlx->ray->var_x = mlx->player->posx;
 	mlx->ray->var_y = mlx->player->posy;
-	calc_dda(mlx->ray, mlx->player, mlx->valid_map);
-	calc_height(mlx, mlx->ray, mlx->player);
+	calc_dda(mlx->ray, mlx->player, mlx->valid_map, start_x);
+	calc_height(mlx, mlx->ray, mlx->player, start_x);
 	printf("height is %d\n", mlx->height);
 	while (y < mlx->height/2)
 	{
 		my_put_pixel(i, y, create_rgb(NULL, 'F'), mlx);
 		y++;
 	}
-	printf("y is %d\n", y);
-	while (y >= mlx->height/2 && y < mlx->height)
+	while (y >= mlx->height/2 && y <= mlx->height) //enlever le 2e = ?
 	{
 		my_put_pixel(i, y, create_rgb(NULL, 'C'), mlx);
 		y++;
 	}
-	printf("y is %d\n", y);
 	while (mlx->ray->center_line < mlx->ray->last_line)
 	{
 		my_put_pixel(i, mlx->ray->center_line, 0xB97AD1, mlx);
