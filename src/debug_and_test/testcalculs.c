@@ -8,8 +8,8 @@ void calc_dda(t_ray *ray, t_player *player, char **map, float ray_angle)
 {
 	while (!collision(ray, player, map))
 	{
-		ray->var_x += cos(ray_angle);
-		ray->var_y += sin(ray_angle);
+		ray->var_x += cos(ray_angle) * 0.001;
+		ray->var_y += sin(ray_angle) * 0.001;
 	}
 }
 

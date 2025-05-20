@@ -3,7 +3,7 @@ NAME = cube3D
 
 # Compiler e flag
 CC = cc
-CFLAGS = -g3 -Wall -Wextra  -Iminilibx -Isrc #-Werror
+CFLAGS = -g3 -O1 -Wall -Wextra  -Iminilibx -Isrc #-Werror
 
 # Colori
 GREEN = \033[38;5;82m
@@ -155,7 +155,7 @@ re: fclean all
 
 # Esecuzione del programma
 run: re
-	./$(NAME) cubmap/VALID_FILE_MAP/ALL_VALID.cub
+	./$(NAME) cubmap/VALID_FILE_MAP/ALL_VALID2.cub
 
 test: re
 	@echo "Compilazione in modalità test con TEST_SRC:"

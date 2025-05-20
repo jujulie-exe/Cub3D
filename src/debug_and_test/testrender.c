@@ -23,7 +23,7 @@ int	draw_loop(t_mlx *mlx)
 
 	init_ray(mlx->ray);
 	corr = (float)PI / 3 / mlx->width;
-	start = mlx->player->angle - ((float)PI / 2);
+	start = mlx->player->angle - (((float)PI / 3) / 2);
 	move_player(mlx->player, mlx);
 	while (i < mlx->width)
 	{
