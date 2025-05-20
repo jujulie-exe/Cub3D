@@ -144,6 +144,7 @@ int		serch_map_and_validate(char *str);
 void	fill_flod(t_data_maps *ptr);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/add_color.c(っ´ω`c)(っ´ω`c)♡
 void	check_and_charge_color(t_data_maps *ptr_maps, char *str, char c);
+bool	check_div(char *line);
 int		create_rgb(int	*rgb, char c);
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡
 void	ft_free_all_and_exit(t_data_maps *ptr_maps, char *str);

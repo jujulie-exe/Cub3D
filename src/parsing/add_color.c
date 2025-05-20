@@ -13,6 +13,23 @@
 
 #include "../../include/cube3d.h"
 
+bool	check_div(char *line)
+{
+	size_t	i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] == DIV)
+		{
+			free(line);
+			line = NULL;
+			return (true);
+		}
+		i++;
+	}
+	return (false);
+}
 int	char_validity(char *str)
 {
 	size_t	i;

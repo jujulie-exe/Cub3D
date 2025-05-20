@@ -94,6 +94,8 @@ int	proccesing_file_cub(t_data_maps *maps)
 	if (fd < 0)
 		ft_free_all_and_exit(maps, MSG_ERROR_FILE);
 	line = proccess_gnl(fd);
+	if(check_div(line) == true)
+		ft_free_all_and_exit(maps, "NO DIV CHARTER ALLOW");
 	if (serch_map_and_validate(line) == 0)
 		ft_free_all_and_exit(NULL, "NO VALID MAP");
 	swap_and_split(maps, line);
