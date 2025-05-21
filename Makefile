@@ -3,7 +3,7 @@ NAME = cube3D
 
 # Compiler e flag
 CC = cc
-CFLAGS = -g3 -Wall -Wextra #-Werror -Iminilibx -Isrc
+CFLAGS = -g3 -O1 -Wall -Wextra #-Werror -Iminilibx -Isrc
 
 # Colori
 GREEN = \033[38;5;82m

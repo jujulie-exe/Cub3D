@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/19 15:02:44 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/21 14:16:29 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 {
 	while (!collision(ray, player, map))
 	{
-		ray->var_x += cos(start);
-		ray->var_y += sin(start);
+		ray->var_x += cos(start) * 0.001;
+		ray->var_y += sin(start) * 0.001;
 	}
 }
 
@@ -41,7 +41,6 @@ float	dist_to_wall(t_player *player, t_ray *ray, float start)
 	delta_y = ray->var_y - player->posy;
 	a = atan2(delta_y, delta_x) - start;
 	dtw = calc_dist(delta_x, delta_y) * cos(a);
-	//printf("x = %f; y = %f; dst = %f\n", delta_x,delta_y, dtw);
 	return (dtw);
 }
 
