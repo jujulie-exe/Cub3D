@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:30 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/21 14:56:56 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/21 16:35:43 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,14 @@ void	move_player(t_player *player, t_mlx *mlx)
 	float	cos_a;
 	float	sin_a;
 
-	angle_speed = 1;
+	angle_speed = 0.1;
 	cos_a = cos(player->angle);
 	sin_a = sin(player->angle);
 	if (player->rot_left)
-	{
-		player->angle -= angle_speed * 0.1;
-		player->rot_left = false;
-	}
+		player->angle -= angle_speed;
 	if (player->rot_right)
-	{
-		player->angle += angle_speed * 0.1;
-		player->rot_right = false;
-	}
+		player->angle += angle_speed;
+	rot_release(player);
 	angle_protect(&player->angle);
 	if (player->up)
 		mov_adjustment(player, cos_a, sin_a, mlx);
@@ -70,6 +65,14 @@ void	move_release(t_player *player)
 		player->right = false;
 }
 
+void	rot_release(t_player *player)
+{
+	if (player->rot_left)
+		player->rot_left = false;
+	if (player->rot_right)
+		player->rot_right = false;
+}
+
 void	angle_protect(float *a)
 {
 	if (*a > 2 * (float)PI)
@@ -77,39 +80,3 @@ void	angle_protect(float *a)
 	if (*a < 0)
 		*a = 2 * (float)PI;
 }
-
-/*void	move_player(t_player *player)
-{
-	float	angle_speed;
-	float	cos_a;
-	float	sin_a;
-
-	angle_speed = 10;
-	cos_a = cos(player->angle);
-	sin_a = sin(player->angle);
-	if (player->rot_left)
-		player->angle -= angle_speed;
-	if (player->rot_right)
-		player->angle += angle_speed;
-	angle_protect(player->angle);
-	if (player->up)
-	{
-		player->x += cos_a * speed;
-		player->y += sin_a * speed;
-	}
-	if (player->down)
-	{
-		player->x -= cos_a * speed;
-		player->y -= sin_a * speed;
-	}
-	if (player->left)
-	{
-		player->x += cos_a * speed;
-		player->y -= sin_a * speed;
-	}
-	if (player->right)
-	{
-		player->x -= cos_a * speed;
-		player->y += sin_a * speed;
-	}
-}*/

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/15 17:09:42 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/21 16:24:58 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ typedef struct s_mlx
 	int				bits_pixel;
 	int				line_len;
 	int				endian;
-	unsigned int	*c_hex; //color ceiling
+	unsigned int	*c_hex;
 	unsigned int	*f_hex;
 	char			**valid_map;
 	size_t			p_x;

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/21 14:10:55 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/21 16:30:24 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,8 @@
 # define RI 124
 # define ESC 53
 
-# define STEPSIZE 2.5
+# define STEPSIZE 1.5
 # define PI 3.1415926535
-
-// typedef struct s_ray
-// {
-// 	float	var_x; //dist for dda
-// 	float	var_y;
-// 	float	dtw;
-// 	float	height;
-// 	int		center_line;
-// 	int		last_line;
-// }	t_ray;
-
-// typedef struct s_player
-// {
-// 	float	x;
-// 	float	y;
-// 	bool	up;
-// 	bool	down;
-// 	bool	left;
-// 	bool	right;
-
-// 	float	angle;
-// 	bool	rot_left;
-// 	bool	rot_right;
-// }	t_player;
 
 void	init_ray(t_ray *ray);
 void	init_player(t_mlx *mlx);
@@ -64,6 +40,7 @@ int		key_release(int keycode, t_player *player);
 void	move_player(t_player *player, t_mlx *mlx);
 void	mov_adjustment(t_player *player, float cos, float sin, t_mlx *mlx);
 void	move_release(t_player *player);
+void	rot_release(t_player *player);
 void	angle_protect(float *a);
 void	recup_start_dir(t_player *player);
 
