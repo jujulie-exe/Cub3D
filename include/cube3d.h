@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/21 16:24:58 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/26 15:12:08 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define NO 0
 # define SO 1
 # define WE 2
-# define NE 3
+# define EA 3
 # define R 0
 # define G 1
 # define B 2
@@ -74,6 +74,11 @@ typedef struct s_data_maps
 
 }	t_data_maps;
 
+typedef struct s_texture
+{
+	int	index;
+}	t_texture;
+
 typedef struct s_ray
 {
 	float	var_x; //dist for dda
@@ -128,6 +133,7 @@ typedef struct s_mlx
 	t_data_maps		*ptr_maps;
 	t_player		*player;
 	t_ray			*ray;
+	t_texture		*texture;
 }	t_mlx;
 
 // ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡

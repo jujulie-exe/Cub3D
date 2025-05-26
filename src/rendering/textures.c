@@ -6,32 +6,48 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/22 18:37:48 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/26 15:11:13 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
 
-void    draw_texture(t_mlx *mlx, t_ray *ray)
-{}
-
-void    get_texture(t_mlx *mlx, t_ray *ray)
+void	init_texture(t_texture *texture)
 {
-    if (/*"0" a L/R du mur*/)
-    {
-        if (ray->var_x> 0)
-            texture is EA;
-        else
-            texture is WE;
-    }
-    else
-    {
-        if (ray->var_y > 0)
-            texture is SO;
-        else
-            texture is NO;
-    }
+	texture->index = 0;
 }
+
+void	get_texture(t_mlx *mlx, t_ray *ray, t_texture *texture)
+{
+	if (/*"0" a L/R du mur*/)
+	{
+		if (ray->var_x> 0)
+			texture->index = 3; //EA
+		else
+			texture->index = 2; //WE
+	}
+	else
+	{
+		if (ray->var_y > 0)
+			texture->index = 1; //SO
+		else
+			texture->index = 0; //NO
+	}
+}
+
+void	draw_texture(t_mlx *mlx, t_ray *ray)
+{
+	int	y;
+}
+
+void	update_pixels(t_mlx *mlx, t_ray *ray)
+{
+	int	color;
+
+	init_texture(mlx->texture);
+	get_texture(mlx, ray, texture);
+}
+
 /*textures pour NSWE -> NO SO WE EA NE ???
 mlx->textures contient les 4 ???*/

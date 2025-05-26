@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/22 18:50:06 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/26 12:55:31 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 		//draw_texture(mlx);
 		my_put_pixel(i, mlx->ray->center_line, 0xB97AD1, mlx);
 		mlx->ray->center_line++;
+		update_pixels(mlx, mlx->ray);
 	}
 }
 
