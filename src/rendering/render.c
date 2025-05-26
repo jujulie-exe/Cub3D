@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/21 16:54:30 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/22 18:50:06 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	draw_loop(t_mlx *mlx)
 	init_ray(mlx->ray);
 	corr = (float)PI / 3 / mlx->width;
 	start = mlx->player->angle - ((float)PI / 6);
-	move_player(mlx->player, mlx);
+	move_player(mlx->player, mlx); //recalculer l'img qu'en cas de mov
 	while (i < mlx->width)
 	{
 		draw_line(mlx, start, i);
@@ -56,6 +56,7 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 	while (mlx->ray->center_line <= mlx->ray->last_line)
 	{
 		//mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->texture[1], i, mlx->ray->center_line);
+		//draw_texture(mlx);
 		my_put_pixel(i, mlx->ray->center_line, 0xB97AD1, mlx);
 		mlx->ray->center_line++;
 	}
@@ -70,3 +71,7 @@ void	my_put_pixel(int x, int y, int color, t_mlx *mlx)
 	pixel = (y * mlx->line_len) + (x * mlx->bits_pixel / 8) + mlx->addr;
 	*(unsigned int *)pixel = color;
 }
+/* mlx_xpm_file_to_image(m->win.mlx_ptr, m->el.w_path,
+		&m->tex.texwidth, &m->tex.texheight))
+	mlx_get_data_addr(m->tex.color_w,
+		&m->img.bits_per_pixel, &m->img.line_length, &m->img.endian);*/

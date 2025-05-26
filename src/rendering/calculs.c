@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/21 14:16:29 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/22 19:04:32 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,7 @@ void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player, float start)
 	ray->center_line = (mlx->height - ray->height) / 2;
 	ray->last_line = ray->center_line + ray->height;
 }
+
+/*plutot que de cqlculer la dist p/r au joueur,
+la calculer p/r a une droite perpendiculaire au joueur,
+relis tes projections othogonales putain*/
