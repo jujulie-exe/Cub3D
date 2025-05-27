@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/27 14:30:25 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/27 17:53:12 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_ray
 	float	var_y;
 	float	proj_x;
 	float	proj_y;
+	float	alpha;
 	float	dtw;
 	float	height;
 	int		center_line;

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/27 15:50:29 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/27 18:43:03 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,40 @@ float	dist_to_wall(t_player *player, t_ray *ray, float start)
 	float	delta_y;
 	float	a;
 
-	projection(player, ray);
+	//projection(player, ray);
 	delta_x = ray->var_x - player->posx;
 	delta_y = ray->var_y - player->posy;
+	angle_calcul(player, ray, delta_x, delta_y);
 	// delta_x = ray->var_x - ray->proj_x;
 	// delta_y = ray->var_y - ray->proj_y;
-	a = atan2(delta_y, delta_x) - start;
-	dtw = calc_dist(delta_x, delta_y) * cos(a);
+	a = (atan2(delta_y, delta_x) - start);
+	//printf("alpha is %f \n", cos(ray->alpha));
+	dtw = calc_dist(delta_x, delta_y) * ((cos(ray->alpha)));
+	printf("dtw = %f\n", dtw);
 	return (dtw);
 }
-
-void	projection(t_player *player, t_ray *ray)
+void	angle_calcul(t_player *player, t_ray *ray, float dx, float dy)
 {
-	float	tg;
-	float	f;
+	float	p_r;
+	float	p_j;
 
-	tg = tan(player->angle);
-	f = (1 / (tg + 1 / tg));
-	ray->proj_x = f * ((-1) * player->posy + player->posx / tg
-			+ ray->var_y + tg * ray->var_x);
-	ray->proj_y = (tg * f) * ((-1) * player->posy + player->posx / tg
-			+ ray->var_y + tg * ray->var_x) - ray->var_y
-		- tg * ray->var_x;
+	p_r = dy / dx;
+	p_j = sin(player->angle) / cos(player->angle);
+	ray->alpha = atan(fabs((p_j - p_r) / (1 + p_j + p_r)));
 }
+
+// void	projection(t_player *player, t_ray *ray)
+// {
+// 	float	tg;
+// 	float	f;
+
+// 	tg = tan(player->angle);
+// 	f = (1 / (tg + 1 / tg));
+// 	ray->proj_x = f * ((-1) * player->posy + player->posx / tg
+// 			- ray->var_y + tg * ray->var_x);
+// 	ray->proj_y = (tg * f) * (ray->proj_x) + ray->var_y
+// 		+ tg * ray->var_x;
+// }
 
 void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player, float start)
 {
