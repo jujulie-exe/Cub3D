@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/26 12:55:31 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:40:33 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,17 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 		my_put_pixel(i, y, create_rgb(NULL, 'F'), mlx);
 		y++;
 	}
-	while (y >= mlx->height / 2 && y < mlx->height) //enlever le 2e = ?
+	while (y >= mlx->height / 2 && y <= mlx->height) //enlever le 2e = ?
 	{
 		my_put_pixel(i, y, create_rgb(NULL, 'C'), mlx);
 		y++;
 	}
 	while (mlx->ray->center_line <= mlx->ray->last_line)
 	{
-		//mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->texture[1], i, mlx->ray->center_line);
 		//draw_texture(mlx);
 		my_put_pixel(i, mlx->ray->center_line, 0xB97AD1, mlx);
 		mlx->ray->center_line++;
-		update_pixels(mlx, mlx->ray);
+		//update_pixels(mlx, mlx->ray);
 	}
 }
 

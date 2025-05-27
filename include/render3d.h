@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/21 16:30:24 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/27 14:33:27 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	recup_start_dir(t_player *player);
 int		collision(t_ray *ray, t_player *player, char **map);
 void	calc_dda(t_ray *ray, t_player *player, char **map, float start);
 float	calc_dist(float x, float y);
+void	projection(t_player *player, t_ray *ray);
 float	dist_to_wall(t_player *player, t_ray *ray, float start);
 void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player, float start);
 
