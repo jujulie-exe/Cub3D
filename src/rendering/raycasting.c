@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:33:05 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/27 14:00:41 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/28 14:20:51 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_ray(t_ray *ray)
 	ray->height = 0;
 	ray->center_line = 0;
 	ray->last_line = 0;
+	ray->side = 0;
 }
 
 int	collision(t_ray *ray, t_player *player, char **map)

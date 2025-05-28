@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/27 18:34:23 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/28 14:30:33 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 	mlx->ray->var_x = mlx->player->posx;
 	mlx->ray->var_y = mlx->player->posy;
 	calc_dda(mlx->ray, mlx->player, mlx->valid_map, start_x);
-	calc_height(mlx, mlx->ray, mlx->player, start_x);
+	calc_height(mlx, mlx->ray, mlx->player);
 	while (y < mlx->height / 2)
 	{
 		my_put_pixel(i, y, create_rgb(NULL, 'F'), mlx);
 		y++;
 	}
-	while (y >= mlx->height / 2 && y <= mlx->height) //enlever le 2e = ?
+	while (y >= mlx->height / 2 && y < mlx->height)
 	{
 		my_put_pixel(i, y, create_rgb(NULL, 'C'), mlx);
 		y++;

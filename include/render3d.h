@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/27 18:20:27 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/28 12:09:04 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	calc_dda(t_ray *ray, t_player *player, char **map, float start);
 float	calc_dist(float x, float y);
 void	angle_calcul(t_player *player, t_ray *ray, float dx, float dy);
 void	projection(t_player *player, t_ray *ray);
-float	dist_to_wall(t_player *player, t_ray *ray, float start);
-void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player, float start);
+float	dist_to_wall(t_player *player, t_ray *ray);
+void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player);
 
 #endif

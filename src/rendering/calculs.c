@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/27 18:43:03 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/28 14:24:00 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 		ray->var_x += cos(start) * 0.001;
 		ray->var_y += sin(start) * 0.001;
 	}
+	if (fabs(sin(start)) > fabs(cos(start)))
+		ray->side = 1;
 }
 
 float	calc_dist(float x, float y)
@@ -30,25 +32,21 @@ float	calc_dist(float x, float y)
 	return (dst);
 }
 
-float	dist_to_wall(t_player *player, t_ray *ray, float start)
+float	dist_to_wall(t_player *player, t_ray *ray)
 {
 	float	dtw;
 	float	delta_x;
 	float	delta_y;
 	float	a;
 
-	//projection(player, ray);
 	delta_x = ray->var_x - player->posx;
 	delta_y = ray->var_y - player->posy;
 	angle_calcul(player, ray, delta_x, delta_y);
-	// delta_x = ray->var_x - ray->proj_x;
-	// delta_y = ray->var_y - ray->proj_y;
-	a = (atan2(delta_y, delta_x) - start);
-	//printf("alpha is %f \n", cos(ray->alpha));
-	dtw = calc_dist(delta_x, delta_y) * ((cos(ray->alpha)));
-	printf("dtw = %f\n", dtw);
+	a = (atan2(delta_y, delta_x) - player->angle);
+	dtw = calc_dist(delta_x, delta_y) * ((cos(a)));
 	return (dtw);
 }
+
 void	angle_calcul(t_player *player, t_ray *ray, float dx, float dy)
 {
 	float	p_r;
@@ -59,26 +57,10 @@ void	angle_calcul(t_player *player, t_ray *ray, float dx, float dy)
 	ray->alpha = atan(fabs((p_j - p_r) / (1 + p_j + p_r)));
 }
 
-// void	projection(t_player *player, t_ray *ray)
-// {
-// 	float	tg;
-// 	float	f;
-
-// 	tg = tan(player->angle);
-// 	f = (1 / (tg + 1 / tg));
-// 	ray->proj_x = f * ((-1) * player->posy + player->posx / tg
-// 			- ray->var_y + tg * ray->var_x);
-// 	ray->proj_y = (tg * f) * (ray->proj_x) + ray->var_y
-// 		+ tg * ray->var_x;
-// }
-
-void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player, float start)
+void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player)
 {
-	ray->dtw = dist_to_wall(player, ray, start);
+	ray->dtw = dist_to_wall(player, ray);
 	ray->height = (STEPSIZE / ray->dtw) * (mlx->width / 2);
 	ray->center_line = (mlx->height - ray->height) / 2;
 	ray->last_line = ray->center_line + ray->height;
 }
-
-/*plutot que de calculer la dist p/r au joueur,
-la calculer p/r a une droite perpendiculaire au joueur*/

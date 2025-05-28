@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/27 14:30:57 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/28 15:53:06 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_texture(t_texture *texture)
 
 void	get_texture(t_mlx *mlx, t_ray *ray, t_texture *texture)
 {
-	if (/*"0" a L/R du mur*/)
+	if (ray->side == 0)
 	{
 		if (ray->var_x > 0)
 			texture->index = 3;
@@ -30,9 +30,9 @@ void	get_texture(t_mlx *mlx, t_ray *ray, t_texture *texture)
 	else
 	{
 		if (ray->var_y > 0)
-			texture->index = 1;
-		else
 			texture->index = 0;
+		else
+			texture->index = 1;
 	}
 }
 
