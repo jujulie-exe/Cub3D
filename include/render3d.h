@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/28 12:09:04 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/29 17:24:59 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,11 @@ int		collision(t_ray *ray, t_player *player, char **map);
 void	calc_dda(t_ray *ray, t_player *player, char **map, float start);
 float	calc_dist(float x, float y);
 void	angle_calcul(t_player *player, t_ray *ray, float dx, float dy);
-void	projection(t_player *player, t_ray *ray);
 float	dist_to_wall(t_player *player, t_ray *ray);
 void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player);
+
+void	update_pixels(t_mlx *mlx, t_ray *ray, int x, int y);
+void	init_texture(t_wall *wall);
+int		get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall);
 
 #endif

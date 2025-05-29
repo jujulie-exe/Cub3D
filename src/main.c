@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:32 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/28 18:24:55 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/29 17:23:33 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 int	main(int argc, char **argv) //proteger les mlx 
 {
 	t_data_maps	maps;
-	t_mlx	ptr_mlx;
-	t_ray	ptr_ray;
+	t_mlx		ptr_mlx;
+	t_ray		ptr_ray;
 	t_player	ptr_player;
+	t_wall		ptr_wall;
 
 	maps = (struct s_data_maps){NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL};
 	ptr_mlx = (struct s_mlx){
@@ -33,6 +34,7 @@ int	main(int argc, char **argv) //proteger les mlx
 	.valid_map = NULL,
 	.player = &ptr_player,
 	.ray = &ptr_ray,
+	.wall = &ptr_wall,
 	};
 	if (argc != 2)
 		return (ft_fprintf(2, "%s", MSG_ERROR), -1);

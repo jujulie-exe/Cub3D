@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/28 14:20:26 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/29 17:22:52 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ typedef struct s_data_maps
 
 }	t_data_maps;
 
-typedef struct s_texture
+typedef struct s_wall
 {
 	int	index;
-}	t_texture;
+}	t_wall;
 
 typedef struct s_ray
 {
@@ -139,7 +139,7 @@ typedef struct s_mlx
 	t_data_maps		*ptr_maps;
 	t_player		*player;
 	t_ray			*ray;
-	t_texture		*textstruct;
+	t_wall			*wall;
 }	t_mlx;
 
 /*♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡*/
