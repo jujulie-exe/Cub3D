@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/29 17:22:52 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/30 17:19:29 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,9 @@ typedef struct s_data_maps
 
 typedef struct s_wall
 {
-	int	index;
+	int		index;
+	float	textwidth;
+	float	textheight;
 }	t_wall;
 
 typedef struct s_ray

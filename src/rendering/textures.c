@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/30 14:56:23 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/30 17:19:00 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 void	init_texture(t_wall *wall)
 {
 	wall->index = 0;
+	wall->textwidth = 0;
+	wall->textheight = 0;
 }
 
 int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall, float start)
 {
 	int	color;
-	
+
 	if (ray->side == 0)
 	{
 		if (cos(start) > 0)
@@ -37,7 +39,7 @@ int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall, float start)
 	}
 	else
 	{
-		if (sin(start) < 0) // && mlx->player->angle < PI && mlx->player->angle > 0)
+		if (sin(start) < 0)
 		{
 			wall->index = 0;
 			color = 0xFFD700;
@@ -54,7 +56,7 @@ int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall, float start)
 // void	draw_texture(t_mlx *mlx, t_ray *ray)
 // {
 // 	int	y;
-	
+
 // 	y = 0;
 // }
 
@@ -66,6 +68,3 @@ void	update_pixels(t_mlx *mlx, t_ray *ray, int x, int y, float start)
 	color = get_texture(mlx, ray, mlx->wall, start);
 	my_put_pixel(x, y, color, mlx);
 }
-
-/*textures pour NSWE -> NO SO WE EA NE ???
-mlx->textures contient les 4 ???*/
