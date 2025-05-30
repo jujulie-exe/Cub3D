@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:30 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/30 16:02:41 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/30 18:48:24 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	mov_adjustment(t_player *player, float cos, float sin, t_mlx *mlx)
 void	rot_adjustment(t_player *player, t_mlx *mlx)
 {
 	float	angle_speed;
-	
+
 	angle_speed = 0.1;
 	if (player->rot_left)
 		player->angle -= angle_speed;

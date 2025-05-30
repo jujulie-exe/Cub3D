@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/30 17:40:33 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/30 18:48:16 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 	{
 		ray->var_x += cos(start) * 0.01;
 		ray->var_y += sin(start) * 0.01;
+		if (fabs(sin(start)) >= fabs(cos(start)) && ray->var_x < ray->var_y)
+			ray->side = 1;
 	}
-	if (fabs(sin(start)) >= fabs(cos(start)) && ray->var_x < ray->var_y)
-		ray->side = 1;
 }
 
 float	calc_dist(float x, float y)
