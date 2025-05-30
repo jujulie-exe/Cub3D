@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/29 18:06:17 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/30 12:03:24 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall)
 	
 	if (ray->side == 0)
 	{
-		if (ray->var_x > 0 && mlx->player->angle < PI / 4 || mlx->player->angle > 7 * PI / 4)
+		if (ray->var_x > 0 && mlx->player->angle < PI / 4 && mlx->player->angle > 7 * PI / 4)
 		{
 			wall->index = 3;
 			color = 0x800000;

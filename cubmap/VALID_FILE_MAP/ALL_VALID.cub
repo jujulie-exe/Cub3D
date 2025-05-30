@@ -11,8 +11,7 @@ H ./textures/health.xpm
 	NO ./textures/north.xpm
            SO ./textures/south.xpm      
 WE ./textures/west.xpm
-EA ./textures/west.xpm
-NE 	./textures/east.xpm
+EA ./textures/east.xpm
 
 
 		F	 220,100,0 		
@@ -31,10 +30,10 @@ questo é solo un test
 100111011
 101111011
 100000001
-1000N0001
+1000S0001
 100000001
 11111100111111
-10000001
+100000011
 10011111111111
 1000001
 10111111
