@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/30 12:03:24 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/30 14:56:23 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	init_texture(t_wall *wall)
 	wall->index = 0;
 }
 
-int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall)
+int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall, float start)
 {
 	int	color;
 	
 	if (ray->side == 0)
 	{
-		if (ray->var_x > 0 && mlx->player->angle < PI / 4 && mlx->player->angle > 7 * PI / 4)
+		if (cos(start) > 0)
 		{
 			wall->index = 3;
 			color = 0x800000;
@@ -37,7 +37,7 @@ int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall)
 	}
 	else
 	{
-		if (ray->var_y < 0) // && mlx->player->angle < PI && mlx->player->angle > 0)
+		if (sin(start) < 0) // && mlx->player->angle < PI && mlx->player->angle > 0)
 		{
 			wall->index = 0;
 			color = 0xFFD700;
@@ -58,12 +58,12 @@ int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall)
 // 	y = 0;
 // }
 
-void	update_pixels(t_mlx *mlx, t_ray *ray, int x, int y)
+void	update_pixels(t_mlx *mlx, t_ray *ray, int x, int y, float start)
 {
 	int	color;
 
 	init_texture(mlx->wall);
-	color = get_texture(mlx, ray, mlx->wall);
+	color = get_texture(mlx, ray, mlx->wall, start);
 	my_put_pixel(x, y, color, mlx);
 }
 
