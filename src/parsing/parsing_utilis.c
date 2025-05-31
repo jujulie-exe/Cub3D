@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:15:22 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/02 17:41:11 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/05/30 14:10:45 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	validazione(t_data_maps *maps)
 		clear_and_open_path(maps->path_no, &maps->ptr_mlx, NO);
 		clear_and_open_path(maps->path_so, &maps->ptr_mlx, SO);
 		clear_and_open_path(maps->path_we, &maps->ptr_mlx, WE);
-		clear_and_open_path(maps->path_ea, &maps->ptr_mlx, NE);
+		clear_and_open_path(maps->path_ea, &maps->ptr_mlx, EA);
 		check_and_charge_color(maps, maps->down_color, 'C');
 		check_and_charge_color(maps, maps->up_color, 'F');
 	}

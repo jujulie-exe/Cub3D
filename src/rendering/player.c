@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:19:53 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/14 14:34:37 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/27 18:04:42 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 void	init_player(t_mlx *mlx)
 {
-	
 	mlx->player->start_posx = mlx->p_x + 0.5;
 	mlx->player->start_posy = mlx->p_y + 0.5;
 	mlx->player->posx = mlx->player->start_posx;
@@ -36,13 +35,13 @@ void	recup_start_dir(t_player *player)
 	{
 		player->dir_x = 0;
 		player->dir_y = -1;
-		player->angle = PI / 2;
+		player->angle = 3 * PI / 2;
 	}
 	if (player->start_dir == 'S')
 	{
 		player->dir_x = 0;
 		player->dir_y = 1;
-		player->angle = 3 * PI / 2;
+		player->angle = PI / 2;
 	}
 	if (player->start_dir == 'E')
 	{
@@ -91,5 +90,3 @@ int	key_release(int keycode, t_player *player)
 		player->rot_right = false;
 	return (0);
 }
-
-// --> step ?

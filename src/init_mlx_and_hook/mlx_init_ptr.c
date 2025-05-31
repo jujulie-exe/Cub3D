@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 13:59:58 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/15 14:57:13 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/30 18:32:22 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ int	handle_key(int	keycode, t_data_maps *ptr)
 		ptr->ptr_mlx->player->down = true;
 	else if (keycode == XK_d)
 		ptr->ptr_mlx->player->right = true;
+	else if (keycode == XK_Left)
+		ptr->ptr_mlx->player->rot_left = true;
+	else if (keycode == XK_Right)
+		ptr->ptr_mlx->player->rot_right= true;
 	return (0);
 }
 
