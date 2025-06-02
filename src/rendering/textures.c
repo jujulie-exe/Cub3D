@@ -6,12 +6,43 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/02 17:27:12 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/02 20:00:03 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
+unsigned int my_color_get(t_wall *wall, int y, int x);
+
+unsigned int	median_color(t_wall *wall, int flags)
+{
+	int	x;
+	unsigned int	sum_t = 0;
+	unsigned int	sum_r = 0;
+	unsigned int	sum_g = 0;
+	unsigned int	sum_b = 0;
+	unsigned int	c = 0;
+	unsigned int	r = 0;
+	unsigned int	g = 0;
+	unsigned int	b = 0;
+	x = 1; 
+	while(++x < flags / 50)
+	{
+		c = my_color_get(wall, x, 0);
+		r = (c >> 16) & 0xFF;	
+		g = (c >> 8) & 0xFF;	
+		b = c & 0xFF;	
+		sum_r += r;
+		sum_g += g;
+		sum_b += b;
+		sum_t += c;
+	}
+	unsigned int avg_r = sum_r / x;
+	unsigned int avg_t = sum_t / x;
+	unsigned int avg_g = sum_g / x;
+	unsigned int avg_b = sum_b / x;
+	return (avg_r << 16) | (avg_g << 8) | avg_b;
+}
 
 unsigned int my_color_get(t_wall *wall, int y, int x)
 {
@@ -20,7 +51,10 @@ unsigned int my_color_get(t_wall *wall, int y, int x)
 	int	i = 0;
 	unsigned int color = 0;
 	 if (x < 0 || y < 0 || x >= wall->width || y >= wall->height)
-        return (0);
+		 if (x >= wall->width)
+			return ((unsigned int)median_color(wall, wall->width));
+		else
+			return ((unsigned int)median_color(wall, wall->height));
 	while (i < bpp)
 	{
 		color |= (unsigned char)pixel_ptr[i] << (8 * i);
@@ -28,6 +62,7 @@ unsigned int my_color_get(t_wall *wall, int y, int x)
 	}
 	return (color);
 }
+
 
 void	init_texture(t_wall wall[], t_mlx *mlx)
 {
