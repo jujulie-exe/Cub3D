@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/31 19:30:03 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/02 15:16:52 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ typedef struct s_ray
 	int		center_line;
 	int		last_line;
 	int		side;
+	int		wall_step;
+	int		tex_pos;
 }	t_ray;
 
 typedef struct s_player

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/31 17:57:55 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/02 17:09:42 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,18 @@ void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 		ray->side = 1;
 	else
 		ray->side = 0;
+//	ray->wall_step =(player->posx - ray->var_x);
+//	ray->tex_pos = (player->posy - ray->var_y);
+//	if (ray->wall_step > ray->tex_pos)
+//	{
+//		ray->side = 1;
+//		ray->wall_step += ray->wall_step;
+//	}
+//	else
+//	{
+//		ray->side = 0;
+//		ray->tex_pos += ray->tex_pos;
+//	}
 }
 
 float	calc_dist(float x, float y)

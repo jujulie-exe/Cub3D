@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/31 19:28:26 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/02 17:13:03 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ double time_diff(struct timeval *t1, struct timeval *t2, t_mlx *mlx)
     double diff_ms = (time_to_double(t2) - time_to_double(t1));
 	int fps = 1000.0 / diff_ms;
 	char *s = ft_itoa(fps);
-	mlx_string_put(mlx->mlx,mlx->win, 0, 1000, 0xFFFFFF , s);
+	mlx_string_put(mlx->mlx,mlx->win, 1700, 30, 0xFFFFFF , s);
 	free(s);
 	return (double)fps;
 }
@@ -58,7 +58,6 @@ int	draw_loop(t_mlx *mlx)
 	gettimeofday(&tv2, NULL);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	time_diff(&tv1, &tv2, mlx);
-	//printf("%d\n", (int)time_diff(&tv1, &tv2));
 	return (0);
 }
 

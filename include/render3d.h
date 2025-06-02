@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/31 18:27:43 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/02 16:25:14 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player);
 
 void	update_pixels(t_mlx *mlx, t_ray *ray, int x, int y);
 void	init_texture(t_wall *wall, t_mlx *mlx);
-int		get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int i);
+unsigned int		get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y, int x);
 
 #endif

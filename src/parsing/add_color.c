@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:42:35 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/02 17:17:02 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/02 18:17:13 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ (  */
@@ -30,6 +30,7 @@ bool	check_div(char *line)
 	}
 	return (false);
 }
+
 int	char_validity(char *str)
 {
 	size_t	i;
