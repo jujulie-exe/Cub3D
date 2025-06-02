@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/30 17:19:00 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/05/31 17:37:21 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall, float start)
 			wall->index = 3;
 			color = 0x800000;
 		}
-		else
+		else if (cos(start) <= 0)
 		{
 			wall->index = 2;
 			color = 0xFA8072;
@@ -44,7 +44,7 @@ int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall, float start)
 			wall->index = 0;
 			color = 0xFFD700;
 		}
-		else
+		else if (sin(start) >= 0)
 		{
 			wall->index = 1;
 			color = 0x9ACD32;
