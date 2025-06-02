@@ -87,6 +87,7 @@ void	swap_and_split(t_data_maps *maps, char *line)
 
 	i = 0;
 	maps->argv = ft_split(line, DIV);
+	free(line);
 	while (maps->argv[i])
 		i++;
 	i--;
@@ -95,11 +96,12 @@ void	swap_and_split(t_data_maps *maps, char *line)
 	cleaning_maps(maps);
 	free(maps->argv[i]);
 	maps->argv[i] = NULL;
+	if(maps->argv[0] == NULL)
+		ft_free_all_and_exit(maps, "NO MAPSSS");
 	tmp_argv = ft_split(maps->argv[0], '\n');
 	free(maps->argv[0]);
 	free(maps->argv);
 	maps->argv = tmp_argv;
-	free(line);
 	if (check_flags_maps(maps->map) == false)
 		ft_free_all_and_exit(maps, MSG_ERROR_FLAGS);
 }

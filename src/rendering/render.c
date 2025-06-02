@@ -6,37 +6,64 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/30 14:55:21 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/02 18:24:47 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
+#include <sys/time.h>
+#include <time.h>
+
+double time_to_double(struct timeval *t)
+{
+    return (t->tv_sec + (t->tv_usec/1000000.0)) * 1000.0;
+}
+
+double time_diff(struct timeval *t1, struct timeval *t2, t_mlx *mlx)
+{
+    double diff_ms = (time_to_double(t2) - time_to_double(t1));
+	int fps = 1000.0 / diff_ms;
+	char *s = ft_itoa(fps);
+	mlx_string_put(mlx->mlx,mlx->win, 1700, 30, 0xFFFFFF , s);
+	free(s);
+	return (double)fps;
+}
+
+//gettimeofday(&t1, NULL);
+//... do stuff ...
+//gettimeofday(&t2, NULL);
+//cout << "Time taken: " << time_diff(&t1, &t2) << "ms" << endl;
 
 int	draw_loop(t_mlx *mlx)
 {
 	int		i;
 	float	corr;
 	float	start;
+	struct timeval	tv1;
+	struct timeval	tv2;
 
 	i = 0;
 	init_ray(mlx->ray);
 	corr = (float)PI / 3 / mlx->width;
 	start = mlx->player->angle - ((float)PI / 6);
 	move_player(mlx->player, mlx); //recalculer l'img qu'en cas de mov
+	gettimeofday(&tv1, NULL);
 	while (i < mlx->width)
 	{
 		draw_line(mlx, start, i);
 		start += corr;
 		i++;
 	}
+	gettimeofday(&tv2, NULL);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	time_diff(&tv1, &tv2, mlx);
 	return (0);
 }
 
 void	draw_line(t_mlx *mlx, float start_x, int i)
 {
-	int	y;
+	long int	y;
 
 	y = 0;
 	mlx->ray->var_x = mlx->player->posx;
@@ -57,7 +84,8 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 	{
 		//draw_texture(mlx);
 		//my_put_pixel(i, mlx->ray->center_line, 0xB97AD1, mlx);
-		update_pixels(mlx, mlx->ray, i, mlx->ray->center_line, start_x);
+		mlx->draw_start = start_x;
+		update_pixels(mlx, mlx->ray, i, mlx->ray->center_line);
 		mlx->ray->center_line++;
 	}
 }

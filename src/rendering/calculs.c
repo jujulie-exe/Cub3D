@@ -6,22 +6,41 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/02 14:38:48 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/02 18:28:50 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
-
+//float perfomance(t_ray *ray)
+//{
+//	
+//		return 1;
+//	else if (ray->dtw > 0.0 && ray->dtw < 0.3)
+//		return 0.7;
+//	else if (ray->dtw > 0.0 && ray->dtw < 0.5)
+//		return 0.5;
+//	else if (ray->dtw > 0.0 && ray->dtw < 0.8)
+//		return 0.3;
+//	return 0.01;
+//}
+float perfomance(t_ray *ray)
+{
+    float d = fmaxf(ray->dtw, 0.001f);
+    float k = 0.028f;  
+    float calc = fminf(1.0f, k / sqrtf(d));
+	if (calc <= 0.01)
+		return (0.015);
+	return (calc);
+}
 void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 {
+	float ray_distance;
 	ray->side = 0;
 	while (!collision(ray, player, map))
 	{
 		ray->var_x += cos(start) * 0.01;
 		ray->var_y += sin(start) * 0.01;
-		if (fabs(sin(start)) >= fabs(cos(start)) && ray->var_x < ray->var_y)
-			ray->side = 1;
 	}
 }
 

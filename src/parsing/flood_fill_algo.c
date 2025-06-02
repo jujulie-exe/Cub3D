@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 13:47:10 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/04 13:08:16 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/05/30 16:43:45 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*  ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( */
@@ -67,6 +67,7 @@ void	fill_flod(t_data_maps *ptr)
 		ft_free_all_and_exit(ptr, MSG_ERROR_MAP);
 	}
 	free_double_array(&data.copy_maps);
+	data.copy_maps = NULL;
 	ptr->ptr_mlx->valid_map = NULL;
-	ptr->ptr_mlx->valid_map = ft_split(ptr->map, '\n');
+	ptr->ptr_mlx->valid_map  = ft_split(ptr->map, '\n');
 }

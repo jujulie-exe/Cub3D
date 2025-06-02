@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/30 17:19:29 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/02 18:22:02 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 # define R 0
 # define G 1
 # define B 2
+# define MSG_ERROR_TX "Error\n: Invalid texture or path.\n"
+# define MSG_ERROR_CUB "Error\n: File must end with .cub.\n"
+# define MSG_ERROR_EXT "Error\n: Missing .cub file extension.\n"
+# define MSG_ERROR_FILE "Error\n: Cannot open map file.\n"
+# define MSG_ERROR_MAP "Error\n: Map not properly closed.\n"
+# define MSG_ERROR_FLAGS "Error\n: One spawn point required.\n"
+# define MSG_ERROR_COLOR "Error\n: Use RGB: 3 values(0–255), comma-separated.\n"
+# define MSG_ERROR_MAX "Error\n: RGB values must be 0–255.\n"
+# define MSG_ERROR_ARG "Error\n: Missing required information.\n"
 # define MSG_ERROR "Error\n"
-# define MSG_ERROR_TX "Error\n: One or more textures are invalid. Please ensure that all texture files are in the correct format (.xpm) and accessible. Check that the texture paths are correct and the files are properly loaded."
-# define MSG_ERROR_CUB "Error\n: Invalid file extension. The file must have a .cub extension.\n"
-# define MSG_ERROR_EXT "Error\n: Missing file extension. Please provide a file with a .cub extension.\n"
-# define MSG_ERROR_FILE "Error\n: The provided map cannot be opened. Please check that the file exists and is readable( ^..^)ﾉ\n"
-# define MSG_ERROR_MAP "Error\n: Map not properly closed! ( ˘ ³˘)♥\n"
-# define MSG_ERROR_FLAGS "Error\n: There must be exactly one spawn point.\n Please ensure that there are no more and no less༼つ ◕_◕ ༽つ\n"
-# define MSG_ERROR_COLOR "Error\n: Invalid RGB format\n Use exactly three values (0-255), separated by commas(づ｡◕‿‿◕｡)づ\n "
-# define MSG_ERROR_MAX "Error\n:  RGB value out of range\n Each value must be between 0 and 255.(︶︹︶)\n "
-# define MSG_ERROR_ARG "Error\n: equired information is missing.\n Please ensure all necessary data is provided.(｡◕‿‿◕｡)\n"
 # define DIV '#'
 # define SIZE_WIN 2
 # define BUFFER_SIZE 1
@@ -78,9 +78,14 @@ typedef struct s_data_maps
 
 typedef struct s_wall
 {
-	int		index;
-	float	textwidth;
-	float	textheight;
+	int	index;
+	char	*addr;
+	int	bts;
+	int	szl;
+	int	height;
+	int	width;
+	int	edn;
+	void	*texture;
 }	t_wall;
 
 typedef struct s_ray
@@ -95,6 +100,8 @@ typedef struct s_ray
 	int		center_line;
 	int		last_line;
 	int		side;
+	int		wall_step;
+	int		tex_pos;
 }	t_ray;
 
 typedef struct s_player
@@ -137,6 +144,7 @@ typedef struct s_mlx
 	char			**valid_map;
 	size_t			p_x;
 	size_t			p_y;
+	float			draw_start;
 
 	t_data_maps		*ptr_maps;
 	t_player		*player;
@@ -158,6 +166,7 @@ int		serch_map_and_validate(char *str);
 void	fill_flod(t_data_maps *ptr);
 // ♡(っ´ω`c)(っ´ω`c)src/parsing/add_color.c(っ´ω`c)(っ´ω`c)♡
 void	check_and_charge_color(t_data_maps *ptr_maps, char *str, char c);
+bool	check_div(char *line);
 int		create_rgb(int	*rgb, char c);
 // ♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡
 void	ft_free_all_and_exit(t_data_maps *ptr_maps, char *str);

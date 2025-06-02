@@ -6,12 +6,30 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:42:35 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/02 17:17:02 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/02 18:17:13 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ (  */
 
 #include "../../include/cube3d.h"
+
+bool	check_div(char *line)
+{
+	size_t	i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] == DIV)
+		{
+			free(line);
+			line = NULL;
+			return (true);
+		}
+		i++;
+	}
+	return (false);
+}
 
 int	char_validity(char *str)
 {
