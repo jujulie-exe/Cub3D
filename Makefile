@@ -137,7 +137,12 @@ fclean: clean
 re: fclean all
 
 # Esecuzione del programma
-run: re
-	./$(NAME) ciao.cub
+run:
+ifeq ($(wildcard $(NAME)),)
+	$(MAKE) re
+else
+	$(MAKE) all
+endif
+	./$(NAME) cubmap/VALID_FILE_MAP/ALL_VALID2.cub
 
 .PHONY: all clean fclean re run

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 18:30:54 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/03 18:46:13 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 #include <sys/time.h>
 #include <time.h>
 
-double time_to_double(struct timeval *t)
+double	time_to_double(struct timeval *t)
 {
-    return (t->tv_sec + (t->tv_usec/1000000.0)) * 1000.0;
+	return ((t->tv_sec + (t->tv_usec / 1000000.0)) * 1000.0);
 }
 
-double time_diff(struct timeval *t1, struct timeval *t2, t_mlx *mlx)
+double	time_diff(struct timeval *t1, struct timeval *t2, t_mlx *mlx)
 {
-    double diff_ms = (time_to_double(t2) - time_to_double(t1));
-	int fps = 1000.0 / diff_ms;
-	char *s = ft_itoa(fps);
-	mlx_string_put(mlx->mlx,mlx->win, 1700, 30, 0xFFFFFF , s);
+	double	diff_ms;
+	int		fps;
+	char	*s;
+
+	diff_ms = (time_to_double(t2) - time_to_double(t1));
+	fps = 1000.0 / diff_ms;
+	s = ft_itoa(fps);
+	mlx_string_put(mlx->mlx, mlx->win, 1700, 30, 0xFFFFFF, s);
 	free(s);
-	return (double)fps;
+	return ((double)fps);
 }
 
 //gettimeofday(&t1, NULL);
@@ -37,9 +41,9 @@ double time_diff(struct timeval *t1, struct timeval *t2, t_mlx *mlx)
 
 int	draw_loop(t_mlx *mlx)
 {
-	int		i;
-	float	corr;
-	float	start;
+	int				i;
+	float			corr;
+	float			start;
 	struct timeval	tv1;
 	struct timeval	tv2;
 
@@ -47,7 +51,7 @@ int	draw_loop(t_mlx *mlx)
 	init_ray(mlx->ray);
 	corr = (float)PI / 3 / mlx->width;
 	start = mlx->player->angle - ((float)PI / 6);
-	move_player(mlx->player, mlx); //recalculer l'img qu'en cas de mov
+	move_player(mlx->player, mlx);
 	gettimeofday(&tv1, NULL);
 	while (i < mlx->width)
 	{
@@ -82,7 +86,6 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 	}
 	while (mlx->ray->center_line <= mlx->ray->last_line)
 	{
-		//draw_texture(mlx);
 		//my_put_pixel(i, mlx->ray->center_line, 0xB97AD1, mlx);
 		mlx->draw_start = start_x;
 		draw_texture(mlx, mlx->ray, i, mlx->ray->center_line);
@@ -100,6 +103,4 @@ void	my_put_pixel(int x, int y, int color, t_mlx *mlx)
 	*(unsigned int *)pixel = color;
 }
 /* mlx_xpm_file_to_image(m->win.mlx_ptr, m->el.w_path,
-		&m->tex.texwidth, &m->tex.texheight))
-	mlx_get_data_addr(m->tex.color_w,
-		&m->img.bits_per_pixel, &m->img.line_length, &m->img.endian);*/
+		&m->tex.texwidth, &m->tex.texheight));*/

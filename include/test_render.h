@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_render.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/03 12:21:04 by iwaslet           #+#    #+#             */
+/*   Updated: 2025/06/03 12:21:49 by iwaslet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TEST_RENDER_H
-#define TEST_RENDER_H
+# define TEST_RENDER_H
 
 # include "cube3d.h"
 # include <stdio.h>
@@ -50,14 +62,14 @@ void	my_put_pixel(int x, int y, int color, t_mlx *mlx);
 int		key_press(int keycode, t_player *player);
 int		key_release(int keycode, t_player *player);
 void	move_player(t_player *player, t_mlx *mlx);
- void    mov_adjustment(t_player *player, float cos, float sin, t_mlx *mlx);
+void	mov_adjustment(t_player *player, float cos, float sin, t_mlx *mlx);
 void	angle_protect(float *a);
 void	recup_start_dir(t_player *player);
 
 int		collision(t_ray *ray, t_player *player, char **map);
 void	calc_dda(t_ray *ray, t_player *player, char **map, float ray_angle);
 void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player, float ray_angle);
-float dist_to_wall(t_player *player, t_ray *ray, float ray_angle);
+float	dist_to_wall(t_player *player, t_ray *ray, float ray_angle);
 float	calc_dist(float x, float y);
 
 #endif
