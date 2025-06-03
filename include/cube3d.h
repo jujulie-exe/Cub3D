@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/03 18:15:04 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 18:39:07 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 
 struct	s_mlx;
 
-typedef struct	s_tex
+typedef struct s_tex
 {
 	double	wall_x;
 	int		tex_x;
@@ -62,9 +62,9 @@ typedef struct	s_tex
 	int		tex_y;
 }	t_tex;
 
-typedef struct	s_median
+typedef struct s_median
 {
-	int	x;
+	int				x;
 	unsigned int	sum_t;
 	unsigned int	sum_r;
 	unsigned int	sum_g;
@@ -73,11 +73,10 @@ typedef struct	s_median
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
-	unsigned int avg_r;
-	unsigned int avg_t;
-	unsigned int avg_g;
-	unsigned int avg_b;
-	
+	unsigned int	avg_r;
+	unsigned int	avg_t;
+	unsigned int	avg_g;
+	unsigned int	avg_b;
 }	t_median;
 
 typedef struct s_fill
