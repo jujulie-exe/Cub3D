@@ -6,104 +6,12 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/02 20:00:03 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/03 17:38:16 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
-unsigned int my_color_get(t_wall *wall, int y, int x);
-
-unsigned int	median_color(t_wall *wall, int flags)
-{
-	int	x;
-	unsigned int	sum_t = 0;
-	unsigned int	sum_r = 0;
-	unsigned int	sum_g = 0;
-	unsigned int	sum_b = 0;
-	unsigned int	c = 0;
-	unsigned int	r = 0;
-	unsigned int	g = 0;
-	unsigned int	b = 0;
-	x = 1; 
-	while(++x < flags / 50)
-	{
-		c = my_color_get(wall, x, 0);
-		r = (c >> 16) & 0xFF;	
-		g = (c >> 8) & 0xFF;	
-		b = c & 0xFF;	
-		sum_r += r;
-		sum_g += g;
-		sum_b += b;
-		sum_t += c;
-	}
-	unsigned int avg_r = sum_r / x;
-	unsigned int avg_t = sum_t / x;
-	unsigned int avg_g = sum_g / x;
-	unsigned int avg_b = sum_b / x;
-	return (avg_r << 16) | (avg_g << 8) | avg_b;
-}
-
-unsigned int my_color_get(t_wall *wall, int y, int x)
-{
-	int bpp = wall->bts / 8;
-	char *pixel_ptr = wall->addr + (y * wall->szl + x * bpp);
-	int	i = 0;
-	unsigned int color = 0;
-	 if (x < 0 || y < 0 || x >= wall->width || y >= wall->height)
-		 if (x >= wall->width)
-			return ((unsigned int)median_color(wall, wall->width));
-		else
-			return ((unsigned int)median_color(wall, wall->height));
-	while (i < bpp)
-	{
-		color |= (unsigned char)pixel_ptr[i] << (8 * i);
-		i++;
-	}
-	return (color);
-}
-
-
-void	init_texture(t_wall wall[], t_mlx *mlx)
-{
-	size_t	i;
-
-	i = 0;
-	while(i < 3)
-	{
-		wall[i].index = i;
-		wall[i].texture = mlx->texture[i];
-		wall[i].width = mlx->txr_w[i];
-		wall[i].height = mlx->txr_h[i];
-		wall[i].addr = mlx_get_data_addr(mlx->texture[i], &wall[i].bts, &wall[i].szl, &wall[i].edn);
-		i++;
-	}
-}
-
-unsigned int	cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index)
-{
-	double wall_x;
-	if (ray->side == 0)
-		 wall_x = mlx->player->posy + ray->dtw * ray->var_y;
-	else
-		wall_x = mlx->player->posx + ray->dtw * ray->var_x;
-	wall_x = wall_x * 0.2;
-	wall_x -= floor(wall_x);
-	int tex_x = (int)(wall_x * (double)mlx->wall[tex_index].width);
-	if ((ray->side == 0 && ray->var_x > 0) || (ray->side == 1 && ray->var_y < 0))
-		tex_x = mlx->wall[tex_index].width - tex_x - 1;
-	double step = (double)mlx->wall[tex_index].height / (double)ray->height;
-	double tex_pos = (mlx->draw_start - mlx->height / 2 + ray->height / 2 ) * step;
-	double current_pos = tex_pos + ( y - mlx->draw_start) * step;
-	int tex_y = (int)current_pos;
-	if (tex_y > 0)
-		tex_y = tex_y % mlx->wall[tex_index].height;
-	if (tex_y < 0)
-		tex_y = 0;
-	if (tex_y >= mlx->wall[tex_index].height)
-		tex_y = mlx->wall[tex_index].height - 1;
-	return ( my_color_get(&mlx->wall[tex_index], tex_x, tex_y));
-}
 
 unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y, int x)
 {
