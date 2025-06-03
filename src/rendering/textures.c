@@ -6,14 +6,14 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 17:43:42 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 18:19:16 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
 
-unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y)
+unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y, int x)
 {
 	int	color;
 

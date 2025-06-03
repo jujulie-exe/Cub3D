@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 14:00:31 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 18:17:38 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ float				dist_to_wall(t_player *player, t_ray *ray);
 void				calc_height(t_mlx *mlx, t_ray *ray, t_player *player);
 float				perfomance(t_ray *ray);
 
-void				draw_texture(t_mlx *mlx, t_ray *ray, int x, int y);
-void				init_texture(t_wall wall[], t_mlx *mlx);
-unsigned int		get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y);
+void			draw_texture(t_mlx *mlx, t_ray *ray, int x, int y);
+void			init_texture(t_wall *wall, t_mlx *mlx);
+unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y);
+unsigned int	my_color_get(t_wall *wall, int y, int x);
 
 #endif

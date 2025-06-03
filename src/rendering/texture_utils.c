@@ -6,12 +6,37 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:23:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 17:22:31 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 18:22:33 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
+
+
+unsigned int	median_color(t_wall *wall, int flags)
+{
+	t_median	md;
+
+	md = (struct s_median) {0};
+	while(md.x< flags / 50)
+	{
+		md.c = my_color_get(wall, md.x, 0);
+		md.r = (md.c >> 16) & 0xFF;	
+		md.g = (md.c >> 8) & 0xFF;	
+		md.b = md.c & 0xFF;	
+		md.sum_r += md.r;
+		md.sum_g += md.g;
+		md.sum_b += md.b;
+		md.sum_t += md.c;
+		md.x++;
+	}
+	md.avg_r = md.sum_r / md.x;
+	md.avg_t = md.sum_t / md.x;
+	md.avg_g = md.sum_g / md.x;
+	md.avg_b = md.sum_b / md.x;
+	return (md.avg_r << 16) | (md.avg_g << 8) | md.avg_b;
+}
 
 unsigned int	my_color_get(t_wall *wall, int y, int x)
 {
@@ -39,7 +64,7 @@ void	init_texture(t_wall wall[], t_mlx *mlx)
 	size_t	i;
 
 	i = 0;
-	while (i < 3)
+	while (i <= 3)
 	{
 		wall[i].index = i;
 		wall[i].texture = mlx->texture[i];
@@ -53,32 +78,28 @@ void	init_texture(t_wall wall[], t_mlx *mlx)
 
 unsigned int	cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index)
 {
-	double	wall_x;
-	int		tex_x;
-	double	step;
-	double	tex_pos;
-	double	current_pos;
-	int		tex_y;
-
+	t_tex	tex;
+	
+	tex = (struct s_tex){0};
 	if (ray->side == 0)
-		wall_x = mlx->player->posy + ray->dtw * ray->var_y;
+		tex.wall_x = mlx->player->posy + ray->dtw * ray->var_y;
 	else
-		wall_x = mlx->player->posx + ray->dtw * ray->var_x;
-	wall_x = wall_x * 0.2;
-	wall_x -= floor(wall_x);
-	tex_x = (int)(wall_x * (double)mlx->wall[tex_index].width);
+		tex.wall_x = mlx->player->posx + ray->dtw * ray->var_x;
+	tex.wall_x = tex.wall_x * 0.2;
+	tex.wall_x -= floor(tex.wall_x);
+	tex.tex_x = (int)(tex.wall_x * (double)mlx->wall[tex_index].width);
 	if ((ray->side == 0 && ray->var_x > 0)
 		|| (ray->side == 1 && ray->var_y < 0))
-		tex_x = mlx->wall[tex_index].width - tex_x - 1;
-	step = (double)mlx->wall[tex_index].height / (double)ray->height;
-	tex_pos = (mlx->draw_start - mlx->height / 2 + ray->height / 2) * step;
-	current_pos = tex_pos + (y - mlx->draw_start) * step;
-	tex_y = (int)current_pos;
-	if (tex_y > 0)
-		tex_y = tex_y % mlx->wall[tex_index].height;
-	if (tex_y < 0)
-		tex_y = 0;
-	if (tex_y >= mlx->wall[tex_index].height)
-		tex_y = mlx->wall[tex_index].height - 1;
-	return (my_color_get(&mlx->wall[tex_index], tex_x, tex_y));
+		tex.tex_x = mlx->wall[tex_index].width - tex.tex_x - 1;
+	tex.step = (double)mlx->wall[tex_index].height / (double)ray->height;
+	tex.tex_pos = (mlx->draw_start - mlx->height / 2 + ray->height / 2) * tex.step;
+	tex.current_pos = tex.tex_pos + (y - mlx->draw_start) * tex.step;
+	tex.tex_y = (int)tex.current_pos;
+	if (tex.tex_y > 0)
+		tex.tex_y = tex.tex_y % mlx->wall[tex_index].height;
+	if (tex.tex_y < 0)
+		tex.tex_y = 0;
+	if (tex.tex_y >= mlx->wall[tex_index].height)
+		tex.tex_y = mlx->wall[tex_index].height - 1;
+	return (my_color_get(&mlx->wall[tex_index], tex.tex_x, tex.tex_y));
 }
