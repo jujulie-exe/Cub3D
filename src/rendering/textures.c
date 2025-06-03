@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 17:27:23 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 17:29:03 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,3 @@ void	draw_texture(t_mlx *mlx, t_ray *ray, int x, int y)
 // 	}
 // 	return (color);
 //}
-
-/*textures pour NSWE -> NO SO WE EA NE ???
-mlx->textures contient les 4 ???*/

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 17:27:15 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 17:32:48 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,4 @@ void	my_put_pixel(int x, int y, int color, t_mlx *mlx)
 	*(unsigned int *)pixel = color;
 }
 /* mlx_xpm_file_to_image(m->win.mlx_ptr, m->el.w_path,
-		&m->tex.texwidth, &m->tex.texheight))
-	mlx_get_data_addr(m->tex.color_w,
-		&m->img.bits_per_pixel, &m->img.line_length, &m->img.endian);*/
+		&m->tex.texwidth, &m->tex.texheight));*/

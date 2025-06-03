@@ -6,24 +6,12 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 12:25:04 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 17:31:05 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
-//float perfomance(t_ray *ray)
-//{
-//	
-//		return 1;
-//	else if (ray->dtw > 0.0 && ray->dtw < 0.3)
-//		return 0.7;
-//	else if (ray->dtw > 0.0 && ray->dtw < 0.5)
-//		return 0.5;
-//	else if (ray->dtw > 0.0 && ray->dtw < 0.8)
-//		return 0.3;
-//	return 0.01;
-//}
 
 void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 {
