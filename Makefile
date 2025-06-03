@@ -32,6 +32,7 @@ SRCS =  $(SRCDIR)/GNL/get_next_line.c \
 		$(SRCDIR)/rendering/raycasting.c \
 		$(SRCDIR)/rendering/render.c \
 		$(SRCDIR)/rendering/textures.c \
+		$(SRCDIR)/rendering/texture_utils.c \
         $(SRCDIR)/main.c
 
 # Creazione degli oggetti (o) a partire dai sorgenti

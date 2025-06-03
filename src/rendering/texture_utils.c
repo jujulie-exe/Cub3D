@@ -6,9 +6,79 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:23:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 12:28:12 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 17:22:31 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
+
+unsigned int	my_color_get(t_wall *wall, int y, int x)
+{
+	int				bpp;
+	char			*pixel_ptr;
+	int				i;
+	unsigned int	color;
+
+	bpp = wall->bts / 8;
+	pixel_ptr = wall->addr + (y * wall->szl + x * bpp);
+	i = 0;
+	color = 0;
+	if (x < 0 || y < 0 || x >= wall->width || y >= wall->height)
+		return (0);
+	while (i < bpp)
+	{
+		color |= (unsigned char)pixel_ptr[i] << (8 * i);
+		i++;
+	}
+	return (color);
+}
+
+void	init_texture(t_wall wall[], t_mlx *mlx)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < 3)
+	{
+		wall[i].index = i;
+		wall[i].texture = mlx->texture[i];
+		wall[i].width = mlx->txr_w[i];
+		wall[i].height = mlx->txr_h[i];
+		wall[i].addr = mlx_get_data_addr(mlx->texture[i],
+				&wall[i].bts, &wall[i].szl, &wall[i].edn);
+		i++;
+	}
+}
+
+unsigned int	cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index)
+{
+	double	wall_x;
+	int		tex_x;
+	double	step;
+	double	tex_pos;
+	double	current_pos;
+	int		tex_y;
+
+	if (ray->side == 0)
+		wall_x = mlx->player->posy + ray->dtw * ray->var_y;
+	else
+		wall_x = mlx->player->posx + ray->dtw * ray->var_x;
+	wall_x = wall_x * 0.2;
+	wall_x -= floor(wall_x);
+	tex_x = (int)(wall_x * (double)mlx->wall[tex_index].width);
+	if ((ray->side == 0 && ray->var_x > 0)
+		|| (ray->side == 1 && ray->var_y < 0))
+		tex_x = mlx->wall[tex_index].width - tex_x - 1;
+	step = (double)mlx->wall[tex_index].height / (double)ray->height;
+	tex_pos = (mlx->draw_start - mlx->height / 2 + ray->height / 2) * step;
+	current_pos = tex_pos + (y - mlx->draw_start) * step;
+	tex_y = (int)current_pos;
+	if (tex_y > 0)
+		tex_y = tex_y % mlx->wall[tex_index].height;
+	if (tex_y < 0)
+		tex_y = 0;
+	if (tex_y >= mlx->wall[tex_index].height)
+		tex_y = mlx->wall[tex_index].height - 1;
+	return (my_color_get(&mlx->wall[tex_index], tex_x, tex_y));
+}
