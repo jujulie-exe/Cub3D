@@ -6,21 +6,26 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/02 18:34:57 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 12:27:57 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
 
-unsigned int my_color_get(t_wall *wall, int y, int x)
+unsigned int	my_color_get(t_wall *wall, int y, int x)
 {
-	int bpp = wall->bts / 8;
-	char *pixel_ptr = wall->addr + (y * wall->szl + x * bpp);
-	int	i = 0;
-	unsigned int color = 0;
-	 if (x < 0 || y < 0 || x >= wall->width || y >= wall->height)
-        return (0);
+	int				bpp;
+	char			*pixel_ptr;
+	int				i;
+	unsigned int	color;
+
+	bpp = wall->bts / 8;
+	pixel_ptr = wall->addr + (y * wall->szl + x * bpp);
+	i = 0;
+	color = 0;
+	if (x < 0 || y < 0 || x >= wall->width || y >= wall->height)
+		return (0);
 	while (i < bpp)
 	{
 		color |= (unsigned char)pixel_ptr[i] << (8 * i);
@@ -34,7 +39,7 @@ void	init_texture(t_wall wall[], t_mlx *mlx)
 	size_t	i;
 
 	i = 0;
-	while(i < 3)
+	while (i < 3)
 	{
 		wall[i].index = i;
 		wall[i].texture = mlx->texture[i];
@@ -47,27 +52,33 @@ void	init_texture(t_wall wall[], t_mlx *mlx)
 
 unsigned int	cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index)
 {
-	double wall_x;
+	double	wall_x;
+	int		tex_x;
+	double	step;
+	double	tex_pos;
+	double	current_pos;
+	int		tex_y;
+
 	if (ray->side == 0)
-		 wall_x = mlx->player->posy + ray->dtw * ray->var_y;
+		wall_x = mlx->player->posy + ray->dtw * ray->var_y;
 	else
 		wall_x = mlx->player->posx + ray->dtw * ray->var_x;
 	wall_x = wall_x * 0.2;
 	wall_x -= floor(wall_x);
-	int tex_x = (int)(wall_x * (double)mlx->wall[tex_index].width);
+	tex_x = (int)(wall_x * (double)mlx->wall[tex_index].width);
 	if ((ray->side == 0 && ray->var_x > 0) || (ray->side == 1 && ray->var_y < 0))
 		tex_x = mlx->wall[tex_index].width - tex_x - 1;
-	double step = (double)mlx->wall[tex_index].height / (double)ray->height;
-	double tex_pos = (mlx->draw_start - mlx->height / 2 + ray->height / 2 ) * step;
-	double current_pos = tex_pos + ( y - mlx->draw_start) * step;
-	int tex_y = (int)current_pos;
+	step = (double)mlx->wall[tex_index].height / (double)ray->height;
+	tex_pos = (mlx->draw_start - mlx->height / 2 + ray->height / 2) * step;
+	current_pos = tex_pos + (y - mlx->draw_start) * step;
+	tex_y = (int)current_pos;
 	if (tex_y > 0)
 		tex_y = tex_y % mlx->wall[tex_index].height;
 	if (tex_y < 0)
 		tex_y = 0;
 	if (tex_y >= mlx->wall[tex_index].height)
 		tex_y = mlx->wall[tex_index].height - 1;
-	return ( my_color_get(&mlx->wall[tex_index], tex_x, tex_y));
+	return (my_color_get(&mlx->wall[tex_index], tex_x, tex_y));
 }
 
 unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y, int x)
@@ -83,7 +94,7 @@ unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y, int x)
 	}
 	else if (ray->side == 1)
 	{
-		if (ray->var_y > 0) // && mlx->player->angle < PI && mlx->player->angle > 0)
+		if (ray->var_y > 0)
 			color = SO;
 		else
 			color = EA;
@@ -91,10 +102,10 @@ unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y, int x)
 	return (cmpt_tex(mlx, ray, y, color));
 }
 
-
-void	update_pixels(t_mlx *mlx, t_ray *ray, int x, int y, float start)
+void	update_pixels(t_mlx *mlx, t_ray *ray, int x, int y)
 {
 	int	color;
+	
 	color = get_texture(mlx, ray, &mlx->wall, y, x);
 	my_put_pixel(x, y, color, mlx);
 }

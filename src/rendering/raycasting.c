@@ -6,11 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:33:05 by iwaslet           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/05/30 15:53:45 by iwaslet          ###   ########.fr       */
-=======
-/*   Updated: 2025/05/30 15:37:30 by jfranco          ###   ########.fr       */
->>>>>>> jujulie_parsing
+/*   Updated: 2025/06/03 12:24:58 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +48,18 @@ void	angle_protect(float *a)
 		*a = 0;
 	if (*a < 0)
 		*a = 2 * (float)PI;
+}
+
+float	perfomance(t_ray *ray)
+{
+	float	d;
+	float	k;
+	float	calc;
+
+	d = fmaxf(ray->dtw, 0.001f);
+	k = 0.028f;
+	calc = fminf(1.0f, k / sqrtf(d));
+	if (calc <= 0.01)
+		return (0.015);
+	return (calc);
 }

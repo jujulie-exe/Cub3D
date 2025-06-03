@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intern_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
+/*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:56:45 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/01 13:11:02 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/03 12:06:11 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	swap_and_split(t_data_maps *maps, char *line)
 	cleaning_maps(maps);
 	free(maps->argv[i]);
 	maps->argv[i] = NULL;
-	if(maps->argv[0] == NULL)
+	if (maps->argv[0] == NULL)
 		ft_free_all_and_exit(maps, "NO MAPSSS");
 	tmp_argv = ft_split(maps->argv[0], '\n');
 	free(maps->argv[0]);

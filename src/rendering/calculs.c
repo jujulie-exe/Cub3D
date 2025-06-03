@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/02 18:39:22 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 12:25:04 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,11 @@
 //		return 0.3;
 //	return 0.01;
 //}
-float perfomance(t_ray *ray)
-{
-    float d = fmaxf(ray->dtw, 0.001f);
-    float k = 0.028f;  
-    float calc = fminf(1.0f, k / sqrtf(d));
-	if (calc <= 0.01)
-		return (0.015);
-	return (calc);
-}
+
 void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 {
-	float ray_distance;
+	float	ray_distance;
+
 	ray->side = 0;
 	while (!collision(ray, player, map))
 	{

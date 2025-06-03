@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proccess_parsing.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
+/*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:34 by jfranco           #+#    #+#             */
-/*   Updated: 2025/04/04 14:07:51 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/03 12:06:22 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	proccesing_file_cub(t_data_maps *maps)
 	if (fd < 0)
 		ft_free_all_and_exit(maps, MSG_ERROR_FILE);
 	line = proccess_gnl(fd);
-	if(check_div(line) == true)
+	if (check_div(line) == true)
 		ft_free_all_and_exit(maps, "NO DIV CHARTER ALLOW");
 	if (serch_map_and_validate(line) == 0)
 		ft_free_all_and_exit(NULL, "NO VALID MAP");

@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill_algo.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
+/*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 13:47:10 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/30 16:43:45 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/03 12:08:41 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*  ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( */
 
 #include "../../include/cube3d.h"
 
@@ -69,5 +68,5 @@ void	fill_flod(t_data_maps *ptr)
 	free_double_array(&data.copy_maps);
 	data.copy_maps = NULL;
 	ptr->ptr_mlx->valid_map = NULL;
-	ptr->ptr_mlx->valid_map  = ft_split(ptr->map, '\n');
+	ptr->ptr_mlx->valid_map = ft_split(ptr->map, '\n');
 }

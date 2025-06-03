@@ -6,15 +6,14 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 13:59:58 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/30 18:32:22 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/03 12:03:15 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/cube3d.h"
 #include "../../include/render3d.h"
 
-int	handle_key(int	keycode, t_data_maps *ptr)
+int	handle_key(int keycode, t_data_maps *ptr)
 {
 	if (keycode == XK_Escape)
 		exit_key(ptr);
@@ -29,24 +28,24 @@ int	handle_key(int	keycode, t_data_maps *ptr)
 	else if (keycode == XK_Left)
 		ptr->ptr_mlx->player->rot_left = true;
 	else if (keycode == XK_Right)
-		ptr->ptr_mlx->player->rot_right= true;
+		ptr->ptr_mlx->player->rot_right = true;
 	return (0);
 }
 
 void	re_size_win(t_mlx *data, int *w, int *h)
 {
-	int tmp_w;
-	int tmp_h;
+	int	tmp_w;
+	int	tmp_h;
 
-    tmp_h = (*h);
-    tmp_w = tmp_h * 16 / 9;
-    if (tmp_w > (*w) )
-    {
-        tmp_w = (*w);
-        tmp_h = tmp_w * 9 / 16;
-    }
-    (*w) = tmp_w / SIZE_WIN;
-    (*h) = tmp_h  / SIZE_WIN;
+	tmp_h = (*h);
+	tmp_w = tmp_h * 16 / 9;
+	if (tmp_w > (*w))
+	{
+		tmp_w = (*w);
+		tmp_h = tmp_w * 9 / 16;
+	}
+	(*w) = tmp_w / SIZE_WIN;
+	(*h) = tmp_h / SIZE_WIN;
 }
 
 void	init_ptr_mlx(t_mlx *data, t_data_maps *ptr)
@@ -64,7 +63,7 @@ void	init_ptr_mlx(t_mlx *data, t_data_maps *ptr)
 			&data->line_len,
 			&data->endian);
 	mlx_hook(data->win, 17, (0), exit_key, &(*ptr));
-	mlx_hook(data->win, 2, (1L<<0), handle_key, &(*ptr));
+	mlx_hook(data->win, 2, (1L << 0), handle_key, &(*ptr));
 	mlx_loop_hook(data->mlx, draw_loop, &(*data));
 	mlx_loop(data->mlx);
 }
