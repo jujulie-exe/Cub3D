@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 17:31:05 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 17:40:17 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,19 @@ void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 	while (!collision(ray, player, map))
 	{
 		ray_distance = perfomance(ray);
-		ray->var_x += cos(start) * ray_distance;
-		ray->var_y += sin(start) * ray_distance;
-		if (fabs(sin(start)) >= fabs(cos(start)) && ray->var_x < ray->var_y)
+		if (fabs(sin(start)) >= fabs(cos(start)))
+		{
+			ray->var_y += sin(start) * ray_distance;
+			ray->var_x += cos(start) * ray_distance;
 			ray->side = 1;
+		}
+		else
+		{
+			ray->var_x += cos(start) * ray_distance;
+			ray->var_y += sin(start) * ray_distance;
+		}
+		// if (fabs(sin(start)) >= fabs(cos(start)) && ray->var_x < ray->var_y)
+		// 	ray->side = 1;
 	}
 }
 

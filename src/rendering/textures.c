@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 17:29:03 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 17:43:42 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y)
 
 	if (ray->side == 0)
 	{
-		if (ray->var_x > 0)
-			color = NO;
+		if (cos(mlx->draw_start) > 0)
+			color = EA;
 		else
 			color = WE;
 	}
 	else
 	{
-		if (ray->var_y > 0)
+		if (sin(mlx->draw_start) < 0)
 			color = SO;
 		else
-			color = EA;
+			color = NO;
 	}
 	return (cmpt_tex(mlx, ray, y, color));
 }
