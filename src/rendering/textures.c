@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 12:27:57 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 14:01:09 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	init_texture(t_wall wall[], t_mlx *mlx)
 		wall[i].texture = mlx->texture[i];
 		wall[i].width = mlx->txr_w[i];
 		wall[i].height = mlx->txr_h[i];
-		wall[i].addr = mlx_get_data_addr(mlx->texture[i], &wall[i].bts, &wall[i].szl, &wall[i].edn);
+		wall[i].addr = mlx_get_data_addr(mlx->texture[i],
+				&wall[i].bts, &wall[i].szl, &wall[i].edn);
 		i++;
 	}
 }
@@ -66,7 +67,8 @@ unsigned int	cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index)
 	wall_x = wall_x * 0.2;
 	wall_x -= floor(wall_x);
 	tex_x = (int)(wall_x * (double)mlx->wall[tex_index].width);
-	if ((ray->side == 0 && ray->var_x > 0) || (ray->side == 1 && ray->var_y < 0))
+	if ((ray->side == 0 && ray->var_x > 0)
+		|| (ray->side == 1 && ray->var_y < 0))
 		tex_x = mlx->wall[tex_index].width - tex_x - 1;
 	step = (double)mlx->wall[tex_index].height / (double)ray->height;
 	tex_pos = (mlx->draw_start - mlx->height / 2 + ray->height / 2) * step;
@@ -81,18 +83,18 @@ unsigned int	cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index)
 	return (my_color_get(&mlx->wall[tex_index], tex_x, tex_y));
 }
 
-unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y, int x)
+unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y)
 {
 	int	color;
 
 	if (ray->side == 0)
 	{
-		if (ray->var_x > 0 && mlx->player->angle < PI / 4 || mlx->player->angle > 7 * PI / 4)
+		if (ray->var_x > 0)
 			color = NO;
 		else
 			color = WE;
 	}
-	else if (ray->side == 1)
+	else
 	{
 		if (ray->var_y > 0)
 			color = SO;
@@ -102,11 +104,12 @@ unsigned int	get_texture(t_mlx *mlx, t_ray *ray, t_wall *wall[], int y, int x)
 	return (cmpt_tex(mlx, ray, y, color));
 }
 
-void	update_pixels(t_mlx *mlx, t_ray *ray, int x, int y)
+void	draw_texture(t_mlx *mlx, t_ray *ray, int x, int y)
 {
 	int	color;
-	
-	color = get_texture(mlx, ray, &mlx->wall, y, x);
+
+	color = 0;
+	color = get_texture(mlx, ray, &mlx->wall, y);
 	my_put_pixel(x, y, color, mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 13:59:58 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/03 12:03:15 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 13:56:26 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	init_ptr_mlx(t_mlx *data, t_data_maps *ptr)
 	// mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 	mlx_get_screen_size(data->mlx, &data->width, &data->height);
 	re_size_win(data->mlx, &data->width, &data->height);
-	data->win = mlx_new_window(data->mlx, data->width, data->height, "(´・ω・)っ由 Ju & Isa (っ´ω`c)♡");
+	data->win = mlx_new_window(data->mlx, data->width,
+			data->height, "(´・ω・)っ由 Ju & Isa (っ´ω`c)♡");
 	data->img = mlx_new_image(data->mlx, data->width, data->height);
 	data->addr = mlx_get_data_addr(data->img,
 			&data->bits_pixel,

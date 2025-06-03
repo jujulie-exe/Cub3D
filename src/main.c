@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:32 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/03 12:05:19 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/03 13:59:18 by iwaslet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv) //proteger les mlx
 		.mlx = NULL,
 		.texture[0] = NULL,
 		.win = NULL,
-		.img = NULL,//unsigned int
+		.img = NULL, //unsigned int
 		.addr = NULL,
 		.ptr_maps = NULL,
 		.valid_map = NULL,
