@@ -159,10 +159,10 @@ typedef struct s_player
 	bool	right;
 
 	float	angle;
-	float	dirX;
-	float	dirY;
-	float	planeX;
-	float	planeY;
+	float	dirx;
+	float	diry;
+	float	planex;
+	float	planey;
 	bool	rot_left;
 	bool	rot_right;
 }	t_player;
