@@ -3,7 +3,7 @@ NAME = cube3D
 
 # Compiler e flag
 CC = cc
-CFLAGS = -g3 -Ofast  -Wall -Wextra #-Werror -Iminilibx -Isrc
+CFLAGS = -g3 -Ofast  -Wall -Wextra  -Werror -Werror=unused-variable  -Werror=unused-function -Iminilibx -Isrc #-Werror=pointer-arith
 
 # Colori
 GREEN = \033[38;5;82m
@@ -143,6 +143,6 @@ ifeq ($(wildcard $(NAME)),)
 else
 	$(MAKE) all
 endif
-	./$(NAME) cubmap/VALID_FILE_MAP/ALL_VALID.cub
+	./$(NAME) cubmap/VALID_FILE_MAP/ALL_VALID2.cub
 
 .PHONY: all clean fclean re run

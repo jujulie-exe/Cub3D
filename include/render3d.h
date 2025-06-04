@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:35:33 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 18:48:33 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/04 19:07:55 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void				draw_texture(t_mlx *mlx, t_ray *ray, int x, int y);
 void				init_texture(t_wall wall[], t_mlx *mlx);
 unsigned int		get_texture(t_mlx *mlx, t_ray *ray, int y);
 unsigned int		my_color_get(t_wall *wall, int y, int x);
+unsigned int		cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index);
 
 #endif

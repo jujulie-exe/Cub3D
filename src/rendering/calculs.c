@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/04 18:37:36 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/04 19:04:05 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	init_vector(t_ray *ray, t_player *player, float start)
 {
+	(void)start;
 	ray->map_x = (int)player->posx;
 	ray->map_y = (int)player->posy;
 	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
@@ -75,6 +76,7 @@ float	calc_dist(float x, float y)
 
 void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player)
 {
+	(void)player;
 	ray->height = (mlx->height / ray->dtw);
 	ray->center_line = (mlx->height - ray->height) / 2;
 	ray->last_line = ray->center_line + ray->height;

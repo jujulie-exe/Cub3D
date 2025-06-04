@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 13:59:58 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/30 18:32:22 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/04 19:02:17 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	handle_key(int	keycode, t_data_maps *ptr)
 
 void	re_size_win(t_mlx *data, int *w, int *h)
 {
+	(void)data;
 	int tmp_w;
 	int tmp_h;
 

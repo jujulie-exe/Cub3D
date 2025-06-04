@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:30 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/04 18:38:39 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/04 19:04:35 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 
 void	move_player(t_player *player, t_mlx *mlx)
 {
-	float	cos_a;
-	float	sin_a;
 
 	rot_adjustment(player, mlx);
-	cos_a = cos(player->angle);
-	sin_a = sin(player->angle);
 	angle_protect(&player->angle);
 	if (player->up)
 		mov_adjustment(player, player->dirX, player->dirY, mlx);

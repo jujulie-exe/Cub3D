@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/04 18:53:16 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/04 19:05:54 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,12 @@ double	time_diff(struct timeval *t1, struct timeval *t2, t_mlx *mlx)
 int	draw_loop(t_mlx *mlx)
 {
 	int				i;
-	float			corr;
 	float			start;
 	struct timeval	tv1;
 	struct timeval	tv2;
 
 	i = 0;
 	init_ray(mlx->ray);
-	corr = (float)PI / 3 / mlx->width;
 	start = mlx->player->angle - ((float)PI / 6);
 	move_player(mlx->player, mlx);
 	gettimeofday(&tv1, NULL);
