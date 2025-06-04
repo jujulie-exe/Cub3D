@@ -49,9 +49,9 @@ int	draw_loop(t_mlx *mlx)
 	while (i < mlx->width)
 	{
 		mlx->ray->camera_x = 2 * i / (double)mlx->width - 1;
-		mlx->ray->ray_dir_x = mlx->player->dirX + mlx->player->planeX
+		mlx->ray->ray_dir_x = mlx->player->dirx + mlx->player->planex
 			* mlx->ray->camera_x;
-		mlx->ray->ray_dir_y = mlx->player->dirY + mlx->player->planeY
+		mlx->ray->ray_dir_y = mlx->player->diry + mlx->player->planey
 			* mlx->ray->camera_x;
 		draw_line(mlx, start, i);
 		i++;

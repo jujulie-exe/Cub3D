@@ -26,10 +26,10 @@ void	init_player(t_mlx *mlx)
 	recup_start_dir(mlx->player);
 	fov = M_PI / 3;
 	plane_length = tan(fov / 2);
-	mlx->player->dirX = cos(mlx->player->angle);
-	mlx->player->dirY = sin(mlx->player->angle);
-	mlx->player->planeX = -mlx->player->dirY * plane_length;
-	mlx->player->planeY = mlx->player->dirX * plane_length;
+	mlx->player->dirx = cos(mlx->player->angle);
+	mlx->player->diry = sin(mlx->player->angle);
+	mlx->player->planex = -mlx->player->diry * plane_length;
+	mlx->player->planey = mlx->player->dirx * plane_length;
 	mlx->player->up = false;
 	mlx->player->down = false;
 	mlx->player->left = false;

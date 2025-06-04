@@ -15,17 +15,16 @@
 
 void	move_player(t_player *player, t_mlx *mlx)
 {
-
 	rot_adjustment(player, mlx);
 	angle_protect(&player->angle);
 	if (player->up)
-		mov_adjustment(player, player->dirX, player->dirY, mlx);
+		mov_adjustment(player, player->dirx, player->diry, mlx);
 	if (player->down)
-		mov_adjustment(player, -player->dirX, -player->dirY, mlx);
+		mov_adjustment(player, -player->dirx, -player->diry, mlx);
 	if (player->left)
-		mov_adjustment(player, player->dirY, -player->dirX, mlx);
+		mov_adjustment(player, player->diry, -player->dirx, mlx);
 	if (player->right)
-		mov_adjustment(player, -player->dirY, player->dirX, mlx);
+		mov_adjustment(player, -player->diry, player->dirx, mlx);
 }
 
 void	mov_adjustment(t_player *player, float cos, float sin, t_mlx *mlx)
@@ -56,15 +55,15 @@ void	add_rot(t_player *player, float angle_speed, int flags)
 	else
 		player->angle -= angle_speed;
 	rot = angle_speed;
-	old_dir_x = player->dirX;
-	player->dirX = player->dirX * cos(rot) - player->dirY
+	old_dir_x = player->dirx;
+	player->dirx = player->dirx * cos(rot) - player->diry
 		* sin(rot);
-	player->dirY = old_dir_x * sin(rot) + player->dirY
+	player->diry = old_dir_x * sin(rot) + player->diry
 		* cos(rot);
-	old_plane_x = player->planeY;
-	player->planeY = player->planeY * cos(-rot)
-		- player->planeX * sin(-rot);
-	player->planeX = old_plane_x * sin(-rot) + player->planeX
+	old_plane_x = player->planey;
+	player->planey = player->planey * cos(-rot)
+		- player->planex * sin(-rot);
+	player->planex = old_plane_x * sin(-rot) + player->planex
 		* cos(-rot);
 }
 
