@@ -13,6 +13,8 @@
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
+# define RIGHT 0
+# define LEFT 1
 # define NO 0
 # define SO 1
 # define WE 2
@@ -30,6 +32,7 @@
 # define MSG_ERROR_MAX "Error\n: RGB values must be 0–255.\n"
 # define MSG_ERROR_ARG "Error\n: Missing required information.\n"
 # define MSG_ERROR "Error\n"
+# define MSG_ERROR_DIV "Error\n: DIV character not allowed"
 # define DIV '#'
 # define SIZE_WIN 2
 # define BUFFER_SIZE 1

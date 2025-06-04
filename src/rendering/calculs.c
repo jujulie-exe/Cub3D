@@ -23,22 +23,22 @@ void	init_vector(t_ray *ray, t_player *player, float start)
 	if (ray->ray_dir_x < 0)
 	{
 		ray->step_x = -1;
-		ray->side_dist_x = (player->posx - ray->map_x) * ray->delta_dist_x;
+		ray->side_dist_x = side(player, ray, 1);
 	}
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - player->posx) * ray->delta_dist_x;
+		ray->side_dist_x = side(player, ray, 2);
 	}
 	if (ray->ray_dir_y < 0)
 	{
 		ray->step_y = -1;
-		ray->side_dist_y = (player->posy - ray->map_y) * ray->delta_dist_y;
+		ray->side_dist_y = side(player, ray, 3);
 	}
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - player->posy) * ray->delta_dist_y;
+		ray->side_dist_y = side(player, ray, 4);
 	}
 }
 
@@ -61,9 +61,11 @@ void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 		}
 	}
 	if (ray->side == 0)
-		ray->dtw = (ray->map_x - player->posx + (1 - ray->step_x) / 2) / ray->ray_dir_x;
+		ray->dtw = (ray->map_x - player->posx
+				+ (1 - ray->step_x) / 2) / ray->ray_dir_x;
 	else
-		ray->dtw = (ray->map_y - player->posy + (1 - ray->step_y) / 2) / ray->ray_dir_y;
+		ray->dtw = (ray->map_y - player->posy
+				+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
 }
 
 float	calc_dist(float x, float y)

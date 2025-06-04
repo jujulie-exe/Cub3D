@@ -69,5 +69,5 @@ void	fill_flod(t_data_maps *ptr)
 	free_double_array(&data.copy_maps);
 	data.copy_maps = NULL;
 	ptr->ptr_mlx->valid_map = NULL;
-	ptr->ptr_mlx->valid_map  = ft_split(ptr->map, '\n');
+	ptr->ptr_mlx->valid_map = ft_split(ptr->map, '\n');
 }

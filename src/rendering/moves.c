@@ -41,31 +41,6 @@ void	mov_adjustment(t_player *player, float cos, float sin, t_mlx *mlx)
 	}
 	move_release(player);
 }
-#define RIGHT 0
-#define LEFT 1
-
-void	add_rot(t_player *player, float angle_speed, int flags)
-{
-	float	rot;
-	float	old_dir_x;
-	float	old_plane_x;
-
-	if (flags == RIGHT)
-		player->angle += angle_speed;
-	else
-		player->angle -= angle_speed;
-	rot = angle_speed;
-	old_dir_x = player->dirx;
-	player->dirx = player->dirx * cos(rot) - player->diry
-		* sin(rot);
-	player->diry = old_dir_x * sin(rot) + player->diry
-		* cos(rot);
-	old_plane_x = player->planey;
-	player->planey = player->planey * cos(-rot)
-		- player->planex * sin(-rot);
-	player->planex = old_plane_x * sin(-rot) + player->planex
-		* cos(-rot);
-}
 
 void	rot_adjustment(t_player *player, t_mlx *mlx)
 {

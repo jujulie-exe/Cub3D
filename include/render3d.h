@@ -55,11 +55,25 @@ void				angle_calcul(t_player *player,
 float				dist_to_wall(t_player *player, t_ray *ray);
 void				calc_height(t_mlx *mlx, t_ray *ray, t_player *player);
 float				perfomance(t_ray *ray);
+void				add_rot(t_player *player, float angle_speed, int flags);
 
 void				draw_texture(t_mlx *mlx, t_ray *ray, int x, int y);
 void				init_texture(t_wall wall[], t_mlx *mlx);
 unsigned int		get_texture(t_mlx *mlx, t_ray *ray, int y);
 unsigned int		my_color_get(t_wall *wall, int y, int x);
 unsigned int		cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index);
+
+inline static float	side(t_player *player, t_ray *ray, int flags)
+{
+	if (flags == 1)
+		return ((player->posx - ray->map_x) * ray->delta_dist_x);
+	else if (flags == 2)
+		return ((ray->map_x + 1.0 - player->posx) * ray->delta_dist_x);
+	else if (flags == 3)
+		return ((player->posy - ray->map_y) * ray->delta_dist_y);
+	else if (flags == 4)
+		return ((ray->map_y + 1.0 - player->posy) * ray->delta_dist_y);
+	return (0);
+}
 
 #endif

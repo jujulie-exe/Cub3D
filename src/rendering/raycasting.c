@@ -13,6 +13,29 @@
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
 
+void	add_rot(t_player *player, float angle_speed, int flags)
+{
+	float	rot;
+	float	tmp_dir_x;
+	float	tmp_plane_x;
+
+	if (flags == RIGHT)
+		player->angle += angle_speed;
+	else
+		player->angle -= angle_speed;
+	rot = angle_speed;
+	tmp_dir_x = player->dirx;
+	player->dirx = player->dirx * cos(rot) - player->diry
+		* sin(rot);
+	player->diry = tmp_dir_x * sin(rot) + player->diry
+		* cos(rot);
+	tmp_plane_x = player->planey;
+	player->planey = player->planey * cos(-rot)
+		- player->planex * sin(-rot);
+	player->planex = tmp_plane_x * sin(-rot) + player->planex
+		* cos(-rot);
+}
+
 void	init_ray(t_ray *ray)
 {
 	ray->var_x = 0;

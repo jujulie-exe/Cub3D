@@ -94,13 +94,13 @@ int	proccesing_file_cub(t_data_maps *maps)
 	if (fd < 0)
 		ft_free_all_and_exit(maps, MSG_ERROR_FILE);
 	line = proccess_gnl(fd);
-	if(check_div(line) == true)
-		ft_free_all_and_exit(maps, "NO DIV CHARTER ALLOW");
+	if (check_div(line) == true)
+		ft_free_all_and_exit(maps, MSG_ERROR_DIV);
 	if (serch_map_and_validate(line) == 0)
 		ft_free_all_and_exit(NULL, "NO VALID MAP");
 	swap_and_split(maps, line);
 	if (maps->argv == NULL)
-		ft_free_all_and_exit(NULL, "NO VALID ARG");
+		ft_free_all_and_exit(NULL, MSG_ERROR_ARG);
 	fill_flod(maps);
 	trim(maps);
 	ptr_texture(maps);

@@ -9,13 +9,11 @@
 /*   Updated: 2025/05/31 18:45:51 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 #include "../include/render3d.h"
 #include "../include/cube3d.h"
 #include "../include/render3d.h"
 
-int	main(int argc, char **argv) //proteger les mlx 
+int	main(int argc, char **argv)
 {
 	t_data_maps	maps;
 	t_mlx		ptr_mlx;
@@ -23,34 +21,23 @@ int	main(int argc, char **argv) //proteger les mlx
 	t_player	ptr_player;
 	t_wall		ptr_wall[4];
 
-	maps = (struct s_data_maps){NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL};
-	ptr_wall[0] = (struct s_wall) {0, NULL, 0, 0, 0, 0, 0, NULL};
-	ptr_wall[1] = (struct s_wall) {0, NULL, 0, 0, 0, 0, 0, NULL};
-	ptr_wall[2] = (struct s_wall) {0, NULL, 0, 0, 0, 0, 0, NULL};
-	ptr_wall[3] = (struct s_wall) {0, NULL, 0, 0, 0, 0, 0, NULL};
-	ptr_mlx = (struct s_mlx){
-	.mlx = NULL, 
-	.texture[0] = NULL,
-	.win = NULL,
-	.img = NULL,//unsigned int
-	.addr = NULL,
-	.ptr_maps = NULL,
-	.valid_map = NULL,
-	.player = &ptr_player,
-	.ray = &ptr_ray,
-	.wall = ptr_wall,
-	};
 	if (argc != 2)
-		return (ft_fprintf(2, "%s", MSG_ERROR), -1);
+		return (ft_fprintf(2, "%s\n", MSG_ERROR), -1);
+	maps = (struct s_data_maps){0};
+	ptr_mlx = (struct s_mlx){0};
+	ptr_mlx.texture[0] = NULL;
+	ptr_mlx.player = &ptr_player;
+	ptr_mlx.ray = &ptr_ray;
+	ptr_mlx.wall = ptr_wall;
 	ptr_mlx.ptr_maps = &maps;
 	maps.ptr_mlx = &ptr_mlx;
-	ptr_mlx.mlx= mlx_init();
+	ptr_mlx.mlx = mlx_init();
+	if (ptr_mlx.mlx == NULL)
+		return (ft_fprintf(2, "%s\n", MSG_ERROR), -1);
 	maps.name_maps = argv[1];
 	proccesing_file_cub(&maps);
 	init_player(&ptr_mlx);
 	init_texture(ptr_wall, &ptr_mlx);
 	init_ptr_mlx(&ptr_mlx, &maps);
-	if (ptr_mlx.win == NULL)
-		//mlx_error(1, &ptr_mlx);
 	return (0);
 }

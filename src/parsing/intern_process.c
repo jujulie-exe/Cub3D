@@ -96,7 +96,7 @@ void	swap_and_split(t_data_maps *maps, char *line)
 	cleaning_maps(maps);
 	free(maps->argv[i]);
 	maps->argv[i] = NULL;
-	if(maps->argv[0] == NULL)
+	if (maps->argv[0] == NULL)
 		ft_free_all_and_exit(maps, "NO MAPSSS");
 	tmp_argv = ft_split(maps->argv[0], '\n');
 	free(maps->argv[0]);
