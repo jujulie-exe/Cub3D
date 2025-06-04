@@ -31,8 +31,9 @@
 # define MSG_ERROR_COLOR "Error\n: Use RGB: 3 values(0–255), comma-separated.\n"
 # define MSG_ERROR_MAX "Error\n: RGB values must be 0–255.\n"
 # define MSG_ERROR_ARG "Error\n: Missing required information.\n"
-# define MSG_ERROR "Error\n"
-# define MSG_ERROR_DIV "Error\n: DIV character not allowed"
+# define MSG_ERROR_DIV "Error\n: DIV character not allowed. \n"
+# define MSG_ERROR_ARGC "Error\nargc must be 2: [./cub3D] [path/map.cub]\n"
+# define MSG_ERROR_MLX "Error\nmlx_init() failed: mlx is NULL.\n"
 # define DIV '#'
 # define SIZE_WIN 2
 # define BUFFER_SIZE 1

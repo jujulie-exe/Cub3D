@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	t_wall		ptr_wall[4];
 
 	if (argc != 2)
-		return (ft_fprintf(2, "%s\n", MSG_ERROR), -1);
+		return (ft_fprintf(2, "%s", MSG_ERROR_ARGC), -1);
 	maps = (struct s_data_maps){0};
 	ptr_mlx = (struct s_mlx){0};
 	ptr_mlx.texture[0] = NULL;
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	maps.ptr_mlx = &ptr_mlx;
 	ptr_mlx.mlx = mlx_init();
 	if (ptr_mlx.mlx == NULL)
-		return (ft_fprintf(2, "%s\n", MSG_ERROR), -1);
+		return (ft_fprintf(2, "%s", MSG_ERROR_MLX), -1);
 	maps.name_maps = argv[1];
 	proccesing_file_cub(&maps);
 	init_player(&ptr_mlx);

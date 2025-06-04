@@ -57,7 +57,6 @@ void	cleaning_maps(t_data_maps *ptr)
 		i++;
 	}
 	clean_map[i] = '\0';
-	printf("[cleaning maps] %s", clean_map);
 	free(ptr->map);
 	ptr->map = clean_map;
 }
@@ -92,7 +91,6 @@ void	swap_and_split(t_data_maps *maps, char *line)
 		i++;
 	i--;
 	maps->map = ft_strdup(maps->argv[i]);
-	printf("%s", maps->map);
 	cleaning_maps(maps);
 	free(maps->argv[i]);
 	maps->argv[i] = NULL;
