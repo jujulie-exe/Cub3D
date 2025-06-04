@@ -143,6 +143,6 @@ ifeq ($(wildcard $(NAME)),)
 else
 	$(MAKE) all
 endif
-	./$(NAME) cubmap/VALID_FILE_MAP/ALL_VALID2.cub
+	./$(NAME) cubmap/VALID_FILE_MAP/ALL_VALID.cub
 
 .PHONY: all clean fclean re run

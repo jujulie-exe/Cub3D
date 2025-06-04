@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/03 18:39:07 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/04 14:33:41 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,17 @@ typedef struct s_ray
 	int		side;
 	int		wall_step;
 	int		tex_pos;
+	float	delta_dist_y;
+	float	delta_dist_x;
+	int		step_x;
+	int		step_y;
+	float	side_dist_y;
+	float	side_dist_x;
+	float	camera_x;
+	float	ray_dir_x;
+	float	ray_dir_y;
+	int		map_y;
+	int		map_x;
 }	t_ray;
 
 typedef struct s_player
@@ -148,6 +159,10 @@ typedef struct s_player
 	bool	right;
 
 	float	angle;
+	float	dirX;
+	float	dirY;
+	float	planeX;
+	float	planeY;
 	bool	rot_left;
 	bool	rot_right;
 }	t_player;

@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:19:53 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/05/27 18:04:42 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/04 14:39:58 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ void	init_player(t_mlx *mlx)
 	mlx->player->posy = mlx->player->start_posy;
 	mlx->player->start_dir = mlx->valid_map[mlx->p_y][mlx->p_x];
 	recup_start_dir(mlx->player);
+	float FOV = M_PI / 3;  // 60°
+	float plane_length = tan(FOV / 2);
+	
+	mlx->player->dirX = cos(mlx->player->angle);
+	mlx->player->dirY = sin(mlx->player->angle);
+	
+	mlx->player->planeX = -mlx->player->dirY * plane_length;
+	mlx->player->planeY = mlx->player->dirX * plane_length;
 	mlx->player->up = false;
 	mlx->player->down = false;
 	mlx->player->left = false;

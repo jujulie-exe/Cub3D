@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:33:05 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 17:31:22 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/04 17:19:21 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	collision(t_ray *ray, t_player *player, char **map)
 	int	y;
 
 	(void)player;
-	if (ray->var_x >= 0 && ray->var_y >= 0)
+	if (ray->map_x >= 0 && ray->map_y >= 0)
 	{
-		x = (int)(ray->var_x);
-		y = (int)(ray->var_y);
+		x = (int)(ray->map_x);
+		y = (int)(ray->map_y);
 		if (map[y][x] != '1')
 			return (0);
 	}

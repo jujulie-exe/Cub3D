@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 18:46:13 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/04 15:39:58 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ int	draw_loop(t_mlx *mlx)
 	gettimeofday(&tv1, NULL);
 	while (i < mlx->width)
 	{
+		mlx->ray->camera_x = 2 * i / (double)mlx->width - 1;	
+		mlx->ray->ray_dir_x = mlx->player->dirX + mlx->player->planeX * mlx->ray->camera_x;
+		mlx->ray->ray_dir_y = mlx->player->dirY + mlx->player->planeY * mlx->ray->camera_x;
 		draw_line(mlx, start, i);
-		start += corr;
+		//start += corr;
 		i++;
 	}
 	gettimeofday(&tv2, NULL);
@@ -87,7 +90,7 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 	while (mlx->ray->center_line <= mlx->ray->last_line)
 	{
 		//my_put_pixel(i, mlx->ray->center_line, 0xB97AD1, mlx);
-		mlx->draw_start = start_x;
+		mlx->draw_start = i;
 		draw_texture(mlx, mlx->ray, i, mlx->ray->center_line);
 		mlx->ray->center_line++;
 	}

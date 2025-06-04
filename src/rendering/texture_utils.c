@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:23:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 18:34:48 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/04 17:22:10 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ unsigned int	cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index)
 	
 	tex = (struct s_tex){0};
 	if (ray->side == 0)
-		tex.wall_x = mlx->player->posy + ray->dtw * ray->var_y;
+		tex.wall_x = mlx->player->posy + ray->dtw * ray->ray_dir_y;
 	else
-		tex.wall_x = mlx->player->posx + ray->dtw * ray->var_x;
-	tex.wall_x = tex.wall_x * 0.2;
+		tex.wall_x = mlx->player->posx + ray->dtw * ray->ray_dir_x;
+//	tex.wall_x = tex.wall_x * 0.01;
 	tex.wall_x -= floor(tex.wall_x);
 	tex.tex_x = (int)(tex.wall_x * (double)mlx->wall[tex_index].width);
-	if ((ray->side == 0 && cos(mlx->draw_start) > 0)
-		|| (ray->side == 1 && sin(mlx->draw_start) < 0))
+	if ((ray->side == 0 && ray->ray_dir_x > 0)
+		|| (ray->side == 1 && ray->ray_dir_y < 0))
 		tex.tex_x = mlx->wall[tex_index].width - tex.tex_x - 1;
 	tex.step = (double)mlx->wall[tex_index].height / (double)ray->height;
 	tex.tex_pos = (mlx->draw_start - mlx->height / 2 + ray->height / 2) * tex.step;
@@ -97,8 +97,8 @@ unsigned int	cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index)
 	tex.tex_y = (int)tex.current_pos;
 	if (tex.tex_y > 0)
 		tex.tex_y = tex.tex_y % mlx->wall[tex_index].height;
-	if (tex.tex_y < 0)
-		tex.tex_y = 0;
+//	if (tex.tex_y < 0)
+//		tex.tex_y = 0;
 	if (tex.tex_y >= mlx->wall[tex_index].height)
 		tex.tex_y = mlx->wall[tex_index].height - 1;
 	return (my_color_get(&mlx->wall[tex_index], tex.tex_x, tex.tex_y));

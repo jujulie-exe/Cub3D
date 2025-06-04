@@ -6,35 +6,68 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/03 17:40:17 by iwaslet          ###   ########.fr       */
+/*   Updated: 2025/06/04 15:28:09 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
 
+void	init_vector(t_ray *ray, t_player *player, float start)
+{
+	ray->map_x = (int)player->posx;
+    ray->map_y = (int)player->posy;
+
+    ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
+    ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
+
+	if (ray->ray_dir_x < 0)
+ 	{
+ 	    ray->step_x = -1;
+ 	    ray->side_dist_x = (player->posx - ray->map_x) * ray->delta_dist_x;
+ 	}
+ 	else
+ 	{
+ 	    ray->step_x = 1;
+ 	    ray->side_dist_x = (ray->map_x + 1.0 - player->posx) * ray->delta_dist_x;
+ 	}
+
+ 	if (ray->ray_dir_y < 0)
+ 	{
+ 	    ray->step_y = -1;
+ 	    ray->side_dist_y = (player->posy - ray->map_y) * ray->delta_dist_y;
+ 	}
+ 	else
+ 	{
+ 	    ray->step_y = 1;
+ 	    ray->side_dist_y = (ray->map_y + 1.0 - player->posy) * ray->delta_dist_y;
+ 	}
+}
+
 void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 {
-	float	ray_distance;
-
-	ray->side = 0;
+	init_vector(ray, player, start);
 	while (!collision(ray, player, map))
 	{
-		ray_distance = perfomance(ray);
-		if (fabs(sin(start)) >= fabs(cos(start)))
-		{
-			ray->var_y += sin(start) * ray_distance;
-			ray->var_x += cos(start) * ray_distance;
-			ray->side = 1;
-		}
-		else
-		{
-			ray->var_x += cos(start) * ray_distance;
-			ray->var_y += sin(start) * ray_distance;
-		}
-		// if (fabs(sin(start)) >= fabs(cos(start)) && ray->var_x < ray->var_y)
-		// 	ray->side = 1;
+		if (ray->side_dist_x < ray->side_dist_y)
+        {
+            ray->side_dist_x += ray->delta_dist_x;
+            ray->map_x += ray->step_x;
+            ray->side = 0;
+        }
+        else
+        {
+            ray->side_dist_y += ray->delta_dist_y;
+            ray->map_y += ray->step_y;
+            ray->side = 1;
+        }
 	}
+	if (ray->side == 0)
+        ray->dtw = (ray->map_x - player->posx + (1 - ray->step_x) / 2) / ray->ray_dir_x;
+    else
+        ray->dtw = (ray->map_y - player->posy + (1 - ray->step_y) / 2) / ray->ray_dir_y;
+  //ray->var_x = player->posx + ray->dtw * ray->ray_dir_x;
+   // ray->var_y = player->posy + ray->dtw * ray->ray_dir_y;
 }
 
 float	calc_dist(float x, float y)
@@ -45,35 +78,12 @@ float	calc_dist(float x, float y)
 	return (dst);
 }
 
-float	dist_to_wall(t_player *player, t_ray *ray)
-{
-	float	dtw;
-	float	delta_x;
-	float	delta_y;
-	float	a;
-
-	delta_x = ray->var_x - player->posx;
-	delta_y = ray->var_y - player->posy;
-	angle_calcul(player, ray, delta_x, delta_y);
-	a = (atan2(delta_y, delta_x) - player->angle);
-	dtw = calc_dist(delta_x, delta_y) * ((cos(a)));
-	return (dtw);
-}
-
-void	angle_calcul(t_player *player, t_ray *ray, float dx, float dy)
-{
-	float	p_r;
-	float	p_j;
-
-	p_r = dy / dx;
-	p_j = sin(player->angle) / cos(player->angle);
-	ray->alpha = atan(fabs((p_j - p_r) / (1 + p_j + p_r)));
-}
-
 void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player)
 {
-	ray->dtw = dist_to_wall(player, ray);
-	ray->height = (STEPSIZE / ray->dtw) * (mlx->width / 2);
+//	ray->dtw = dist_to_wall(player, ray);
+//height = (int)(screen_height / perp_wall_dist)
+//	ray->height = (STEPSIZE / ray->dtw) * (mlx->width / 2);
+	ray->height = (mlx->height / ray->dtw);
 	ray->center_line = (mlx->height - ray->height) / 2;
 	ray->last_line = ray->center_line + ray->height;
 }
