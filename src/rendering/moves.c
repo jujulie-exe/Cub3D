@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:30 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/04 18:16:09 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/04 18:38:39 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ void	add_rot(t_player *player, float angle_speed, int flags)
 	rot = angle_speed;
 	old_dir_x = player->dirX;
 	player->dirX = player->dirX * cos(rot) - player->dirY
-			* sin(rot);
+		* sin(rot);
 	player->dirY = old_dir_x * sin(rot) + player->dirY
-			* cos(rot);
+		* cos(rot);
 	old_plane_x = player->planeY;
 	player->planeY = player->planeY * cos(-rot)
-			- player->planeX * sin(-rot);
+		- player->planeX * sin(-rot);
 	player->planeX = old_plane_x * sin(-rot) + player->planeX
-			* cos(-rot);
+		* cos(-rot);
 }
 
 void	rot_adjustment(t_player *player, t_mlx *mlx)
@@ -77,7 +77,6 @@ void	rot_adjustment(t_player *player, t_mlx *mlx)
 	float	angle_speed;
 
 	angle_speed = 0.1;
-
 	if (mlx->valid_map[(int)player->posy][(int)player->posx] != '1')
 	{
 		if (player->rot_right)

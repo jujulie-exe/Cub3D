@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/04 15:39:58 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/04 18:53:16 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ double	time_diff(struct timeval *t1, struct timeval *t2, t_mlx *mlx)
 	return ((double)fps);
 }
 
-//gettimeofday(&t1, NULL);
-//... do stuff ...
-//gettimeofday(&t2, NULL);
-//cout << "Time taken: " << time_diff(&t1, &t2) << "ms" << endl;
-
 int	draw_loop(t_mlx *mlx)
 {
 	int				i;
@@ -55,11 +50,12 @@ int	draw_loop(t_mlx *mlx)
 	gettimeofday(&tv1, NULL);
 	while (i < mlx->width)
 	{
-		mlx->ray->camera_x = 2 * i / (double)mlx->width - 1;	
-		mlx->ray->ray_dir_x = mlx->player->dirX + mlx->player->planeX * mlx->ray->camera_x;
-		mlx->ray->ray_dir_y = mlx->player->dirY + mlx->player->planeY * mlx->ray->camera_x;
+		mlx->ray->camera_x = 2 * i / (double)mlx->width - 1;
+		mlx->ray->ray_dir_x = mlx->player->dirX + mlx->player->planeX
+			* mlx->ray->camera_x;
+		mlx->ray->ray_dir_y = mlx->player->dirY + mlx->player->planeY
+			* mlx->ray->camera_x;
 		draw_line(mlx, start, i);
-		//start += corr;
 		i++;
 	}
 	gettimeofday(&tv2, NULL);
@@ -89,7 +85,6 @@ void	draw_line(t_mlx *mlx, float start_x, int i)
 	}
 	while (mlx->ray->center_line <= mlx->ray->last_line)
 	{
-		//my_put_pixel(i, mlx->ray->center_line, 0xB97AD1, mlx);
 		mlx->draw_start = i;
 		draw_texture(mlx, mlx->ray, i, mlx->ray->center_line);
 		mlx->ray->center_line++;
@@ -105,5 +100,3 @@ void	my_put_pixel(int x, int y, int color, t_mlx *mlx)
 	pixel = (y * mlx->line_len) + (x * mlx->bits_pixel / 8) + mlx->addr;
 	*(unsigned int *)pixel = color;
 }
-/* mlx_xpm_file_to_image(m->win.mlx_ptr, m->el.w_path,
-		&m->tex.texwidth, &m->tex.texheight));*/

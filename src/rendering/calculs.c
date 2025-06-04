@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:27:22 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/04 15:28:09 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/04 18:37:36 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,29 @@
 void	init_vector(t_ray *ray, t_player *player, float start)
 {
 	ray->map_x = (int)player->posx;
-    ray->map_y = (int)player->posy;
-
-    ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
-    ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
-
+	ray->map_y = (int)player->posy;
+	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
+	ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
 	if (ray->ray_dir_x < 0)
- 	{
- 	    ray->step_x = -1;
- 	    ray->side_dist_x = (player->posx - ray->map_x) * ray->delta_dist_x;
- 	}
- 	else
- 	{
- 	    ray->step_x = 1;
- 	    ray->side_dist_x = (ray->map_x + 1.0 - player->posx) * ray->delta_dist_x;
- 	}
-
- 	if (ray->ray_dir_y < 0)
- 	{
- 	    ray->step_y = -1;
- 	    ray->side_dist_y = (player->posy - ray->map_y) * ray->delta_dist_y;
- 	}
- 	else
- 	{
- 	    ray->step_y = 1;
- 	    ray->side_dist_y = (ray->map_y + 1.0 - player->posy) * ray->delta_dist_y;
- 	}
+	{
+		ray->step_x = -1;
+		ray->side_dist_x = (player->posx - ray->map_x) * ray->delta_dist_x;
+	}
+	else
+	{
+		ray->step_x = 1;
+		ray->side_dist_x = (ray->map_x + 1.0 - player->posx) * ray->delta_dist_x;
+	}
+	if (ray->ray_dir_y < 0)
+	{
+		ray->step_y = -1;
+		ray->side_dist_y = (player->posy - ray->map_y) * ray->delta_dist_y;
+	}
+	else
+	{
+		ray->step_y = 1;
+		ray->side_dist_y = (ray->map_y + 1.0 - player->posy) * ray->delta_dist_y;
+	}
 }
 
 void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
@@ -50,24 +47,22 @@ void	calc_dda(t_ray *ray, t_player *player, char **map, float start)
 	while (!collision(ray, player, map))
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
-        {
-            ray->side_dist_x += ray->delta_dist_x;
-            ray->map_x += ray->step_x;
-            ray->side = 0;
-        }
-        else
-        {
-            ray->side_dist_y += ray->delta_dist_y;
-            ray->map_y += ray->step_y;
-            ray->side = 1;
-        }
+		{
+			ray->side_dist_x += ray->delta_dist_x;
+			ray->map_x += ray->step_x;
+			ray->side = 0;
+		}
+		else
+		{
+			ray->side_dist_y += ray->delta_dist_y;
+			ray->map_y += ray->step_y;
+			ray->side = 1;
+		}
 	}
 	if (ray->side == 0)
-        ray->dtw = (ray->map_x - player->posx + (1 - ray->step_x) / 2) / ray->ray_dir_x;
-    else
-        ray->dtw = (ray->map_y - player->posy + (1 - ray->step_y) / 2) / ray->ray_dir_y;
-  //ray->var_x = player->posx + ray->dtw * ray->ray_dir_x;
-   // ray->var_y = player->posy + ray->dtw * ray->ray_dir_y;
+		ray->dtw = (ray->map_x - player->posx + (1 - ray->step_x) / 2) / ray->ray_dir_x;
+	else
+		ray->dtw = (ray->map_y - player->posy + (1 - ray->step_y) / 2) / ray->ray_dir_y;
 }
 
 float	calc_dist(float x, float y)
@@ -80,9 +75,6 @@ float	calc_dist(float x, float y)
 
 void	calc_height(t_mlx *mlx, t_ray *ray, t_player *player)
 {
-//	ray->dtw = dist_to_wall(player, ray);
-//height = (int)(screen_height / perp_wall_dist)
-//	ray->height = (STEPSIZE / ray->dtw) * (mlx->width / 2);
 	ray->height = (mlx->height / ray->dtw);
 	ray->center_line = (mlx->height - ray->height) / 2;
 	ray->last_line = ray->center_line + ray->height;

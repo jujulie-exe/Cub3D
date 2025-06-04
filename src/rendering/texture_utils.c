@@ -6,25 +6,24 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:23:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/04 17:35:24 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/04 18:44:24 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/render3d.h"
 #include "../../include/cube3d.h"
 
-
 unsigned int	median_color(t_wall *wall, int flags)
 {
 	t_median	md;
 
-	md = (struct s_median) {0};
-	while(md.x< flags / 50)
+	md = (struct s_median){0};
+	while (md.x < flags / 50)
 	{
 		md.c = my_color_get(wall, md.x, 0);
-		md.r = (md.c >> 16) & 0xFF;	
-		md.g = (md.c >> 8) & 0xFF;	
-		md.b = md.c & 0xFF;	
+		md.r = (md.c >> 16) & 0xFF;
+		md.g = (md.c >> 8) & 0xFF;
+		md.b = md.c & 0xFF;
 		md.sum_r += md.r;
 		md.sum_g += md.g;
 		md.sum_b += md.b;
@@ -35,7 +34,7 @@ unsigned int	median_color(t_wall *wall, int flags)
 	md.avg_t = md.sum_t / md.x;
 	md.avg_g = md.sum_g / md.x;
 	md.avg_b = md.sum_b / md.x;
-	return (md.avg_r << 16) | (md.avg_g << 8) | md.avg_b;
+	return ((md.avg_r << 16) | (md.avg_g << 8) | md.avg_b);
 }
 
 unsigned int	my_color_get(t_wall *wall, int y, int x)
@@ -79,20 +78,20 @@ void	init_texture(t_wall wall[], t_mlx *mlx)
 unsigned int	cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index)
 {
 	t_tex	tex;
-	
+
 	tex = (struct s_tex){0};
 	if (ray->side == 0)
 		tex.wall_x = mlx->player->posy + ray->dtw * ray->ray_dir_y;
 	else
 		tex.wall_x = mlx->player->posx + ray->dtw * ray->ray_dir_x;
-//	tex.wall_x = tex.wall_x * 0.01;
 	tex.wall_x -= floor(tex.wall_x);
 	tex.tex_x = (int)(tex.wall_x * (double)mlx->wall[tex_index].width);
 	if ((ray->side == 0 && ray->ray_dir_x > 0)
 		|| (ray->side == 1 && ray->ray_dir_y < 0))
 		tex.tex_x = mlx->wall[tex_index].width - tex.tex_x - 1;
 	tex.step = (double)mlx->wall[tex_index].height / (double)ray->height;
-	tex.tex_pos = (mlx->draw_start - mlx->height / 2 + ray->height / 2) * tex.step;
+	tex.tex_pos = (mlx->draw_start - mlx->height / 2 + ray->height / 2)
+		* tex.step;
 	tex.current_pos = tex.tex_pos + (y - mlx->draw_start) * tex.step;
 	tex.tex_y = (int)tex.current_pos;
 	if (tex.tex_y > 0)
