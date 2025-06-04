@@ -97,7 +97,7 @@ int	proccesing_file_cub(t_data_maps *maps)
 	if (check_div(line) == true)
 		ft_free_all_and_exit(maps, MSG_ERROR_DIV);
 	if (serch_map_and_validate(line) == 0)
-		ft_free_all_and_exit(NULL, "NO VALID MAP");
+		ft_free_all_and_exit(NULL, MSG_ERROR_NO_MAP);
 	swap_and_split(maps, line);
 	if (maps->argv == NULL)
 		ft_free_all_and_exit(NULL, MSG_ERROR_ARG);

@@ -27,6 +27,7 @@
 # define MSG_ERROR_EXT "Error\n: Missing .cub file extension.\n"
 # define MSG_ERROR_FILE "Error\n: Cannot open map file.\n"
 # define MSG_ERROR_MAP "Error\n: Map not properly closed.\n"
+# define MSG_ERROR_NO_MAP "Error\n: Add a valid map.\n"
 # define MSG_ERROR_FLAGS "Error\n: One spawn point required.\n"
 # define MSG_ERROR_COLOR "Error\n: Use RGB: 3 values(0–255), comma-separated.\n"
 # define MSG_ERROR_MAX "Error\n: RGB values must be 0–255.\n"

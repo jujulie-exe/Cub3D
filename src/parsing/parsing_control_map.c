@@ -20,8 +20,8 @@ int	valid_position(char c)
 
 int	is_valid_map_char(char c)
 {
-	return (c == '0' || c == '1' || c == '2'
-		|| c == 'N' || c == 'S' || c == 'E' || c == 'W'
+	return (c == '0' || c == '1' || c == 'N'
+		|| c == 'S' || c == 'E' || c == 'W'
 		|| c == ' ' || c == '\n' || c == '	');
 }
 
