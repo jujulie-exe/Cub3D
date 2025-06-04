@@ -36,7 +36,7 @@ void	ft_clean_texture(t_mlx **ptr)
 	size_t	i;
 
 	i = 0;
-	while ((*ptr)->texture[i] && i < 4)
+	while (i < 4 && (*ptr)->texture[i])
 	{
 		mlx_destroy_image((*ptr)->mlx, (*ptr)->texture[i]);
 		(*ptr)->texture[i] = NULL;
