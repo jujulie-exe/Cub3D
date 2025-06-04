@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:23:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/04 17:22:10 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/04 17:35:24 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ unsigned int	cmpt_tex(t_mlx *mlx, t_ray *ray, int y, int tex_index)
 	tex.tex_y = (int)tex.current_pos;
 	if (tex.tex_y > 0)
 		tex.tex_y = tex.tex_y % mlx->wall[tex_index].height;
-//	if (tex.tex_y < 0)
-//		tex.tex_y = 0;
+	if (tex.tex_y < 0)
+		tex.tex_y = 0;
 	if (tex.tex_y >= mlx->wall[tex_index].height)
 		tex.tex_y = mlx->wall[tex_index].height - 1;
 	return (my_color_get(&mlx->wall[tex_index], tex.tex_x, tex.tex_y));
