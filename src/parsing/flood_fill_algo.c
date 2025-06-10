@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 13:47:10 by jfranco           #+#    #+#             */
-/*   Updated: 2025/05/30 16:43:45 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/10 19:56:03 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*  ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( */
@@ -51,16 +51,85 @@ void	posiztion_player(size_t *x, size_t *y, t_fill *data)
 	(*y) = data->y;
 }
 
+size_t	max_lenth(char **maps)
+{
+	size_t	lenght = 0;
+	size_t	max_lengh = 0;
+	size_t	y = 0;
+	while(maps[y] != NULL)
+	{
+		lenght = ft_strlen(maps[y]);
+		if (lenght > max_lengh)
+			max_lengh = lenght;
+		y++;
+	}
+	return (max_lengh);
+}
+
+char	*ft_straddzero(const char *s1, size_t max)
+{
+	size_t		i;
+	char		*s2;
+
+	i = 0;
+	s2 = (char *)malloc((max + 1) * (sizeof(char)));
+	if (s2 == NULL)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		s2[i] = s1[i];
+		i++;
+	}
+	while (i < max)
+	{
+		s2[i] = '0';
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
+}
+
+void	proccess_copy_maps(char **maps, t_fill *data)
+{
+	size_t	malloc_y = 0;
+	size_t	malloc_x = 0;
+	char	**tmp = data->copy_maps;
+	while(maps[malloc_y] != NULL)
+		malloc_y++;
+	data->copy_maps = malloc(sizeof(char *) * (malloc_y + 1));
+	malloc_x = max_lenth(maps);
+	malloc_y = 0;
+	while(maps[malloc_y] != NULL)
+	{
+		data->copy_maps[malloc_y] = ft_straddzero(maps[malloc_y], malloc_x);
+		malloc_y++;
+	}
+	data->copy_maps[malloc_y] = NULL;
+	free_double_array(&tmp);
+}
+
+void	print_maps(char **maps)
+{
+	size_t	y = 0;
+	while (maps[y] != NULL)
+	{
+		printf("%s\n", maps[y]);
+		y++;
+	}
+}
+
 void	fill_flod(t_data_maps *ptr)
 {
 	t_fill	data;
 
 	data.copy_maps = ft_split(ptr->map, '\n');
+	proccess_copy_maps(data.copy_maps, &data);
 	search_player(&data);
 	posiztion_player(&ptr->ptr_mlx->p_x, &ptr->ptr_mlx->p_y, &data);
 	data.target = '0';
 	data.color = 'C';
 	flood_fill_algo(&data, data.y, data.x);
+	print_maps(data.copy_maps);
 	if (!control_fill_map(&data))
 	{
 		free_double_array(&data.copy_maps);
@@ -70,4 +139,5 @@ void	fill_flod(t_data_maps *ptr)
 	data.copy_maps = NULL;
 	ptr->ptr_mlx->valid_map = NULL;
 	ptr->ptr_mlx->valid_map = ft_split(ptr->map, '\n');
+	print_maps(ptr->ptr_mlx->valid_map);
 }
