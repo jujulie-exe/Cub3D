@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:35:29 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/04 17:25:58 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/10 17:15:54 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ unsigned int	get_texture(t_mlx *mlx, t_ray *ray, int y)
 	}
 	else
 	{
-		if (ray->ray_dir_y < 0)
+		if (ray->ray_dir_y > 0)
 			color = SO;
 		else
 			color = NO;
