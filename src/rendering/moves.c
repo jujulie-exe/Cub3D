@@ -31,7 +31,7 @@ void	mov_adjustment(t_player *player, float cos, float sin, t_mlx *mlx)
 {
 	float		speed;
 
-	speed = 0.4;
+	speed = 0.2;
 	player->posx += cos * speed;
 	player->posy += sin * speed;
 	if (mlx->valid_map[(int)player->posy][(int)player->posx] == '1')

@@ -22,7 +22,10 @@ void	search_player(t_fill *data)
 		while (data->copy_maps[data->y][data->x] != '\0')
 		{
 			if (valid_position(data->copy_maps[data->y][data->x]))
+			{
+				 data->c = data->copy_maps[data->y][data->x]; 
 				return ;
+			}
 			data->x++;
 		}
 		data->y++;
@@ -135,9 +138,24 @@ void	fill_flod(t_data_maps *ptr)
 		free_double_array(&data.copy_maps);
 		ft_free_all_and_exit(ptr, MSG_ERROR_MAP);
 	}
-	free_double_array(&data.copy_maps);
-	data.copy_maps = NULL;
+	size_t	x;
+	size_t	y = 0;
+	while (data.copy_maps[y])
+	{
+		x = 0;
+		while(data.copy_maps[y][x])
+		{
+			if (data.copy_maps[y][x] == '0')
+				data.copy_maps[y][x] = '1';
+			x++;
+		}
+		y++;
+	}
+	data.target = 'C';
+	data.color = '0';
+	flood_fill_algo(&data, data.y, data.x);
+	data.copy_maps[data.y][data.x] = data.c;
 	ptr->ptr_mlx->valid_map = NULL;
-	ptr->ptr_mlx->valid_map = ft_split(ptr->map, '\n');
+	ptr->ptr_mlx->valid_map = data.copy_maps;
 	print_maps(ptr->ptr_mlx->valid_map);
 }

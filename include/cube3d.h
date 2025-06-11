@@ -91,6 +91,7 @@ typedef struct s_fill
 	size_t	y;
 	char	target;
 	char	color;
+	char	c;
 }	t_fill;
 
 typedef struct s_data_maps

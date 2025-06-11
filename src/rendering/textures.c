@@ -26,7 +26,7 @@ unsigned int	get_texture(t_mlx *mlx, t_ray *ray, int y)
 	}
 	else
 	{
-		if (ray->ray_dir_y > 0)
+		if (ray->ray_dir_y < 0)
 			color = SO;
 		else
 			color = NO;
