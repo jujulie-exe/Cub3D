@@ -1,10 +1,14 @@
 
-EA ./xpm_texture/texture_dunk20_imresizer.xpm
+  
+EA ./xpm_texture/texture_dunk2_imresizer.xpm
 SO ./xpm_texture/texture_dunk4_imresizer.xpm
 WE ./xpm_texture/texture_dunk_imresizer.xpm
 NO ./xpm_texture/texture_dunk3_imresizer.xpm
 
-S ./textures/pillar.xpm
+SO ../mxpm_texture/meme_dunk4_imresizer.XPM
+NO ../mxpm_texture/meme_dunk4_imresizer.XPM
+EA ../mxpm_texture/meme_dunk4_imresizer.XPM
+WE ../mxpm_texture/meme_dunk4_imresizer.XPM
 	R 900 600
 
 H ./textures/health.xpm
@@ -17,8 +21,8 @@ EA ./textures/west.xpm
 NE 	./textures/east.xpm
 
 
-		F	 220,100,
-   C 			  			2252,200,0
+		F	 220,100,0 		
+   C 			  			225,30,0		
   
 ihaiuhdaiuhdiua akdpokapokda opkakdankjndak 		
 
@@ -26,16 +30,3 @@ ihaiuhdaiuhdiua akdpokapokda opkakdankjndak
 qu;daesto é solo un test
 
 questo é solo un test
-
-11111
-101101
-1000011
-100111011
-101111011
-1000N0001
-1111110111111
-100000011
-10011111111111
-1000001
-10111111
-1111111

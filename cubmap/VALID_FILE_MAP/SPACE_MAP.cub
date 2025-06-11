@@ -1,4 +1,5 @@
 
+
 EA ./xpm_texture/texture_dunk_imresizer.xpm
 SO ./xpm_texture/texture_dunk_imresizer.xpm
 WE ./xpm_texture/texture_dunk_imresizer.xpm
@@ -25,12 +26,12 @@ qu;daesto é solo un test
 
 questo é solo un test
 
-	11111111111111
-	10000000000011
-	11110000000001
-	111111100N001
-	001111100001
-	00001100001
-	0000001001
-	000000101
+	11111111011111
+	1       1   11
+	1111        1
+	1111111  1 1
+	0011111   1
+	000011  N1
+	0000001 1
+	0000001 1
 	000000010
