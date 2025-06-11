@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 13:47:13 by jfranco           #+#    #+#             */
-/*   Updated: 2025/03/31 16:54:55 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/11 14:22:09 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ (  */
@@ -53,5 +53,7 @@ int	serch_map_and_validate(char *str)
 	}
 	if (valid == true)
 		return (str[i] = DIV, 1);
+	free(str);
+	str = NULL;
 	return (0);
 }

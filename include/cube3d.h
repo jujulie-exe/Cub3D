@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/04 14:33:41 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/11 16:01:14 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@
 # include <X11/keysym.h>
 # include <stdbool.h>
 
+/*♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡*/
+
 struct	s_mlx;
 
 typedef struct s_tex
@@ -66,6 +68,8 @@ typedef struct s_tex
 	double	current_pos;
 	int		tex_y;
 }	t_tex;
+
+/*♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡*/
 
 typedef struct s_median
 {
@@ -84,6 +88,8 @@ typedef struct s_median
 	unsigned int	avg_b;
 }	t_median;
 
+/*♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡*/
+
 typedef struct s_fill
 {
 	char	**copy_maps;
@@ -93,6 +99,8 @@ typedef struct s_fill
 	char	color;
 	char	c;
 }	t_fill;
+
+/*♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡*/
 
 typedef struct s_data_maps
 {
@@ -109,6 +117,8 @@ typedef struct s_data_maps
 
 }	t_data_maps;
 
+/*♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡*/
+
 typedef struct s_wall
 {
 	int		index;
@@ -120,6 +130,8 @@ typedef struct s_wall
 	int		edn;
 	void	*texture;
 }	t_wall;
+
+/*♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡*/
 
 typedef struct s_ray
 {
@@ -148,6 +160,8 @@ typedef struct s_ray
 	int		map_x;
 }	t_ray;
 
+/*♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡*/
+
 typedef struct s_player
 {
 	float	posx;
@@ -172,6 +186,8 @@ typedef struct s_player
 	bool	rot_left;
 	bool	rot_right;
 }	t_player;
+
+/*♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡*/
 
 typedef struct s_mlx
 {
@@ -200,6 +216,8 @@ typedef struct s_mlx
 	t_wall			*wall;
 }	t_mlx;
 
+/*♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡*/
+
 /*♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡*/
 int		proccesing_file_cub(t_data_maps *maps);
 // ♡(っ´ω`c)(っ´ω`c)src/parsing/proccess_parsing.c(っ´ω`c)(っ´ω`c)♡
@@ -222,6 +240,9 @@ void	ft_clean_argv(t_data_maps *ptr_maps);
 void	free_double_array(char ***ar);
 // ♡(っ´ω`c)(っ´ω`c)src/parsing/controll_fill.c(っ´ω`c)(っ´ω`c)♡
 bool	control_fill_map(t_fill *data);
+// ♡(っ´ω`c)(っ´ω`c)src/parsing/flood_fill_utils.c(っ´ω`c)(っ´ω`c)♡
+void	proccess_copy_maps(char **maps, t_fill *data);
+void	remplace(t_fill *data, char search, char rmplc);
 // ♡(っ´ω`c)(っ´ω`c)src/GNL/get_next_line.cc(っ´ω`c)(っ´ω`c)♡
 char	*get_next_line(int fd);
 // ♡(っ´ω`c)(っ´ω`c)src/init_mlx_and_hook/mlx_init_ptr.c(っ´ω`c)(っ´ω`c)♡

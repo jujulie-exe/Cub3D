@@ -3,7 +3,7 @@ NAME = cube3D
 
 # Compiler e flag
 CC = cc
-CFLAGS = -g3 -Ofast  -Wall -Wextra  -Werror -Werror=unused-variable  -Werror=unused-function -Iminilibx -Isrc #-Werror=pointer-arith
+CFLAGS = -g3  -Ofast -flto -march=native -Wall -Wextra  -Werror -Werror=unused-variable  -Werror=unused-function -Iminilibx -Isrc #-Werror=pointer-arith 
 
 # Colori
 GREEN = \033[38;5;82m
@@ -23,6 +23,7 @@ SRCS =  $(SRCDIR)/GNL/get_next_line.c \
         $(SRCDIR)/parsing/add_color.c \
 		$(SRCDIR)/parsing/parsing_control_map.c \
 		$(SRCDIR)/parsing/controll_fill.c \
+		$(SRCDIR)/parsing/flood_fill_utilis.c \
         $(SRCDIR)/clean_up_and_error/clean_err.c \
 		$(SRCDIR)/clean_up_and_error/ft_db_array.c \
 		$(SRCDIR)/init_mlx_and_hook/mlx_init_ptr.c \

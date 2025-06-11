@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:34 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/10 20:13:42 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/11 14:45:55 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,17 @@ void	ptr_texture(t_data_maps *maps)
 	}
 }
 
+static	bool	fd_analize(int *fd, t_data_maps *maps)
+{
+	(*fd) = open(maps->name_maps, O_DIRECTORY);
+	if ((*fd) > 0)
+		return (false);
+	(*fd) = open(maps->name_maps, O_RDONLY);
+	if ((*fd) < 0)
+		return (false);
+	return (true);
+}
+
 int	proccesing_file_cub(t_data_maps *maps)
 {
 	char	*line;
@@ -90,20 +101,16 @@ int	proccesing_file_cub(t_data_maps *maps)
 	line = NULL;
 	if (check_valid_name(maps->name_maps))
 		ft_free_all_and_exit(maps, "\n");
-	fd = open(maps->name_maps, O_DIRECTORY);
-	if (fd > 0)
-		ft_free_all_and_exit(maps, MSG_ERROR_FILE);
-	fd = open(maps->name_maps, O_RDONLY);
-	if (fd < 0)
+	if (fd_analize(&fd, maps) == false)
 		ft_free_all_and_exit(maps, MSG_ERROR_FILE);
 	line = proccess_gnl(fd);
 	if (check_div(line) == true)
 		ft_free_all_and_exit(maps, MSG_ERROR_DIV);
 	if (serch_map_and_validate(line) == 0)
-		ft_free_all_and_exit(NULL, MSG_ERROR_NO_MAP);
+		ft_free_all_and_exit(maps, MSG_ERROR_NO_MAP);
 	swap_and_split(maps, line);
 	if (maps->argv == NULL)
-		ft_free_all_and_exit(NULL, MSG_ERROR_ARG);
+		ft_free_all_and_exit(maps, MSG_ERROR_ARG);
 	fill_flod(maps);
 	trim(maps);
 	ptr_texture(maps);
