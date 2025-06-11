@@ -1,5 +1,0 @@
-./GNL/get_next_line.c
-./parsing/proccess_parsing.c
-./parsing/parsing_utilis.c
-./clean_up_and_error/clean_err.c
-./main.c
