@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:34 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/11 14:45:55 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/12 16:14:05 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,10 @@ static	bool	fd_analize(int *fd, t_data_maps *maps)
 {
 	(*fd) = open(maps->name_maps, O_DIRECTORY);
 	if ((*fd) > 0)
+	{
+		close((*fd));
 		return (false);
+	}
 	(*fd) = open(maps->name_maps, O_RDONLY);
 	if ((*fd) < 0)
 		return (false);

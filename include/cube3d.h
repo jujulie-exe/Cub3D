@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:48:24 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/11 16:01:14 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/12 16:19:23 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define MSG_ERROR_TX "Error\n: Invalid texture or path.\n"
 # define MSG_ERROR_CUB "Error\n: File must end with .cub.\n"
 # define MSG_ERROR_EXT "Error\n: Missing .cub file extension.\n"
-# define MSG_ERROR_FILE "Error\n: Cannot open map file.\n"
+# define MSG_ERROR_FILE "Error\n: Cannot open .cub\n"
 # define MSG_ERROR_MAP "Error\n: Map not properly closed or not valid.\n"
 # define MSG_ERROR_NO_MAP "Error\n: Add a valid map.\n"
 # define MSG_ERROR_FLAGS "Error\n: One spawn point required.\n"
