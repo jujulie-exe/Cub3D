@@ -31,6 +31,23 @@ bool	check_div(char *line)
 	return (false);
 }
 
+static	bool	pos_coma(char *str)
+{
+	char	*f_coma;
+	char	*l_coma;
+
+	f_coma = ft_strchr(str, ',');
+	if (!f_coma || f_coma == str)
+		return (false);
+	l_coma = ft_strrchr(str, ',');
+	if (!l_coma || l_coma == str)
+		return (false);
+	if (ft_isdigit((char)l_coma[-1]) && ft_isdigit((char)l_coma[1])
+		&& ft_isdigit((char)f_coma[-1]) && ft_isdigit((char)f_coma[1]))
+		return (true);
+	return (false);
+}
+
 int	char_validity(char *str)
 {
 	size_t	i;
@@ -52,8 +69,9 @@ int	char_validity(char *str)
 			other++;
 		i++;
 	}
-	if ((digit <= 9 && digit >= 3) && vir == 2
-		&& other == 0 && i >= 5 && ft_isdigit(str[i - 1]) && ft_isdigit(str[0]))
+	if ((digit >= 3) && vir == 2
+		&& other == 0 && i >= 5 && ft_isdigit(str[i - 1]) && ft_isdigit(str[0])
+		&& pos_coma(str))
 		return (1);
 	return (0);
 }
@@ -84,25 +102,26 @@ int	create_rgb(int	*rgb, char c)
 
 void	check_and_charge_color(t_data_maps *ptr_maps, char *str, char c)
 {
-	size_t	i;
-	char	*tmp;
-	size_t	len;
-	int		rgb[3];
+	size_t		i;
+	char		*tmp;
+	int			rgb[3];
+	long long	temp;
 
 	i = 0;
 	tmp = str + 1;
 	while (*tmp == ' ' || *tmp == '	')
 		tmp++;
-	len = ft_strlen(tmp);
-	if (len > 11 || char_validity(tmp) == 0)
+	if (char_validity(tmp) == 0)
 		ft_free_all_and_exit(ptr_maps, MSG_ERROR_COLOR);
 	while (*tmp)
 	{
 		if (*tmp == ',')
 			tmp++;
-		rgb[i] = ft_atol(tmp);
-		if (rgb[i] > 255)
+		temp = ft_atol(tmp);
+		if (temp > 255)
 			ft_free_all_and_exit(ptr_maps, MSG_ERROR_MAX);
+		else
+			rgb[i] = temp;
 		while (*tmp && ft_isdigit(*tmp))
 			tmp++;
 		i++;
