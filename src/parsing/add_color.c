@@ -6,42 +6,29 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:42:35 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/02 18:17:13 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/13 17:26:39 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ (  */
 
 #include "../../include/cube3d.h"
 
-bool	check_div(char *line)
-{
-	size_t	i;
-
-	i = 0;
-	while (line[i] != '\0')
-	{
-		if (line[i] == DIV)
-		{
-			free(line);
-			line = NULL;
-			return (true);
-		}
-		i++;
-	}
-	return (false);
-}
-
 bool	digit_in_coma(char *l_coma, char *f_coma, char *str)
 {
-	size_t len_first = (size_t)(f_coma - str);
-    size_t len_middle = (size_t)(l_coma - f_coma - 1);
-    size_t len_last = 0;
-    char *tmp = l_coma + 1;
-    while (tmp[len_last] != '\0')
-        len_last++;
-    if (len_first > 3 || len_middle > 3 || len_last > 3)
-        return false;
-    return true;
+	size_t	len_first;
+	size_t	len_middle;
+	size_t	len_last;
+	char	*tmp;
+
+	len_first = (size_t)(f_coma - str);
+	len_middle = (size_t)(l_coma - f_coma - 1);
+	len_last = 0;
+	tmp = l_coma + 1;
+	while (tmp[len_last] != '\0')
+		len_last++;
+	if (len_first > 3 || len_middle > 3 || len_last > 3)
+		return (false);
+	return (true);
 }
 
 static	bool	pos_coma(char *str)

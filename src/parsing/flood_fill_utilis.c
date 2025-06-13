@@ -6,11 +6,29 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:40:26 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/11 16:03:11 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/13 17:01:23 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cube3d.h"
+
+bool	check_div(char *line)
+{
+	size_t	i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] == DIV)
+		{
+			free(line);
+			line = NULL;
+			return (true);
+		}
+		i++;
+	}
+	return (false);
+}
 
 static size_t	max_lenth(char **maps)
 {
