@@ -3,7 +3,9 @@ NAME = cube3D
 
 # Compiler e flag
 CC = cc
-CFLAGS = -g3  -Ofast -flto -march=native -Wall -Wextra  -Werror -Werror=unused-variable  -Werror=unused-function -Iminilibx -Isrc #-Werror=pointer-arith 
+CFLAGS = -g3  -Ofast -flto -march=native -Wall -Wextra  -Werror -Werror=unused-variable  -Werror=unused-function  -Werror=pointer-arith  -Werror=uninitialized -Werror=return-type -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Iminilibx -Isrc 
+###-Wno-error=sign-conversion  -Wno-error=conversion -Wno-error=float-conversion -Wconversion
+###-fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer
 
 # Colori
 GREEN = \033[38;5;82m
