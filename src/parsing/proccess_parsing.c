@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:34 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/12 16:14:05 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/13 19:03:11 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	ptr_texture(t_data_maps *maps)
 {
 	const char	*srr[] = {"EA ", "WE ", "NO ", "SO ", "EA	",
 		"WE	", "NO	", "SO	", NULL};
-	size_t		i;
-	size_t		y;
+	ssize_t		i;
+	ssize_t		y;
 
 	i = -1;
 	while (maps->argv[++i] != NULL)

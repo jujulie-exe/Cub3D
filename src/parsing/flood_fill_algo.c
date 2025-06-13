@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 13:47:10 by jfranco           #+#    #+#             */
-/*   Updated: 2025/06/11 16:04:17 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/13 19:05:58 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*  ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( ˘ ³˘)♥ ( */
@@ -76,7 +76,7 @@ void	fill_flod(t_data_maps *ptr)
 	posiztion_player(&ptr->ptr_mlx->p_x, &ptr->ptr_mlx->p_y, &data);
 	data.target = '0';
 	data.color = 'C';
-	flood_fill_algo(&data, data.y, data.x);
+	flood_fill_algo(&data, (ssize_t)data.y, (ssize_t)data.x);
 	print_maps(data.copy_maps);
 	if (!control_fill_map(&data))
 	{
@@ -86,7 +86,7 @@ void	fill_flod(t_data_maps *ptr)
 	remplace(&data, '0', '1');
 	data.target = 'C';
 	data.color = '0';
-	flood_fill_algo(&data, data.y, data.x);
+	flood_fill_algo(&data, (ssize_t)data.y, (ssize_t)data.x);
 	data.copy_maps[data.y][data.x] = data.c;
 	ptr->ptr_mlx->valid_map = NULL;
 	ptr->ptr_mlx->valid_map = data.copy_maps;
