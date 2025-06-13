@@ -6,7 +6,7 @@
 /*   By: iwaslet <iwaslet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:17 by iwaslet           #+#    #+#             */
-/*   Updated: 2025/06/04 19:05:54 by jfranco          ###   ########.fr       */
+/*   Updated: 2025/06/13 18:00:40 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ void	my_put_pixel(int x, int y, int color, t_mlx *mlx)
 
 	if (x < 0 || y < 0 || x >= mlx->width || y >= mlx->height)
 		return ;
-	pixel = (y * mlx->line_len) + (x * mlx->bits_pixel / 8) + mlx->addr;
+	pixel = (char *)mlx->addr + (y * mlx->line_len) + (x * mlx->bits_pixel / 8);
 	*(unsigned int *)pixel = color;
 }
